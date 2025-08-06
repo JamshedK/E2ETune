@@ -1,7 +1,8 @@
 import paramiko
 import psycopg2
 from knob_config.parse_knob_config import get_knobs
-
+import os
+import json
 
 class Database:
     def __init__(self, config, path):
@@ -69,6 +70,61 @@ class Database:
         cursor.close()
         conn.close()
         return knobs
+    
+    def extract_query_plans(self, workload_queries):
+        """
+        Extract query plans for a list of SQL queries
+        """
+        conn = self.get_conn()
+        cursor = conn.cursor()
+        plans = []
+        for i, query in enumerate(workload_queries):
+            try:
+                print(f"Processing query {i+1}/{len(workload_queries)}")
+
+                # Add EXPLAIN (FORMAT JSON) to get the plan
+                explain_query = f"EXPLAIN (FORMAT JSON) {query}"
+                cursor.execute(explain_query)
+                result = cursor.fetchone()
+                
+                # Extract the plan from EXPLAIN output
+                # EXPLAIN returns [{"Plan": {...}}]
+                plan_json = result[0][0]  
+                
+                # Store in format expected by bin_data.py
+                plans.append({
+                    "Plan": plan_json,
+                    "query": query.strip(),
+                    "query_id": i
+                })
+                
+            except Exception as e:
+                print(f"Error processing query {i+1}: {e}")
+                print(f"Query: {query[:100]}...")  # Show first 100 chars
+                continue
+        
+        cursor.close()
+        conn.close()
+        
+        print(f"Successfully extracted {len(plans)} query plans")
+        return plans
+        
+
+    def save_workload_plans(self, workload_queries, workload_name):
+        # Extract query plans and save them in a JSON file
+        plans = self.extract_query_plans(workload_queries)
+        
+        if plans:
+            os.makedirs("query_plans", exist_ok=True)
+            # create an output file with workload_name
+            output_file = os.path.join("query_plans", f"{workload_name}.json")
+            with open(output_file, 'w') as f:
+                json.dump(plans, f, indent=2)
+            print(f"Saved {len(plans)} query plans to {output_file}")
+        else:
+            print("No plans to save")
+        
+        return plans
 
     def fetch_inner_metric(self):
         state_list = []
@@ -78,7 +134,7 @@ class Database:
         # 1: Cache hit rate
         cache_hit_rate_sql = "select blks_hit / (blks_read + blks_hit + 0.001) " \
                              "from pg_stat_database " \
-                             "where datname = '{}';".format(self.database)
+                             "where datname = '{}';".format("benchbase")
 
         # 2: Concurrent user count
         concurrent_users = """
@@ -272,51 +328,4 @@ class Database:
             cursor.close()
             conn.close()
         
-        return flag
-
-    def change_knob(self, knobs):
-        flag = True
-        conn = self.get_conn()
-        cursor = conn.cursor()
-        reset_sql = """
-        alter system set {}={};
-        """
-        for knob in knobs:
-            # enum (include on/off)
-            val = knobs[knob]
-            # integer
-            if self.knobs[knob]['type'] == 'integer':
-                val = int(val)
-            # real
-            elif self.knobs[knob]['type'] == 'real':
-                val = float(val)
-            try:
-                old_isolation_level = conn.isolation_level
-                conn.set_isolation_level(0)
-                cursor.execute(reset_sql.format(knob, val))
-                conn.set_isolation_level(old_isolation_level)
-            except Exception as error:
-                print(error)
-                flag = False
-        _, stdout, stderr = self.ssh.exec_command(f'module load postgresql/12.2-gcc_13.1.0\npg_ctl stop -D {self.data_path}')
-        info = stdout.read().decode('utf-8')
-        # print(info)
-        # print(stderr.read().decode('utf-8'))
-        _, stdout, stderr = self.ssh.exec_command(f'module load postgresql/12.2-gcc_13.1.0\npg_ctl -D {self.data_path} -l logfile start')
-        info = stdout.read().decode('utf-8')
-        if 'server started' not in info:
-            print(stderr.read().decode('utf-8'))
-            flag = False
-        
-        _, stdout, stderr = self.ssh.exec_command(f'module load postgresql/12.2-gcc_13.1.0\npg_ctl reload -D {self.data_path}')
-        info = stdout.read().decode('utf-8')
-        if 'error' in info:
-            print(stderr.read().decode('utf-8'))
-            flag = False
-
-        if flag:
-            print('apply knobs successfully!')
-        
-        # _, stdout, stderr = self.ssh.exec_command('gs_om -t restart')
-        # info = stdout.read().decode('utf-8')
         return flag

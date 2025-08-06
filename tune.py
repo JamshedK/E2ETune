@@ -12,7 +12,8 @@ from smac.facade.smac_hpo_facade import SMAC4HPO
 from smac.scenario.scenario import Scenario
 from ConfigSpace.hyperparameters import CategoricalHyperparameter, \
     UniformFloatHyperparameter, UniformIntegerHyperparameter
-from test_workload_and_config import test_config
+from workload_executor import workload_executor
+
 
 def tune(workload_file, args):
     """Just run SMAC optimization!"""
@@ -26,13 +27,14 @@ def tune(workload_file, args):
 
 class tuner:
     def __init__(self, args, workload_file):
+        self.args = args  # Store args for later use
         self.workload_file = workload_file
         self.inner_metric_sample = args['tuning_config']['inner_metric_sample']
         self.knobs_detail = parse_knob_config.get_knobs(args['tuning_config']['knob_config'])
         self.logger = utils.get_logger(args['tuning_config']['log_path'])
         self.last_point = []
         ## FIXME: this function call needs to be fixed
-        self.stt = test_config(args)
+        self.stt = workload_executor(args, self.logger, "training_records.log")
 
     def tune(self):
         self.SMAC()
@@ -41,7 +43,7 @@ class tuner:
 
         def objective_function(config_dict):
             """SMAC objective function - returns negative performance (SMAC minimizes)"""
-            performance = test_config(self, config_dict)
+            performance = self.stt.run_config(config_dict)
             return -performance  # Negate because SMAC minimizes
 
         
@@ -60,7 +62,7 @@ class tuner:
 
         runhistory = RunHistory()
         
-        save_workload = self.wl_id.split('olap_workloads/')[1]
+        save_workload = self.workload_file.split('olap_workloads/')[1]
         save_workload = save_workload.split('.wg')[0]
         
         scenario = Scenario({"run_obj": "quality",   # {runtime,quality}
@@ -94,5 +96,5 @@ class tuner:
                 }
             return json.dumps(data_to_save, indent=4)
 
-        with open(f"smac_his/{save_workload}_{self.warmup}.json", "w") as f:
+        with open(f"smac_his/{save_workload}_smac.json", "w") as f:
             f.write(runhistory_to_json(runhistory))
