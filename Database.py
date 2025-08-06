@@ -3,6 +3,8 @@ import psycopg2
 from knob_config.parse_knob_config import get_knobs
 import os
 import json
+import subprocess
+import time
 
 class Database:
     def __init__(self, config, path):
@@ -313,11 +315,15 @@ class Database:
             conn.commit()
             
             # Reload configuration
-            cursor.execute("SELECT pg_reload_conf();")
-            conn.commit()
+            
             
             if flag:
                 print('Applied knobs successfully!')
+                restart_success = self.restart_db()
+                if restart_success:
+                    print('Database restarted successfully after applying knobs.')
+                else:
+                    print('Failed to restart database after applying knobs.')
             else:
                 print('Some knobs failed to apply')
                 
@@ -329,3 +335,40 @@ class Database:
             conn.close()
         
         return flag
+    
+    def restart_db(self):
+        """
+        Simple restart of PostgreSQL 12 using pg_ctlcluster
+        """
+        try:
+            print("Stopping PostgreSQL 12...")
+            subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'stop'], 
+                        check=True, timeout=30)
+            
+            time.sleep(2)  # Wait a moment
+            
+            print("Starting PostgreSQL 12...")
+            result = subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'start'], 
+                                capture_output=True, text=True, timeout=30)
+            
+            if result.returncode != 0:
+                print("Start failed, removing auto.conf and retrying...")
+                # Remove auto.conf file
+                auto_conf_path = "/var/lib/postgresql/12/main/postgresql.auto.conf"
+                if os.path.exists(auto_conf_path):
+                    subprocess.run(['sudo', 'rm', auto_conf_path], check=True)
+                
+                # wait for 1 second
+                time.sleep(1)
+
+                # Try starting again
+                subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'start'], 
+                            check=True, timeout=30)
+            
+            print("PostgreSQL 12 restarted successfully!")
+            return True
+            
+        except Exception as e:
+            print(f"Failed to restart PostgreSQL: {e}")
+            return False
+
