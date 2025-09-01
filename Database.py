@@ -16,25 +16,60 @@ class Database:
         self.data_path = config['database_config']['data_path']
         self.knobs = get_knobs(path)
 
-    def get_conn(self):
-        conn = psycopg2.connect(database=self.database,
-                                user=self.user,
-                                password=self.password,
-                                host=self.host,
-                                port=int(self.port))
-        return conn
+    def get_conn(self, max_retries=3):
+        print(f"Connecting to PostgreSQL at {self.host}:{self.port} with database {self.database}")
+        """Get PostgreSQL connection with retry logic"""
+        for attempt in range(max_retries):
+            try:
+                conn = psycopg2.connect(
+                    database=self.database,
+                    user=self.user,
+                    password=self.password,
+                    host=self.host,
+                    port=int(self.port),
+                    connect_timeout=10  # Add timeout
+                )
+                if attempt > 0:
+                    print(f"Connection successful on attempt {attempt + 1}")
+                return conn
+                
+            except psycopg2.OperationalError as e:
+                print(f"Connection attempt {attempt + 1} failed: {e}")
+                if attempt < max_retries - 1:
+                    print(f"Retrying in 2 seconds... ({attempt + 2}/{max_retries})")
+                    time.sleep(2)
+            # Don't raise here - let it continue to auto.conf removal
+                
+            except Exception as e:
+                print(f"Unexpected error on attempt {attempt + 1}: {e}")
+                if attempt < max_retries - 1:
+                    print(f"Retrying in 2 seconds... ({attempt + 2}/{max_retries})")
+                    time.sleep(2)
+            # Don't raise here - let it continue to auto.conf removal
+    
+        # If we reach here, all 3 attempts failed
+        print(f"All {max_retries} connection attempts failed. Removing auto.conf and trying once more...")
+        self.remove_auto_conf()
 
-    def get_ssh(self, config):
-        if self.ssh is not None:
-            return self.ssh
-        self.ssh = paramiko.SSHClient()
-        self.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        self.ssh.connect(hostname=config['ssh_config']['host'],
-                         port=int(config['ssh_config']['port']),
-                         username=config['ssh_config']['user'],
-                         password=config['ssh_config']['password']
-                         )
-        print("connect to the database host...")
+        # wait for 2 seconds
+        time.sleep(2)
+        
+        # Try one more time after removing auto.conf
+        try:
+            print("Attempting final connection after removing auto.conf...")
+            conn = psycopg2.connect(
+                database=self.database,
+                user=self.user,
+                password=self.password,
+                host=self.host,
+                port=int(self.port),
+                connect_timeout=10
+            )
+            print("✅ Connection successful after removing auto.conf!")
+            return conn
+        except Exception as e:
+            print(f"❌ Final connection attempt failed even after removing auto.conf: {e}")
+            raise Exception(f"Could not establish database connection after {max_retries + 1} attempts and auto.conf removal: {e}")
 
     def fetch_knob(self):
         conn = self.get_conn()
@@ -49,15 +84,6 @@ class Database:
         cursor.close()
         conn.close()
         return knobs
-    
-    def get_conn(self):
-        return psycopg2.connect(
-            database=self.database,
-            user=self.user,
-            password=self.password,
-            host=self.host,
-            port=self.port
-        )
 
     def fetch_knob(self):
         conn = self.get_conn()
@@ -127,8 +153,89 @@ class Database:
             print("No plans to save")
         
         return plans
+    
+    def fetch_inner_metrics(self):
+        """
+        Fetch internal metrics from PostgreSQL
+         xact_commit, xact_rollback, blks_read, blks_hit,
+        tup_returned, tup_fetched, tup_inserted, con$icts, tup_updated,
+        tup_deleted, disk_read_count, disk_write_count, disk_read_bytes,
+        and disk_write_bytes 
+        """
+        state_list = []
+        conn = self.get_conn()
+        cursor = conn.cursor()
 
-    def fetch_inner_metric(self):
+        try:
+            # 1-10: Standard database metrics
+            database_stats_sql = """
+            SELECT 
+                COALESCE(SUM(xact_commit), 0),
+                COALESCE(SUM(xact_rollback), 0),
+                COALESCE(SUM(blks_read), 0),
+                COALESCE(SUM(blks_hit), 0),
+                COALESCE(SUM(tup_returned), 0),
+                COALESCE(SUM(tup_fetched), 0),
+                COALESCE(SUM(tup_inserted), 0),
+                COALESCE(SUM(conflicts), 0),
+                COALESCE(SUM(tup_updated), 0),
+                COALESCE(SUM(tup_deleted), 0)
+            FROM pg_stat_database 
+            WHERE datname = %s;
+            """
+        
+            cursor.execute(database_stats_sql, (self.database,))
+            result = cursor.fetchone()
+            state_list.extend([float(x) for x in result])
+                # 11: Disk read count (accurate)
+            disk_read_sql = """
+            SELECT 
+                COALESCE(SUM(
+                    COALESCE(heap_blks_read, 0) +
+                    COALESCE(idx_blks_read, 0) +
+                    COALESCE(toast_blks_read, 0) +
+                    COALESCE(tidx_blks_read, 0)
+                ), 0) as disk_read_count
+            FROM pg_statio_all_tables;
+            """
+            
+            cursor.execute(disk_read_sql)
+            result = cursor.fetchone()
+            state_list.append(float(result[0]))
+            
+            # 12: Disk write count (from background writer)
+            bgwriter_sql = """
+            SELECT 
+                buffers_checkpoint + buffers_clean + buffers_backend as disk_write_count
+            FROM pg_stat_bgwriter;
+            """
+            
+            cursor.execute(bgwriter_sql)
+            result = cursor.fetchone()
+            state_list.append(float(result[0]))
+            
+            # 13: Disk read bytes
+            state_list.append(state_list[10] * 8192)  # disk_read_count * 8KB
+            
+            # 14: Disk write bytes (from background writer)
+            state_list.append(state_list[11] * 8192)  # disk_write_count * 8KB
+            
+            print(f"Fetched {len(state_list)} internal metrics")
+
+            print("Internal metrics:", state_list)
+            
+        except Exception as e:
+            print(f"Error fetching internal metrics: {e}")
+            state_list = [0.0] * 14
+        
+        finally:
+            cursor.close()
+            conn.close()
+        
+        return state_list
+    
+
+    def fetch_inner_metric_old(self):
         state_list = []
         conn = self.get_conn()
         cursor = conn.cursor()
@@ -287,10 +394,12 @@ class Database:
         """
         Apply knob changes without SSH - PostgreSQL only
         """
+        print('Change knob function called...')
         flag = True
         conn = self.get_conn()
         cursor = conn.cursor()
-        
+        # enable autocommit
+        conn.autocommit = True
         try:
             for knob in knobs:
                 val = knobs[knob]
@@ -310,9 +419,6 @@ class Database:
                 except Exception as error:
                     print(f"Error setting {knob} = {val}: {error}")
                     flag = False
-            
-            # Commit the changes
-            conn.commit()
             
             # Reload configuration
             
@@ -354,10 +460,8 @@ class Database:
             if result.returncode != 0:
                 print("Start failed, removing auto.conf and retrying...")
                 # Remove auto.conf file
-                auto_conf_path = "/var/lib/postgresql/12/main/postgresql.auto.conf"
-                if os.path.exists(auto_conf_path):
-                    subprocess.run(['sudo', 'rm', auto_conf_path], check=True)
-                
+                self.remove_auto_conf()
+
                 # wait for 1 second
                 time.sleep(1)
 
@@ -371,4 +475,15 @@ class Database:
         except Exception as e:
             print(f"Failed to restart PostgreSQL: {e}")
             return False
+        
+    def remove_auto_conf(self):
+        auto_conf_path = "/var/lib/postgresql/12/main/postgresql.auto.conf"
+        try:
+            # Use -f flag to force removal (no error if file doesn't exist)
+            subprocess.run(['sudo', 'rm', '-f', auto_conf_path], check=True)
+            print("Removed postgresql.auto.conf file (if it existed).")
+        except subprocess.CalledProcessError as e:
+            print(f"Error removing postgresql.auto.conf: {e}")
+            raise e
+
 
