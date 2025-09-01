@@ -1,6 +1,0 @@
-total sql num : 4903
-total time consumed : 21.763989448547363
-	thread 0 processed sql num : 10
-	thread 0 using time : 18.09554624557495
-	thread 1 processed sql num : 10
-	thread 1 using time : 21.76334500312805
