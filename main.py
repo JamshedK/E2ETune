@@ -5,8 +5,8 @@ from tune import tune
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--host', type=str, default='your-ip', help='the database host')
-    parser.add_argument('--database', type=str, default='tpch', help='workload file')
+    parser.add_argument('--host', type=str, default='localhost', help='the database host')
+    parser.add_argument('--database', type=str, default='benchbase', help='workload file')
     cmd = parser.parse_args()
 
     # Load configuration file
@@ -21,11 +21,15 @@ if __name__ == '__main__':
     workload_type = 'tpch'
     workloads = [i for i in all if i.startswith(workload_type)]
 
-    for idx in range(0, 13):
-            args['benchmark_config']['workload_path'] = './olap_workloads/' + workloads[idx]
-            try:
-                tune(workload_file=workloads[idx], args=args)
-                # print(f'train surrogate model for {workloads[idx]}')
-            except Exception as e:
-                print(f'occur {e}')
-                continue
+    for idx in range(0, 1):
+        print("Begin tuning for workload: ", idx)
+        args['benchmark_config']['workload_path'] = './olap_workloads/' + workloads[idx]
+        try:
+            tune(workload_file=workloads[idx], args=args)
+            break
+            # print(f'train surrogate model for {workloads[idx]}')
+        except Exception as e:
+            print(f'occur {e}')
+            continue
+        break
+    
