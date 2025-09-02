@@ -2,14 +2,16 @@ import copy
 import time
 from multi_thread import multi_thread
 import Database
+import json
 
 class workload_executor:
-    def __init__(self, args, logger, records_log):
+    def __init__(self, args, logger, records_log, internal_metrics):
         self.benchmark_config = args['benchmark_config']
         self.sur_config = args['surrogate_config']
         self.logger = logger
         self.db = Database.Database(config=args, path=args['tuning_config']['knob_config'])
         self.records_log = records_log
+        self.internal_metrics = internal_metrics
 
     def run_config(self, config, workload_file):
         """
@@ -32,20 +34,21 @@ class workload_executor:
         performance = self.test_by_dwg(workload_path, log_file)
         
         # test_by_dwg returns [negative_avg_time, qps]
-        qps = performance[1]  # Use QPS as our performance metric
-        
-        # Step 4: Create clean data record
-        data_record = {
-            'workload': workload_path,
-            'configuration': config,
-            'performance_qps': qps,
-            'timestamp': time.time()
-        }
+        qps = performance[1]  # Use QPS as our performance metric 
+
+        # negate qps
+        if qps > 0:
+            qps = -qps
+        if config:
+            # Step 4: Save the data
+            with open('smac_his/offline_sample_tpch.jsonl', 'a') as f:
+                temp_config['y'] = [qps, 1/(qps)]  # Multiple performance values
+                temp_config['inner_metrics'] = self.internal_metrics  # Database metrics
+                temp_config['workload'] = workload_path  # Full workload path
+                f.write(json.dumps(temp_config) + '\n')
+
 
         print(f"Configuration: {config}, QPS: {qps}")
-        
-        # # Step 5: Save to single clean file
-        # self.save_training_data(data_record)
         
         return qps 
 

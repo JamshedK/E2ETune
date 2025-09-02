@@ -20,15 +20,15 @@ def tune(workload_file, args):
     """Just run SMAC optimization!"""
 
     # running default configuration 
-    default_run(workload_file, args)
+    internal_metrics = default_run(workload_file, args)
     
-    # print(f"Starting tuning for workload: {workload_file}")
-    # # Run SMAC (this generates your training data)
-    # tuner_instance = tuner(args, workload_file)
-    # best_config = tuner_instance.tune()
+    print(f"Starting tuning for workload: {workload_file}")
+    # Run SMAC (this generates your training data)
+    tuner_instance = tuner(args, workload_file, internal_metrics)
+    best_config = tuner_instance.tune()
 
-    # print(f"SMAC optimization complete for {workload_file}")
-    # return best_config
+    print(f"SMAC optimization complete for {workload_file}")
+    return best_config
 
 def default_run(workload_file, args):
     """Run the default configuration to generate initial training data."""
@@ -37,7 +37,7 @@ def default_run(workload_file, args):
     # create a database instance
     db = Database(config=args, path=args['tuning_config']['knob_config'])
     # create an instance of workload_executor
-    executor = workload_executor(args, utils.get_logger(args['tuning_config']['log_path']), "training_records.log")
+    executor = workload_executor(args, utils.get_logger(args['tuning_config']['log_path']), "training_records.log", internal_metrics=None)
 
     # remove auto_conf from the database
     db.remove_auto_conf()
@@ -52,17 +52,20 @@ def default_run(workload_file, args):
     # save the internal metrics to a file
     with open(f"internal_metrics/{workload_file.split('.wg')[0]}_internal_metrics.json", "w") as f:
         json.dump(internal_metrics, f, indent=4)
+    
+    return internal_metrics
 
 class tuner:
-    def __init__(self, args, workload_file):
+    def __init__(self, args, workload_file, internal_metrics):
         self.args = args  # Store args for later use
         self.workload_file = workload_file
         self.inner_metric_sample = args['tuning_config']['inner_metric_sample']
         self.knobs_detail = parse_knob_config.get_knobs(args['tuning_config']['knob_config'])
         self.logger = utils.get_logger(args['tuning_config']['log_path'])
+        self.internal_metrics = internal_metrics
         self.last_point = []
         ## FIXME: this function call needs to be fixed
-        self.stt = workload_executor(args, self.logger, "training_records.log")
+        self.stt = workload_executor(args, self.logger, "training_records.log", self.internal_metrics)
 
     def tune(self):
         self.SMAC(self.workload_file)
@@ -74,8 +77,10 @@ class tuner:
             config_dict = dict(config)  # Convert Configuration to dict first
             print(f"Evaluating configuration: {config_dict}")
             performance = self.stt.run_config(config_dict, workload_file)
-            performance = self.stt.run_config(config_dict, self.workload_file)
-            return -performance  # Negate because SMAC minimizes
+            if performance > 0:
+                performance = -performance
+            print(f"Performance (QPS): {performance}")
+            return performance
 
         
         cs = ConfigurationSpace()
