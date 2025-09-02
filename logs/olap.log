@@ -1,10 +1,10 @@
 total sql num : 3022
-total time consumed : 7.375629663467407
+total time consumed : 6.976996660232544
 	thread 0 processed sql num : 4
-	thread 0 using time : 7.3752405643463135
+	thread 0 using time : 4.20349907875061
 	thread 1 processed sql num : 4
-	thread 1 using time : 7.374803066253662
+	thread 1 using time : 6.975921154022217
 	thread 2 processed sql num : 3
-	thread 2 using time : 5.1989545822143555
+	thread 2 using time : 6.93359375
 	thread 3 processed sql num : 3
-	thread 3 using time : 4.120990753173828
+	thread 3 using time : 4.123752593994141
