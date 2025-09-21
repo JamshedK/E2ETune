@@ -148,7 +148,9 @@ class LLMTuning:
         print(f"Query plans collected: {'; '.join(all_formatted_plans)}")
 
         # # get internal metrics
-        internal_metrics = self.default_run(self.workload_file, self.args)['internal_metrics']
+        res = self.default_run(self.workload_file, self.args)['internal_metrics']
+        internal_metrics = res['internal_metrics']
+        qps = res['qps']
         inner_metrics_str = self.format_inner_metrics(internal_metrics)
 
         prompt = f"""You are an expert in database, you are to optimize the parameters of database, please output in json format, for each field, output one of "00% to 10%", "10% to 20%", "20% to 30%", "30% to 40%", "40% to 50%", "50% to 60%", "60% to 70%", "70% to 80%", "80% to 90%", "90% to 100%". The follow information of workloads are offered for you: features, query plans and inner metrics. Every SQL in the workload corresponds to a query plan tree and the query plan tree is represented using parentheses, where each node is followed by a pair of parentheses containing its child nodes, with sub-nodes separated by parentheses, recursively showing the entire tree's hierarchical structure. Additionally, each node carries a cost value estimated by PostgreSQL.
