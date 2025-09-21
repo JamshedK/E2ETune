@@ -26,3 +26,7 @@ label_mapper_s2 = {
 
 surrogate_model_path = 'surrogate/tpch.pkl'
 
+# get the knobs json from inference_result folder
+
+# convert the knobs to numerical values
+
