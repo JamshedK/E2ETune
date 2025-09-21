@@ -1,104 +1,93 @@
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
+import transformers
+from transformers import AutoTokenizer
 
-# Force CPU usage
-device = "cpu"
-torch.set_num_threads(4)  # Optimize CPU usage
-
-# Load model and tokenizer for CPU
-model_name = "springhxm/E2ETune"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForCausalLM.from_pretrained(
-    model_name,
-    torch_dtype=torch.float32,  # Use float32 for CPU
-    device_map=None,  # Don't use device mapping
-    low_cpu_mem_usage=True  # Optimize CPU memory usage
-)
-
-# Move model to CPU explicitly
-model = model.to(device)
-
-# Set pad token if not exists
-if tokenizer.pad_token is None:
-    tokenizer.pad_token = tokenizer.eos_token
-
-def generate_response(prompt, max_length=1024, temperature=0.7):
-    """Generate response using CPU only"""
-    
-    print("Tokenizing input...")
-    # Tokenize input
-    inputs = tokenizer(
-        prompt, 
-        return_tensors="pt", 
-        truncation=True, 
-        max_length=1024,  # Smaller for CPU
-        padding=True
-    )
-    
-    # Ensure tensors are on CPU
-    inputs = {k: v.to(device) for k, v in inputs.items()}
-    
-    print("Generating response (this may take a while on CPU)...")
-    # Generate response
-    with torch.no_grad():
-        outputs = model.generate(
-            **inputs,
-            max_length=max_length,
-            temperature=temperature,
-            do_sample=True,
-            pad_token_id=tokenizer.eos_token_id,
-            num_return_sequences=1,
-            early_stopping=True
+class E2ETuneBot:
+    def __init__(self, model_path):
+        self.model_id = model_path
+        
+        # Check if CUDA is available
+        device = "cuda" if torch.cuda.is_available() else "cpu"
+        print(f"Using device: {device}")
+        
+        if device == "cuda":
+            print(f"GPU: {torch.cuda.get_device_name(0)}")
+            print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB")
+        
+        # Configure model kwargs based on device
+        model_kwargs = {
+            "torch_dtype": torch.float16 if device == "cuda" else torch.float32,
+            "low_cpu_mem_usage": True
+        }
+        
+                # Add quantization for GPU
+        if device == "cuda":
+            from transformers import BitsAndBytesConfig
+            
+            quantization_config = BitsAndBytesConfig(
+                load_in_4bit=True,
+                bnb_4bit_compute_dtype=torch.float16,  # Match your model dtype
+                bnb_4bit_use_double_quant=True,
+                bnb_4bit_quant_type="nf4"
+            )
+            model_kwargs["quantization_config"] = quantization_config
+            model_kwargs["device_map"] = "auto"
+        
+        self.pipeline = transformers.pipeline(
+            "text-generation",
+            model=self.model_id,
+            model_kwargs=model_kwargs,
+            trust_remote_code=True,
         )
+        
+        # Set up tokenizer
+        if self.pipeline.tokenizer.pad_token is None:
+            self.pipeline.tokenizer.pad_token = self.pipeline.tokenizer.eos_token
+        
+        self.terminators = [
+            self.pipeline.tokenizer.eos_token_id,
+        ]
+  
+    def get_response(self, query, max_tokens=4096, temperature=1.0, top_p=0.95):
+        outputs = self.pipeline(
+            query,
+            max_new_tokens=max_tokens,
+            eos_token_id=self.terminators,
+            temperature=temperature,
+            pad_token_id=self.pipeline.tokenizer.pad_token_id
+        )
+        response = outputs[0]["generated_text"]
+        return response
     
-    # Decode response
-    response = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    
-    # Remove the input prompt from response
-    # response = response[len(prompt):].strip()
-    
-    return response
+    def single_prompt(self, prompt=None):
+        if prompt is None:
+            # Read prompt from file or use default
+            try:
+                with open("temp_prompt.txt", "r") as f:
+                    prompt = f.read().strip()
+                print(f"Loaded prompt: {prompt[:100]}..." if len(prompt) > 100 else f"Loaded prompt: {prompt}")
+            except FileNotFoundError:
+                print("temp_prompt.txt not found, using default prompt")
+                prompt = "You are an expert in database; optimize database parameters for performance..."
+        
+        print("\nSending prompt to model...")
+        response = self.get_response(prompt)
+        print("\nGenerated response:")
+        print(response)
+
+        # strip the prompt from the response if it was included
+        if response.startswith(prompt):
+            response = response[len(prompt):].strip()
+        
+        # save the response to a file 
+        with open("temp_response.txt", "w") as f:
+            f.write(response)
+        return response
 
 def main():
-    """Main inference function for CPU"""
-    
-    print("Running inference on CPU...")
-    print(f"PyTorch is using {torch.get_num_threads()} CPU threads")
-    
-    # Read prompt from file
-    try:
-        with open('temp_prompt.txt', 'r', encoding='utf-8') as f:
-            prompt = f.read().strip()
-        print("Loaded prompt from temp_prompt.txt")
-    except FileNotFoundError:
-        print("temp_prompt.txt not found! Creating example prompt...")
-        
-    print(f"Prompt length: {len(prompt)} characters")
-    print("\n" + "="*50)
-    print("PROMPT:")
-    print("="*50)
-    print(prompt[:200] + "..." if len(prompt) > 200 else prompt)
-    print("\n" + "="*50)
-    print("GENERATING RESPONSE (CPU mode - this will be slower)...")
-    print("="*50)
-    
-    # Generate response
-    try:
-        response = generate_response(prompt, max_length=2000)  # Smaller for CPU
-        
-        print("RESPONSE:")
-        print("="*50)
-        print(response)
-        print("="*50)
-        
-        # Save response
-        with open('llm_response.txt', 'w') as f:
-            f.write(response)
-        print("\nResponse saved to llm_response.txt")
-        
-    except Exception as e:
-        print(f"Error during generation: {e}")
-        print("CPU inference can be slow and memory intensive")
+    model_name = "springhxm/E2ETune"
+    bot = E2ETuneBot(model_name)
+    bot.single_prompt()
 
 if __name__ == "__main__":
     main()
