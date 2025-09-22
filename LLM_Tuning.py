@@ -148,7 +148,7 @@ class LLMTuning:
         print(f"Query plans collected: {'; '.join(all_formatted_plans)}")
 
         # # get internal metrics
-        res = self.default_run(self.workload_file, self.args)['internal_metrics']
+        res = self.default_run(self.workload_file, self.args)
         internal_metrics = res['internal_metrics']
         qps = res['qps']
         inner_metrics_str = self.format_inner_metrics(internal_metrics)
@@ -173,6 +173,6 @@ if __name__ == "__main__":
     args['tuning_config']['offline_sample'] += cmd.host
 
     # create a LLMTuning instance
-    llm_tuner = LLMTuning(args, 'tpch_1.wg', 'tpch_1')
+    llm_tuner = LLMTuning(args, 'tpch_2.wg', 'tpch_2')
 
     llm_tuner.generate_prompt()

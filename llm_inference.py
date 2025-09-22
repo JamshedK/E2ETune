@@ -63,11 +63,11 @@ class E2ETuneBot:
         if prompt is None:
             # Read prompt from file or use default
             try:
-                with open("temp_prompt.txt", "r") as f:
+                with open("llm_prompt.txt", "r") as f:
                     prompt = f.read().strip()
                 print(f"Loaded prompt: {prompt[:100]}..." if len(prompt) > 100 else f"Loaded prompt: {prompt}")
             except FileNotFoundError:
-                print("temp_prompt.txt not found, using default prompt")
+                print("llm_prompt.txt not found, using default prompt")
                 prompt = "You are an expert in database; optimize database parameters for performance..."
         
         print("\nSending prompt to model...")
