@@ -44,52 +44,59 @@ class E2ETuneBot:
             self.pipeline.tokenizer.eos_token_id,
         ]
   
-    def get_response(self, query, max_tokens=4096, temperature=1.0, top_p=0.95):
-        outputs = self.pipeline(
-            query,
-            max_new_tokens=max_tokens,
-            eos_token_id=self.terminators,
-            temperature=temperature,
-            do_sample=True,
-            pad_token_id=self.pipeline.tokenizer.pad_token_id,
-            early_stopping=False,
-            length_penalty=1.2,
-            repetition_penalty=1.1,
-            top_p=top_p,
-            )
-        response = outputs[0]["generated_text"]
-        return response
-    
-    def single_prompt(self, prompt=None):
-        if prompt is None:
-            # Read prompt from file or use default
-            try:
-                with open("llm_prompt.txt", "r") as f:
-                    prompt = f.read().strip()
-                print(f"Loaded prompt: {prompt[:100]}..." if len(prompt) > 100 else f"Loaded prompt: {prompt}")
-            except FileNotFoundError:
-                print("llm_prompt.txt not found, using default prompt")
-                prompt = "You are an expert in database; optimize database parameters for performance..."
-        
-        print("\nSending prompt to model...")
-        response = self.get_response(prompt)
-        print("\nGenerated response:")
-        print(response)
 
-        # strip the prompt from the response if it was included
-        if response.startswith(prompt):
-            response = response[len(prompt):].strip()
-        
-        # save the response to a file 
-        with open("temp_response.txt", "w") as f:
-            f.write(response)
-        return response
+    def get_samples(self, query, num_samples=8, max_tokens=4096, temperature=1.0, top_p=0.95):
+        """Generate multiple diverse samples via sampling."""
+        samples = []
+        for _ in range(num_samples):
+            print(f"Generating sample {_ + 1}/{num_samples}...")
+            outputs = self.pipeline(
+                query,
+                max_new_tokens=max_tokens,
+                eos_token_id=self.terminators,
+                temperature=temperature,
+                top_p=top_p,
+                do_sample=True,
+                pad_token_id=self.pipeline.tokenizer.pad_token_id,
+                length_penalty=1.0,  
+                early_stopping=False,
+            )
+            text = outputs[0]["generated_text"]
+            if text.startswith(query):
+                text = text[len(query):].strip()
+            
+            # save the text into response_i.json file
+            with open(f"response_{_ + 1}.json", "w") as f:
+                f.write(text)
+            samples.append(text)
+
+        return samples
+
+    def single_prompt(self, promptFile=None, num_samples=1):
+        # Load prompt from a file if provided (default to llm_prompt.txt)
+        if promptFile is None:
+            promptFile = "llm_prompt.txt"
+
+        try:
+            with open(promptFile, "r") as f:
+                prompt = f.read().strip()
+            print(f"Loaded prompt from {promptFile}: {prompt[:100]}..." if len(prompt) > 100 else f"Loaded prompt from {promptFile}: {prompt}")
+        except FileNotFoundError:
+            print(f"{promptFile} not found, using default prompt")
+            prompt = "You are an expert in database; optimize database parameters for performance..."
+
+        if num_samples > 1:
+            print(f"\nSampling {num_samples} responses (temperature=1.0)...")
+            responses = self.get_samples(prompt, num_samples=num_samples, temperature=1.0)
+
+            return responses
+
 
 def main():
-    # Use local model path instead of downloading from hub
-    model_name = "/local/local_model"  # Point to your downloaded model
+    model_name = "/local/local_model"
     bot = E2ETuneBot(model_name)
-    bot.single_prompt()
+    # bot.single_prompt(num_samples=8, promptFile='tpch_1_prompt.text') 
+    bot.single_prompt(num_samples=8, promptFile='tpch_2_prompt.text')
 
 if __name__ == "__main__":
     main()
