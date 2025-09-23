@@ -20,24 +20,20 @@ class E2ETuneBot:
             "low_cpu_mem_usage": True
         }
         
-                # Add quantization for GPU
+                # Add quantization for GPU - cleaner version
         if device == "cuda":
-            from transformers import BitsAndBytesConfig
-            
-            quantization_config = BitsAndBytesConfig(
-                load_in_4bit=True,
-                bnb_4bit_compute_dtype=torch.float16,  # Match your model dtype
-                bnb_4bit_use_double_quant=True,
-                bnb_4bit_quant_type="nf4"
-            )
-            model_kwargs["quantization_config"] = quantization_config
+            model_kwargs["quantization_config"] = {
+                "load_in_4bit": True,
+                "bnb_4bit_compute_dtype": torch.float16, 
+            }
             model_kwargs["device_map"] = "auto"
-        
+
         self.pipeline = transformers.pipeline(
             "text-generation",
             model=self.model_id,
             model_kwargs=model_kwargs,
             trust_remote_code=True,
+            use_fast=False,  # Add this line to avoid tiktoken conversion
         )
         
         # Set up tokenizer
@@ -54,8 +50,13 @@ class E2ETuneBot:
             max_new_tokens=max_tokens,
             eos_token_id=self.terminators,
             temperature=temperature,
-            pad_token_id=self.pipeline.tokenizer.pad_token_id
-        )
+            do_sample=True,
+            pad_token_id=self.pipeline.tokenizer.pad_token_id,
+            early_stopping=False,
+            length_penalty=1.2,
+            repetition_penalty=1.1,
+            top_p=top_p,
+            )
         response = outputs[0]["generated_text"]
         return response
     
@@ -85,7 +86,8 @@ class E2ETuneBot:
         return response
 
 def main():
-    model_name = "springhxm/E2ETune"
+    # Use local model path instead of downloading from hub
+    model_name = "/local/local_model"  # Point to your downloaded model
     bot = E2ETuneBot(model_name)
     bot.single_prompt()
 

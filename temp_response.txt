@@ -1,5 +1,0 @@
-{"effective_cache_size": "00% to 10%",
-"effective_io_concurrency": "00% to 10%", 
-"from_collapse_limit": "00% to 10%", 
-"geqo_effort": "40% to 50%", 
-"geqo_generations": "00% to 10%", "geqo_pool_size": "00% to 10%", "geqo_seed": "00% to 10%", "geqo_threshold": "00% to 10%", "join_collapse_limit": "00% to 10%", "maintenance_work_mem": "00% to 10%", "temp_buffers": "00% to 10%", "temp_file_limit": "middle", "vacuum_cost_delay": "00% to 10%", "vacuum_cost_limit": "00% to 10%", "vacuum_cost_page_dirty": "00% to 10%", "vacuum_cost_page_hit": "00% to 10%", "vacuum_cost_page_miss": "00% to 10%", "wal_writer_delay": "00% to 10%", "work_mem": "00% to 10%"}
