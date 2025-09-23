@@ -1,0 +1,6 @@
+torch==2.1.2
+transformers
+datasets
+tokenizers
+bitsandbytes
+accelerate==0.26.0
