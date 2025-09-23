@@ -155,8 +155,8 @@ class LLMTuning:
 
         prompt = f"""You are an expert in database, you are to optimize the parameters of database, please output in json format, for each field, output one of "00% to 10%", "10% to 20%", "20% to 30%", "30% to 40%", "40% to 50%", "50% to 60%", "60% to 70%", "70% to 80%", "80% to 90%", "90% to 100%". The follow information of workloads are offered for you: features, query plans and inner metrics. Every SQL in the workload corresponds to a query plan tree and the query plan tree is represented using parentheses, where each node is followed by a pair of parentheses containing its child nodes, with sub-nodes separated by parentheses, recursively showing the entire tree's hierarchical structure. Additionally, each node carries a cost value estimated by PostgreSQL.
                 workload features: {feature_descrip} query plans in workload: {'; '.join(all_formatted_plans)}; inner metrics: {inner_metrics_str}"""
-        # save prompt to a temporary file 
-        with open('temp_prompt.txt', 'w') as f:
+        # save prompt to self.workload_name_prompt.txt
+        with open(f"{self.workload_name}_prompt.txt", "w") as f:
             f.write(prompt)
         return prompt
 

@@ -167,6 +167,15 @@ class Database:
         cursor = conn.cursor()
 
         try:
+            print("Resetting database statistics...")
+            # Reset all database statistics to get clean baseline
+            cursor.execute("SELECT pg_stat_reset();")
+            cursor.execute("SELECT pg_stat_reset_shared('bgwriter');")  # Reset background writer stats
+            conn.commit()
+            
+            print("Stats reset complete. Sleeping for 1 second to ensure reset...")
+            time.sleep(1)  # Small delay to ensure reset takes effect
+        
             # 1-10: Standard database metrics
             database_stats_sql = """
             SELECT 
