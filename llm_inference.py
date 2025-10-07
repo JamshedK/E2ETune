@@ -93,10 +93,10 @@ class E2ETuneBot:
 
 
 def main():
-    model_name = "/local/local_model"
+    model_name = "./local_model"
     bot = E2ETuneBot(model_name)
-    # bot.single_prompt(num_samples=8, promptFile='tpch_1_prompt.text') 
-    bot.single_prompt(num_samples=8, promptFile='tpch_2_prompt.text')
+    bot.single_prompt(num_samples=8, promptFile='tpch_1_prompt.txt') 
+    # bot.single_prompt(num_samples=8, promptFile='tpch_2_prompt.txt')
 
 if __name__ == "__main__":
     main()

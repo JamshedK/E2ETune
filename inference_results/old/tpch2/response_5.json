@@ -1,0 +1,9 @@
+{
+    "autovacuum_delay": "90% to 100%",
+    "autovacuum_limit": "70% to 80%",
+    "autovacuum_page_dirty": "40% to 50%",
+    "autovacuum_page_hit": "60% to 70%",
+    "autovacuum_page_miss": "20% to 30%",
+    "wal_writer_delay": "40% to 50%",
+    "work_mem": "30% to 40%"
+}

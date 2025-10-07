@@ -2,3 +2,4 @@ benchbase/
 __pycache__/
 *.pyc
 **_smac_output/
+local_model/
