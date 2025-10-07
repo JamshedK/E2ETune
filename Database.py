@@ -153,6 +153,24 @@ class Database:
             print("No plans to save")
         
         return plans
+
+    def reset_inner_metrics(self):
+        """
+        Reset internal metrics in PostgreSQL
+        """
+        conn = self.get_conn()
+        cursor = conn.cursor()
+        try:
+            cursor.execute("SELECT pg_stat_reset();")
+            cursor.execute("SELECT pg_stat_reset_shared('bgwriter');")  # Reset background writer stats
+            conn.commit()
+            print("Internal metrics reset successfully.")
+        except Exception as e:
+            print(f"Error resetting internal metrics: {e}")
+        finally:
+            cursor.close()
+            conn.close()
+            
     
     def fetch_inner_metrics(self):
         """
@@ -167,14 +185,6 @@ class Database:
         cursor = conn.cursor()
 
         try:
-            print("Resetting database statistics...")
-            # Reset all database statistics to get clean baseline
-            cursor.execute("SELECT pg_stat_reset();")
-            cursor.execute("SELECT pg_stat_reset_shared('bgwriter');")  # Reset background writer stats
-            conn.commit()
-            
-            print("Stats reset complete. Sleeping for 1 second to ensure reset...")
-            time.sleep(1)  # Small delay to ensure reset takes effect
         
             # 1-10: Standard database metrics
             database_stats_sql = """

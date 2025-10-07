@@ -32,7 +32,11 @@ class LLMTuning:
         print(f"Running default configuration for workload")
 
         # remove auto_conf from the database
-        self.db.remove_auto_conf()
+        self.db.remove_auto_conf() 
+
+        # reset inner metrics
+        print("Resetting inner metrics...")
+        self.db.reset_inner_metrics()
 
         # run the workload with default configuration
         qps = self.executor.run_config(config=None, workload_file=workload_file)
@@ -66,8 +70,21 @@ class LLMTuning:
     def get_query_plans(self):
         """Get query plans for the workload"""
 
-        plans = self.db.save_workload_plans(self.workload_file, self.workload_name)
-        print(f"Query plans collected for workload")
+        print("Parsing workload content into individual SQL queries...")
+    
+        # Parse workload content into individual SQL queries
+        sql_queries = []
+        for line in self.workload_content.split('\n'):
+            line = line.strip()
+            if line and not line.startswith('--') and not line.startswith('#'):  # Skip comments and empty lines
+                # Handle multi-line SQL statements
+                if line.endswith(';'):
+                    sql_queries.append(line[:-1])  # Remove semicolon for EXPLAIN
+                elif line:  # Non-empty line without semicolon
+                    sql_queries.append(line)
+
+        plans = self.db.save_workload_plans(sql_queries, self.workload_name)
+        print(f"Query plans collected for {len(plans)} queries")   
         
         # format the query plans 
         formatted_plans = format_query_plans(self.query_plan_location)

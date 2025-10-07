@@ -42,6 +42,10 @@ def default_run(workload_file, args):
     # remove auto_conf from the database
     db.remove_auto_conf()
 
+    # reset inner metrics
+    print("Resetting inner metrics...")
+    db.reset_inner_metrics()
+
     # run the workload with default configuration
     executor.run_config(config=None, workload_file=workload_file)
     print(f"Default configuration run complete for workload")
