@@ -1,0 +1,1165 @@
+nohup: ignoring input
+Running default configuration for workload
+Removed postgresql.auto.conf file (if it existed).
+Resetting inner metrics...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Internal metrics reset successfully.
+Workload executor is called
+Step 1: Change the database knobs
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.0020744800567626953 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.12026190757751465 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 0.785228967666626 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 5.6656928062438965 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 6.8337626457214355 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 6.976982355117798 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 7.011361598968506 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 10.175323963165283 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 10.175922155380249 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 10.577587842941284 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 10.742117166519165 seconds.
+
+length of sql list:  3
+total time:  10.742853879928589
+Configuration: None, QPS: -1.1170216158687776
+Default configuration run complete for workload
+-----------------Default QPS: -1.1170216158687776--------------------
+Default configuration run complete.
+Found 8 files in inference_results/tpch1/
+Processing file: response_7.json
+Converted max_wal_senders: 70% to 80% to 37
+Converted autovacuum_max_workers: 40% to 50% to 90
+Converted max_connections: 00% to 10% to 197
+Converted wal_buffers: 30% to 40% to 45874
+Converted shared_buffers: 50% to 60% to 2306874
+Converted autovacuum_analyze_scale_factor: 90% to 100% to 95.0
+Converted autovacuum_analyze_threshold: 90% to 100% to 2040109464
+Converted autovacuum_naptime: 60% to 70% to 1395864
+Converted autovacuum_vacuum_cost_delay: 60% to 70% to 64
+Converted autovacuum_vacuum_cost_limit: 90% to 100% to 9499
+Converted autovacuum_vacuum_scale_factor: 30% to 40% to 35.0
+Converted autovacuum_vacuum_threshold: 80% to 90% to 1825361099
+Converted backend_flush_after: 30% to 40% to 89
+Converted bgwriter_delay: 30% to 40% to 3506
+Converted bgwriter_flush_after: 90% to 100% to 243
+Converted bgwriter_lru_maxpages: 30% to 40% to 350
+Converted bgwriter_lru_multiplier: 60% to 70% to 6
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 70% to 80% to 192
+Converted checkpoint_timeout: 90% to 100% to 3421
+Converted commit_delay: 20% to 30% to 25000
+Converted commit_siblings: 20% to 30% to 250
+Converted cursor_tuple_fraction: 00% to 10% to 0.05
+Converted deadlock_timeout: 00% to 10% to 107374183
+Converted default_statistics_target: 40% to 50% to 4500
+Converted effective_cache_size: 60% to 70% to 1395864370
+Converted effective_io_concurrency: 70% to 80% to 750
+Converted from_collapse_limit: 10% to 20% to 322122547
+Converted geqo_effort: 40% to 50% to 5
+Converted geqo_generations: 30% to 40% to 751619276
+Converted geqo_pool_size: 00% to 10% to 107374182
+Converted geqo_seed: 90% to 100% to 0.9500000000000001
+Converted geqo_threshold: 50% to 60% to 1181116006
+Converted join_collapse_limit: 80% to 90% to 1825361100
+Converted maintenance_work_mem: 70% to 80% to 1610612991
+Converted temp_buffers: 30% to 40% to 375809703
+Converted temp_file_limit: middle to 375809703
+Converted vacuum_cost_delay: 60% to 70% to 65
+Converted vacuum_cost_limit: 80% to 90% to 8500
+Converted vacuum_cost_page_dirty: 60% to 70% to 6500
+Converted vacuum_cost_page_hit: 50% to 60% to 5500
+Converted vacuum_cost_page_miss: 00% to 10% to 500
+Converted wal_writer_delay: 80% to 90% to 8500
+Converted work_mem: 60% to 70% to 1395864392
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 37
+Set autovacuum_max_workers = 90
+Set max_connections = 197
+Set wal_buffers = 45874
+Set shared_buffers = 2306874
+Set autovacuum_analyze_scale_factor = 95.0
+Set autovacuum_analyze_threshold = 2040109464
+Set autovacuum_naptime = 1395864
+Set autovacuum_vacuum_cost_delay = 64
+Set autovacuum_vacuum_cost_limit = 9499
+Set autovacuum_vacuum_scale_factor = 35.0
+Set autovacuum_vacuum_threshold = 1825361099
+Set backend_flush_after = 89
+Set bgwriter_delay = 3506
+Set bgwriter_flush_after = 243
+Set bgwriter_lru_maxpages = 350
+Set bgwriter_lru_multiplier = 6
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 192
+Set checkpoint_timeout = 3421
+Set commit_delay = 25000
+Set commit_siblings = 250
+Set cursor_tuple_fraction = 0.05
+Set deadlock_timeout = 107374183
+Set default_statistics_target = 4500
+Set effective_cache_size = 1395864370
+Set effective_io_concurrency = 750
+Set from_collapse_limit = 322122547
+Set geqo_effort = 5
+Set geqo_generations = 751619276
+Set geqo_pool_size = 107374182
+Set geqo_seed = 0.9500000000000001
+Set geqo_threshold = 1181116006
+Set join_collapse_limit = 1825361100
+Set maintenance_work_mem = 1610612991
+Set temp_buffers = 375809703
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 65
+Set vacuum_cost_limit = 8500
+Set vacuum_cost_page_dirty = 6500
+Set vacuum_cost_page_hit = 5500
+Set vacuum_cost_page_miss = 500
+Set wal_writer_delay = 8500
+Set work_mem = 1395864392
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.002691507339477539 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.19623184204101562 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 0.3910031318664551 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 3.614455223083496 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 3.6602883338928223 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 4.1147308349609375 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 4.11508584022522 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 5.642032146453857 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 10.64957332611084 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 10.823458671569824 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 12.053196907043457 seconds.
+
+length of sql list:  3
+total time:  12.054167985916138
+Configuration: {'max_wal_senders': 37, 'autovacuum_max_workers': 90, 'max_connections': 197, 'wal_buffers': 45874, 'shared_buffers': 2306874, 'autovacuum_analyze_scale_factor': 95.0, 'autovacuum_analyze_threshold': 2040109464, 'autovacuum_naptime': 1395864, 'autovacuum_vacuum_cost_delay': 64, 'autovacuum_vacuum_cost_limit': 9499, 'autovacuum_vacuum_scale_factor': 35.0, 'autovacuum_vacuum_threshold': 1825361099, 'backend_flush_after': 89, 'bgwriter_delay': 3506, 'bgwriter_flush_after': 243, 'bgwriter_lru_maxpages': 350, 'bgwriter_lru_multiplier': 6, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 192, 'checkpoint_timeout': 3421, 'commit_delay': 25000, 'commit_siblings': 250, 'cursor_tuple_fraction': 0.05, 'deadlock_timeout': 107374183, 'default_statistics_target': 4500, 'effective_cache_size': 1395864370, 'effective_io_concurrency': 750, 'from_collapse_limit': 322122547, 'geqo_effort': 5, 'geqo_generations': 751619276, 'geqo_pool_size': 107374182, 'geqo_seed': 0.9500000000000001, 'geqo_threshold': 1181116006, 'join_collapse_limit': 1825361100, 'maintenance_work_mem': 1610612991, 'temp_buffers': 375809703, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 65, 'vacuum_cost_limit': 8500, 'vacuum_cost_page_dirty': 6500, 'vacuum_cost_page_hit': 5500, 'vacuum_cost_page_miss': 500, 'wal_writer_delay': 8500, 'work_mem': 1395864392}, QPS: -0.9955062857943057
+-----------------QPS: -0.9955062857943057--------------------
+Processing file: response_6.json
+Converted effective_cache_size: 80% to 90% to 1825361100
+Converted effective_io_concurrency: 60% to 70% to 650
+Converted from_collapse_limit: 00% to 10% to 107374183
+Converted geqo_effort: 30% to 40% to 4
+Converted geqo_generations: 10% to 20% to 322122547
+Converted geqo_pool_size: 20% to 30% to 536870911
+Converted geqo_seed: 00% to 10% to 0.05
+Converted geqo_threshold: 20% to 30% to 536870913
+Converted join_collapse_limit: 00% to 10% to 107374183
+Converted maintenance_work_mem: 30% to 40% to 751619942
+Converted temp_buffers: 70% to 80% to 805306392
+Converted temp_file_limit: middle to 805306392
+Converted vacuum_cost_delay: 20% to 30% to 25
+Converted vacuum_cost_limit: 80% to 90% to 8500
+Converted vacuum_cost_page_dirty: 80% to 90% to 8500
+Converted vacuum_cost_page_hit: 90% to 100% to 9500
+Converted vacuum_cost_page_miss: 90% to 100% to 9500
+Converted wal_writer_delay: 20% to 30% to 2500
+Converted work_mem: 20% to 30% to 536870959
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set effective_cache_size = 1825361100
+Set effective_io_concurrency = 650
+Set from_collapse_limit = 107374183
+Set geqo_effort = 4
+Set geqo_generations = 322122547
+Set geqo_pool_size = 536870911
+Set geqo_seed = 0.05
+Set geqo_threshold = 536870913
+Set join_collapse_limit = 107374183
+Set maintenance_work_mem = 751619942
+Set temp_buffers = 805306392
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 25
+Set vacuum_cost_limit = 8500
+Set vacuum_cost_page_dirty = 8500
+Set vacuum_cost_page_hit = 9500
+Set vacuum_cost_page_miss = 9500
+Set wal_writer_delay = 2500
+Set work_mem = 536870959
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.002323150634765625 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.09969663619995117 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 0.6758146286010742 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 5.759130239486694 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 5.893502950668335 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 7.7722344398498535 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 8.540068864822388 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 9.702596426010132 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 9.737762212753296 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 11.307061672210693 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 11.45615530014038 seconds.
+
+length of sql list:  3
+total time:  11.456963539123535
+Configuration: {'effective_cache_size': 1825361100, 'effective_io_concurrency': 650, 'from_collapse_limit': 107374183, 'geqo_effort': 4, 'geqo_generations': 322122547, 'geqo_pool_size': 536870911, 'geqo_seed': 0.05, 'geqo_threshold': 536870913, 'join_collapse_limit': 107374183, 'maintenance_work_mem': 751619942, 'temp_buffers': 805306392, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 25, 'vacuum_cost_limit': 8500, 'vacuum_cost_page_dirty': 8500, 'vacuum_cost_page_hit': 9500, 'vacuum_cost_page_miss': 9500, 'wal_writer_delay': 2500, 'work_mem': 536870959}, QPS: -1.047397939167921
+-----------------QPS: -1.047397939167921--------------------
+Processing file: response_2.json
+Converted max_wal_senders: 20% to 30% to 12
+Converted autovacuum_max_workers: 00% to 10% to 10
+Converted max_connections: 00% to 10% to 197
+Converted wal_buffers: 00% to 10% to 6552
+Converted shared_buffers: 40% to 50% to 1887445
+Converted autovacuum_analyze_scale_factor: 00% to 10% to 5.0
+Converted autovacuum_analyze_threshold: 00% to 10% to 107374182
+Converted autovacuum_naptime: 00% to 10% to 107375
+Converted autovacuum_vacuum_cost_delay: 20% to 30% to 24
+Converted autovacuum_vacuum_cost_limit: 00% to 10% to 499
+Converted autovacuum_vacuum_scale_factor: 20% to 30% to 25.0
+Converted autovacuum_vacuum_threshold: 00% to 10% to 107374182
+Converted backend_flush_after: 00% to 10% to 12
+Converted bgwriter_delay: 00% to 10% to 509
+Converted bgwriter_flush_after: 00% to 10% to 12
+Converted bgwriter_lru_maxpages: 20% to 30% to 250
+Converted bgwriter_lru_multiplier: 20% to 30% to 2
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 00% to 10% to 12
+Converted checkpoint_timeout: 00% to 10% to 208
+Converted commit_delay: 00% to 10% to 5000
+Converted commit_siblings: 00% to 10% to 50
+Converted cursor_tuple_fraction: 00% to 10% to 0.05
+Converted deadlock_timeout: 00% to 10% to 107374183
+Converted default_statistics_target: 00% to 10% to 500
+Converted effective_cache_size: 00% to 10% to 107374183
+Converted effective_io_concurrency: 00% to 10% to 50
+Converted from_collapse_limit: 00% to 10% to 107374183
+Converted geqo_effort: 40% to 50% to 5
+Converted geqo_generations: 00% to 10% to 107374182
+Converted geqo_pool_size: 00% to 10% to 107374182
+Converted geqo_seed: 00% to 10% to 0.05
+Converted geqo_threshold: 40% to 50% to 966367642
+Converted join_collapse_limit: 00% to 10% to 107374183
+Converted maintenance_work_mem: 00% to 10% to 107375155
+Converted temp_buffers: 90% to 100% to 1020054736
+Converted temp_file_limit: middle to 1020054736
+Converted vacuum_cost_delay: 00% to 10% to 5
+Converted vacuum_cost_limit: 00% to 10% to 500
+Converted vacuum_cost_page_dirty: 00% to 10% to 500
+Converted vacuum_cost_page_hit: 00% to 10% to 500
+Converted vacuum_cost_page_miss: 00% to 10% to 500
+Converted wal_writer_delay: 00% to 10% to 500
+Converted work_mem: 00% to 10% to 107374243
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 12
+Set autovacuum_max_workers = 10
+Set max_connections = 197
+Set wal_buffers = 6552
+Set shared_buffers = 1887445
+Set autovacuum_analyze_scale_factor = 5.0
+Set autovacuum_analyze_threshold = 107374182
+Set autovacuum_naptime = 107375
+Set autovacuum_vacuum_cost_delay = 24
+Set autovacuum_vacuum_cost_limit = 499
+Set autovacuum_vacuum_scale_factor = 25.0
+Set autovacuum_vacuum_threshold = 107374182
+Set backend_flush_after = 12
+Set bgwriter_delay = 509
+Set bgwriter_flush_after = 12
+Set bgwriter_lru_maxpages = 250
+Set bgwriter_lru_multiplier = 2
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 12
+Set checkpoint_timeout = 208
+Set commit_delay = 5000
+Set commit_siblings = 50
+Set cursor_tuple_fraction = 0.05
+Set deadlock_timeout = 107374183
+Set default_statistics_target = 500
+Set effective_cache_size = 107374183
+Set effective_io_concurrency = 50
+Set from_collapse_limit = 107374183
+Set geqo_effort = 5
+Set geqo_generations = 107374182
+Set geqo_pool_size = 107374182
+Set geqo_seed = 0.05
+Set geqo_threshold = 966367642
+Set join_collapse_limit = 107374183
+Set maintenance_work_mem = 107375155
+Set temp_buffers = 1020054736
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 5
+Set vacuum_cost_limit = 500
+Set vacuum_cost_page_dirty = 500
+Set vacuum_cost_page_hit = 500
+Set vacuum_cost_page_miss = 500
+Set wal_writer_delay = 500
+Set work_mem = 107374243
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 1 log file start. Tot sql num : 3
+Thread 0 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 0.03197979927062988 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 0.20690226554870605 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 2.924213409423828 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 3.6068153381347656 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 8.883757591247559 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 10.378859519958496 seconds.
+
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 11.58908200263977 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 11.717554807662964 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 12.3358736038208 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 12.335718393325806 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 12.500574111938477 seconds.
+
+length of sql list:  3
+total time:  12.501235246658325
+Configuration: {'max_wal_senders': 12, 'autovacuum_max_workers': 10, 'max_connections': 197, 'wal_buffers': 6552, 'shared_buffers': 1887445, 'autovacuum_analyze_scale_factor': 5.0, 'autovacuum_analyze_threshold': 107374182, 'autovacuum_naptime': 107375, 'autovacuum_vacuum_cost_delay': 24, 'autovacuum_vacuum_cost_limit': 499, 'autovacuum_vacuum_scale_factor': 25.0, 'autovacuum_vacuum_threshold': 107374182, 'backend_flush_after': 12, 'bgwriter_delay': 509, 'bgwriter_flush_after': 12, 'bgwriter_lru_maxpages': 250, 'bgwriter_lru_multiplier': 2, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 12, 'checkpoint_timeout': 208, 'commit_delay': 5000, 'commit_siblings': 50, 'cursor_tuple_fraction': 0.05, 'deadlock_timeout': 107374183, 'default_statistics_target': 500, 'effective_cache_size': 107374183, 'effective_io_concurrency': 50, 'from_collapse_limit': 107374183, 'geqo_effort': 5, 'geqo_generations': 107374182, 'geqo_pool_size': 107374182, 'geqo_seed': 0.05, 'geqo_threshold': 966367642, 'join_collapse_limit': 107374183, 'maintenance_work_mem': 107375155, 'temp_buffers': 1020054736, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 5, 'vacuum_cost_limit': 500, 'vacuum_cost_page_dirty': 500, 'vacuum_cost_page_hit': 500, 'vacuum_cost_page_miss': 500, 'wal_writer_delay': 500, 'work_mem': 107374243}, QPS: -0.9599051424304403
+-----------------QPS: -0.9599051424304403--------------------
+Processing file: response_1.json
+Converted max_wal_senders: 80% to 90% to 42
+Converted autovacuum_max_workers: 80% to 90% to 170
+Converted max_connections: 80% to 90% to 2557
+Converted wal_buffers: 30% to 40% to 45874
+Converted shared_buffers: 00% to 10% to 209730
+Converted autovacuum_analyze_scale_factor: 40% to 50% to 45.0
+Converted autovacuum_analyze_threshold: 60% to 70% to 1395864370
+Converted autovacuum_naptime: 70% to 80% to 1610612
+Converted autovacuum_vacuum_cost_delay: 30% to 40% to 34
+Converted autovacuum_vacuum_cost_limit: 40% to 50% to 4499
+Converted autovacuum_vacuum_scale_factor: 20% to 30% to 25.0
+Converted autovacuum_vacuum_threshold: 40% to 50% to 966367641
+Converted backend_flush_after: 30% to 40% to 89
+Converted bgwriter_delay: 10% to 20% to 1508
+Converted bgwriter_flush_after: 10% to 20% to 38
+Converted bgwriter_lru_maxpages: 60% to 70% to 650
+Converted bgwriter_lru_multiplier: 20% to 30% to 2
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 60% to 70% to 166
+Converted checkpoint_timeout: 00% to 10% to 208
+Converted commit_delay: 90% to 100% to 95000
+Converted commit_siblings: 40% to 50% to 450
+Converted cursor_tuple_fraction: 00% to 10% to 0.05
+Converted deadlock_timeout: 20% to 30% to 536870912
+Converted default_statistics_target: 10% to 20% to 1500
+Converted effective_cache_size: 80% to 90% to 1825361100
+Converted effective_io_concurrency: 00% to 10% to 50
+Converted from_collapse_limit: 30% to 40% to 751619277
+Converted geqo_effort: 80% to 90% to 8
+Converted geqo_generations: 90% to 100% to 2040109464
+Converted geqo_pool_size: 00% to 10% to 107374182
+Converted geqo_seed: 00% to 10% to 0.05
+Converted geqo_threshold: 30% to 40% to 751619277
+Converted join_collapse_limit: 60% to 70% to 1395864370
+Converted maintenance_work_mem: 30% to 40% to 751619942
+Converted temp_buffers: 80% to 90% to 912680564
+Converted temp_file_limit: middle to 912680564
+Converted vacuum_cost_delay: 50% to 60% to 55
+Converted vacuum_cost_limit: 80% to 90% to 8500
+Converted vacuum_cost_page_dirty: 30% to 40% to 3500
+Converted vacuum_cost_page_hit: 30% to 40% to 3500
+Converted vacuum_cost_page_miss: 90% to 100% to 9500
+Converted wal_writer_delay: 60% to 70% to 6500
+Converted work_mem: 40% to 50% to 966367676
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 42
+Set autovacuum_max_workers = 170
+Set max_connections = 2557
+Set wal_buffers = 45874
+Set shared_buffers = 209730
+Set autovacuum_analyze_scale_factor = 45.0
+Set autovacuum_analyze_threshold = 1395864370
+Set autovacuum_naptime = 1610612
+Set autovacuum_vacuum_cost_delay = 34
+Set autovacuum_vacuum_cost_limit = 4499
+Set autovacuum_vacuum_scale_factor = 25.0
+Set autovacuum_vacuum_threshold = 966367641
+Set backend_flush_after = 89
+Set bgwriter_delay = 1508
+Set bgwriter_flush_after = 38
+Set bgwriter_lru_maxpages = 650
+Set bgwriter_lru_multiplier = 2
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 166
+Set checkpoint_timeout = 208
+Set commit_delay = 95000
+Set commit_siblings = 450
+Set cursor_tuple_fraction = 0.05
+Set deadlock_timeout = 536870912
+Set default_statistics_target = 1500
+Set effective_cache_size = 1825361100
+Set effective_io_concurrency = 50
+Set from_collapse_limit = 751619277
+Set geqo_effort = 8
+Set geqo_generations = 2040109464
+Set geqo_pool_size = 107374182
+Set geqo_seed = 0.05
+Set geqo_threshold = 751619277
+Set join_collapse_limit = 1395864370
+Set maintenance_work_mem = 751619942
+Set temp_buffers = 912680564
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 55
+Set vacuum_cost_limit = 8500
+Set vacuum_cost_page_dirty = 3500
+Set vacuum_cost_page_hit = 3500
+Set vacuum_cost_page_miss = 9500
+Set wal_writer_delay = 6500
+Set work_mem = 966367676
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.0026559829711914062 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 5.371803283691406 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 5.581299304962158 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 6.844571113586426 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 6.844864130020142 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 8.388245582580566 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 8.388837575912476 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 8.978085994720459 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 10.871742963790894 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 11.030871391296387 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 11.438582181930542 seconds.
+
+length of sql list:  3
+total time:  11.439453363418579
+Configuration: {'max_wal_senders': 42, 'autovacuum_max_workers': 170, 'max_connections': 2557, 'wal_buffers': 45874, 'shared_buffers': 209730, 'autovacuum_analyze_scale_factor': 45.0, 'autovacuum_analyze_threshold': 1395864370, 'autovacuum_naptime': 1610612, 'autovacuum_vacuum_cost_delay': 34, 'autovacuum_vacuum_cost_limit': 4499, 'autovacuum_vacuum_scale_factor': 25.0, 'autovacuum_vacuum_threshold': 966367641, 'backend_flush_after': 89, 'bgwriter_delay': 1508, 'bgwriter_flush_after': 38, 'bgwriter_lru_maxpages': 650, 'bgwriter_lru_multiplier': 2, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 166, 'checkpoint_timeout': 208, 'commit_delay': 95000, 'commit_siblings': 450, 'cursor_tuple_fraction': 0.05, 'deadlock_timeout': 536870912, 'default_statistics_target': 1500, 'effective_cache_size': 1825361100, 'effective_io_concurrency': 50, 'from_collapse_limit': 751619277, 'geqo_effort': 8, 'geqo_generations': 2040109464, 'geqo_pool_size': 107374182, 'geqo_seed': 0.05, 'geqo_threshold': 751619277, 'join_collapse_limit': 1395864370, 'maintenance_work_mem': 751619942, 'temp_buffers': 912680564, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 55, 'vacuum_cost_limit': 8500, 'vacuum_cost_page_dirty': 3500, 'vacuum_cost_page_hit': 3500, 'vacuum_cost_page_miss': 9500, 'wal_writer_delay': 6500, 'work_mem': 966367676}, QPS: -1.0490011732880482
+-----------------QPS: -1.0490011732880482--------------------
+Processing file: response_3.json
+Converted max_wal_senders: 20% to 30% to 12
+Converted autovacuum_max_workers: 10% to 20% to 30
+Converted max_connections: 90% to 100% to 2852
+Converted wal_buffers: 20% to 30% to 32767
+Converted shared_buffers: 40% to 50% to 1887445
+Converted autovacuum_analyze_scale_factor: 80% to 90% to 85.0
+Converted autovacuum_analyze_threshold: 80% to 90% to 1825361099
+Converted autovacuum_naptime: 90% to 100% to 2040108
+Converted autovacuum_vacuum_cost_delay: 60% to 70% to 64
+Converted autovacuum_vacuum_cost_limit: 40% to 50% to 4499
+Converted autovacuum_vacuum_scale_factor: 10% to 20% to 15.0
+Converted autovacuum_vacuum_threshold: 30% to 40% to 751619276
+Converted backend_flush_after: 20% to 30% to 64
+Converted bgwriter_delay: 90% to 100% to 9500
+Converted bgwriter_flush_after: 00% to 10% to 12
+Converted bgwriter_lru_maxpages: 60% to 70% to 650
+Converted bgwriter_lru_multiplier: 40% to 50% to 4
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 90% to 100% to 243
+Converted checkpoint_timeout: 30% to 40% to 1279
+Converted commit_delay: 20% to 30% to 25000
+Converted commit_siblings: 70% to 80% to 750
+Converted cursor_tuple_fraction: 00% to 10% to 0.05
+Converted deadlock_timeout: 10% to 20% to 322122547
+Converted default_statistics_target: 10% to 20% to 1500
+Converted effective_cache_size: 30% to 40% to 751619277
+Converted effective_io_concurrency: 70% to 80% to 750
+Converted from_collapse_limit: 00% to 10% to 107374183
+Converted geqo_effort: 20% to 30% to 3
+Converted geqo_generations: 40% to 50% to 966367641
+Converted geqo_pool_size: 90% to 100% to 2040109464
+Converted geqo_seed: 90% to 100% to 0.9500000000000001
+Converted geqo_threshold: 50% to 60% to 1181116006
+Converted join_collapse_limit: 20% to 30% to 536870912
+Converted maintenance_work_mem: 80% to 90% to 1825361253
+Converted temp_buffers: 20% to 30% to 268435530
+Converted temp_file_limit: middle to 268435530
+Converted vacuum_cost_delay: 60% to 70% to 65
+Converted vacuum_cost_limit: 60% to 70% to 6500
+Converted vacuum_cost_page_dirty: 60% to 70% to 6500
+Converted vacuum_cost_page_hit: 30% to 40% to 3500
+Converted vacuum_cost_page_miss: 40% to 50% to 4500
+Converted wal_writer_delay: 10% to 20% to 1500
+Converted work_mem: 80% to 90% to 1825361109
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 12
+Set autovacuum_max_workers = 30
+Set max_connections = 2852
+Set wal_buffers = 32767
+Set shared_buffers = 1887445
+Set autovacuum_analyze_scale_factor = 85.0
+Set autovacuum_analyze_threshold = 1825361099
+Set autovacuum_naptime = 2040108
+Set autovacuum_vacuum_cost_delay = 64
+Set autovacuum_vacuum_cost_limit = 4499
+Set autovacuum_vacuum_scale_factor = 15.0
+Set autovacuum_vacuum_threshold = 751619276
+Set backend_flush_after = 64
+Set bgwriter_delay = 9500
+Set bgwriter_flush_after = 12
+Set bgwriter_lru_maxpages = 650
+Set bgwriter_lru_multiplier = 4
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 243
+Set checkpoint_timeout = 1279
+Set commit_delay = 25000
+Set commit_siblings = 750
+Set cursor_tuple_fraction = 0.05
+Set deadlock_timeout = 322122547
+Set default_statistics_target = 1500
+Set effective_cache_size = 751619277
+Set effective_io_concurrency = 750
+Set from_collapse_limit = 107374183
+Set geqo_effort = 3
+Set geqo_generations = 966367641
+Set geqo_pool_size = 2040109464
+Set geqo_seed = 0.9500000000000001
+Set geqo_threshold = 1181116006
+Set join_collapse_limit = 536870912
+Set maintenance_work_mem = 1825361253
+Set temp_buffers = 268435530
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 65
+Set vacuum_cost_limit = 6500
+Set vacuum_cost_page_dirty = 6500
+Set vacuum_cost_page_hit = 3500
+Set vacuum_cost_page_miss = 4500
+Set wal_writer_delay = 1500
+Set work_mem = 1825361109
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 2 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.0028700828552246094 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.1964883804321289 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 0.394275426864624 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 6.336460590362549 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 6.385328054428101 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 7.0081658363342285 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 8.805579662322998 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 9.249539136886597 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 10.483510255813599 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 12.045777559280396 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 12.206976175308228 seconds.
+
+length of sql list:  3
+total time:  12.20791244506836
+Configuration: {'max_wal_senders': 12, 'autovacuum_max_workers': 30, 'max_connections': 2852, 'wal_buffers': 32767, 'shared_buffers': 1887445, 'autovacuum_analyze_scale_factor': 85.0, 'autovacuum_analyze_threshold': 1825361099, 'autovacuum_naptime': 2040108, 'autovacuum_vacuum_cost_delay': 64, 'autovacuum_vacuum_cost_limit': 4499, 'autovacuum_vacuum_scale_factor': 15.0, 'autovacuum_vacuum_threshold': 751619276, 'backend_flush_after': 64, 'bgwriter_delay': 9500, 'bgwriter_flush_after': 12, 'bgwriter_lru_maxpages': 650, 'bgwriter_lru_multiplier': 4, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 243, 'checkpoint_timeout': 1279, 'commit_delay': 25000, 'commit_siblings': 750, 'cursor_tuple_fraction': 0.05, 'deadlock_timeout': 322122547, 'default_statistics_target': 1500, 'effective_cache_size': 751619277, 'effective_io_concurrency': 750, 'from_collapse_limit': 107374183, 'geqo_effort': 3, 'geqo_generations': 966367641, 'geqo_pool_size': 2040109464, 'geqo_seed': 0.9500000000000001, 'geqo_threshold': 1181116006, 'join_collapse_limit': 536870912, 'maintenance_work_mem': 1825361253, 'temp_buffers': 268435530, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 65, 'vacuum_cost_limit': 6500, 'vacuum_cost_page_dirty': 6500, 'vacuum_cost_page_hit': 3500, 'vacuum_cost_page_miss': 4500, 'wal_writer_delay': 1500, 'work_mem': 1825361109}, QPS: -0.9829690419222862
+-----------------QPS: -0.9829690419222862--------------------
+Processing file: response_8.json
+Converted max_wal_senders: 00% to 10% to 2
+Converted autovacuum_max_workers: 90% to 100% to 190
+Converted max_connections: 40% to 50% to 1377
+Converted wal_buffers: 60% to 70% to 85196
+Converted shared_buffers: 70% to 80% to 3145732
+Converted autovacuum_analyze_scale_factor: 80% to 90% to 85.0
+Converted autovacuum_analyze_threshold: 40% to 50% to 966367641
+Converted autovacuum_naptime: 90% to 100% to 2040108
+Converted autovacuum_vacuum_cost_delay: 70% to 80% to 74
+Converted autovacuum_vacuum_cost_limit: 80% to 90% to 8499
+Converted autovacuum_vacuum_scale_factor: 60% to 70% to 65.0
+Converted autovacuum_vacuum_threshold: 10% to 20% to 322122547
+Converted backend_flush_after: 60% to 70% to 166
+Converted bgwriter_delay: 40% to 50% to 4505
+Converted bgwriter_flush_after: 40% to 50% to 115
+Converted bgwriter_lru_maxpages: 30% to 40% to 350
+Converted bgwriter_lru_multiplier: 10% to 20% to 1
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 90% to 100% to 243
+Converted checkpoint_timeout: 40% to 50% to 1636
+Converted commit_delay: 00% to 10% to 5000
+Converted commit_siblings: 70% to 80% to 750
+Converted cursor_tuple_fraction: 90% to 100% to 0.9500000000000001
+Converted deadlock_timeout: 00% to 10% to 107374183
+Converted default_statistics_target: 60% to 70% to 6500
+Converted effective_cache_size: 30% to 40% to 751619277
+Converted effective_io_concurrency: 30% to 40% to 350
+Converted from_collapse_limit: 00% to 10% to 107374183
+Converted geqo_effort: 60% to 70% to 6
+Converted geqo_generations: 20% to 30% to 536870911
+Converted geqo_pool_size: 50% to 60% to 1181116005
+Converted geqo_seed: 00% to 10% to 0.05
+Converted geqo_threshold: 70% to 80% to 1610612735
+Converted join_collapse_limit: 90% to 100% to 2040109464
+Converted maintenance_work_mem: 30% to 40% to 751619942
+Converted temp_buffers: 50% to 60% to 590558047
+Converted temp_file_limit: middle to 590558047
+Converted vacuum_cost_delay: 90% to 100% to 95
+Converted vacuum_cost_limit: 00% to 10% to 500
+Converted vacuum_cost_page_dirty: 50% to 60% to 5500
+Converted vacuum_cost_page_hit: 60% to 70% to 6500
+Converted vacuum_cost_page_miss: 00% to 10% to 500
+Converted wal_writer_delay: 30% to 40% to 3500
+Converted work_mem: 40% to 50% to 966367676
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 2
+Set autovacuum_max_workers = 190
+Set max_connections = 1377
+Set wal_buffers = 85196
+Set shared_buffers = 3145732
+Set autovacuum_analyze_scale_factor = 85.0
+Set autovacuum_analyze_threshold = 966367641
+Set autovacuum_naptime = 2040108
+Set autovacuum_vacuum_cost_delay = 74
+Set autovacuum_vacuum_cost_limit = 8499
+Set autovacuum_vacuum_scale_factor = 65.0
+Set autovacuum_vacuum_threshold = 322122547
+Set backend_flush_after = 166
+Set bgwriter_delay = 4505
+Set bgwriter_flush_after = 115
+Set bgwriter_lru_maxpages = 350
+Set bgwriter_lru_multiplier = 1
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 243
+Set checkpoint_timeout = 1636
+Set commit_delay = 5000
+Set commit_siblings = 750
+Set cursor_tuple_fraction = 0.9500000000000001
+Set deadlock_timeout = 107374183
+Set default_statistics_target = 6500
+Set effective_cache_size = 751619277
+Set effective_io_concurrency = 350
+Set from_collapse_limit = 107374183
+Set geqo_effort = 6
+Set geqo_generations = 536870911
+Set geqo_pool_size = 1181116005
+Set geqo_seed = 0.05
+Set geqo_threshold = 1610612735
+Set join_collapse_limit = 2040109464
+Set maintenance_work_mem = 751619942
+Set temp_buffers = 590558047
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 95
+Set vacuum_cost_limit = 500
+Set vacuum_cost_page_dirty = 5500
+Set vacuum_cost_page_hit = 6500
+Set vacuum_cost_page_miss = 500
+Set wal_writer_delay = 3500
+Set work_mem = 966367676
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.0028696060180664062 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.2081773281097412 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 1.2305572032928467 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 6.867910861968994 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 7.079089641571045 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 8.30766248703003 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 10.08977484703064 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 10.08958888053894 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 11.586170196533203 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 12.017396211624146 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 12.1883065700531 seconds.
+
+length of sql list:  3
+total time:  12.189066410064697
+Configuration: {'max_wal_senders': 2, 'autovacuum_max_workers': 190, 'max_connections': 1377, 'wal_buffers': 85196, 'shared_buffers': 3145732, 'autovacuum_analyze_scale_factor': 85.0, 'autovacuum_analyze_threshold': 966367641, 'autovacuum_naptime': 2040108, 'autovacuum_vacuum_cost_delay': 74, 'autovacuum_vacuum_cost_limit': 8499, 'autovacuum_vacuum_scale_factor': 65.0, 'autovacuum_vacuum_threshold': 322122547, 'backend_flush_after': 166, 'bgwriter_delay': 4505, 'bgwriter_flush_after': 115, 'bgwriter_lru_maxpages': 350, 'bgwriter_lru_multiplier': 1, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 243, 'checkpoint_timeout': 1636, 'commit_delay': 5000, 'commit_siblings': 750, 'cursor_tuple_fraction': 0.9500000000000001, 'deadlock_timeout': 107374183, 'default_statistics_target': 6500, 'effective_cache_size': 751619277, 'effective_io_concurrency': 350, 'from_collapse_limit': 107374183, 'geqo_effort': 6, 'geqo_generations': 536870911, 'geqo_pool_size': 1181116005, 'geqo_seed': 0.05, 'geqo_threshold': 1610612735, 'join_collapse_limit': 2040109464, 'maintenance_work_mem': 751619942, 'temp_buffers': 590558047, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 95, 'vacuum_cost_limit': 500, 'vacuum_cost_page_dirty': 5500, 'vacuum_cost_page_hit': 6500, 'vacuum_cost_page_miss': 500, 'wal_writer_delay': 3500, 'work_mem': 966367676}, QPS: -0.9844888522464212
+-----------------QPS: -0.9844888522464212--------------------
+Processing file: response_4.json
+Converted work_mem: 20% to 30% to 536870959
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set work_mem = 536870959
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.002481222152709961 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 0.0993955135345459 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 0.6831722259521484 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 5.7931883335113525 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+Thread 2 processed time: 5.927673816680908 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 7.131352186203003 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 8.651129245758057 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 8.651602745056152 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 10.490493059158325 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 10.644291400909424 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 11.369810581207275 seconds.
+
+length of sql list:  3
+total time:  11.370935916900635
+Configuration: {'work_mem': 536870959}, QPS: -1.0553221025689175
+-----------------QPS: -1.0553221025689175--------------------
+Processing file: response_5.json
+Converted max_wal_senders: 30% to 40% to 17
+Converted autovacuum_max_workers: 90% to 100% to 190
+Converted max_connections: 20% to 30% to 787
+Converted wal_buffers: 20% to 30% to 32767
+Converted shared_buffers: 60% to 70% to 2726303
+Converted autovacuum_analyze_scale_factor: 40% to 50% to 45.0
+Converted autovacuum_analyze_threshold: 20% to 30% to 536870911
+Converted autovacuum_naptime: 60% to 70% to 1395864
+Converted autovacuum_vacuum_cost_delay: 10% to 20% to 14
+Converted autovacuum_vacuum_cost_limit: 30% to 40% to 3499
+Converted autovacuum_vacuum_scale_factor: 00% to 10% to 5.0
+Converted autovacuum_vacuum_threshold: 50% to 60% to 1181116005
+Converted backend_flush_after: 10% to 20% to 38
+Converted bgwriter_delay: 20% to 30% to 2507
+Converted bgwriter_flush_after: 00% to 10% to 12
+Converted bgwriter_lru_maxpages: 90% to 100% to 950
+Converted bgwriter_lru_multiplier: 20% to 30% to 2
+Converted checkpoint_completion_target: 00% to 10% to 0.05
+Converted checkpoint_flush_after: 20% to 30% to 64
+Converted checkpoint_timeout: 40% to 50% to 1636
+Converted commit_delay: 50% to 60% to 55000
+Converted commit_siblings: 80% to 90% to 850
+Converted cursor_tuple_fraction: 90% to 100% to 0.9500000000000001
+Converted deadlock_timeout: 80% to 90% to 1825361100
+Converted default_statistics_target: 70% to 80% to 7500
+Converted effective_cache_size: 20% to 30% to 536870912
+Converted effective_io_concurrency: 30% to 40% to 350
+Converted from_collapse_limit: 30% to 40% to 751619277
+Converted geqo_effort: 40% to 50% to 5
+Converted geqo_generations: 90% to 100% to 2040109464
+Converted geqo_pool_size: 00% to 10% to 107374182
+Converted geqo_seed: 90% to 100% to 0.9500000000000001
+Converted geqo_threshold: 40% to 50% to 966367642
+Converted join_collapse_limit: 90% to 100% to 2040109464
+Converted maintenance_work_mem: 40% to 50% to 966368204
+Converted temp_buffers: 10% to 20% to 161061358
+Converted temp_file_limit: middle to 161061358
+Converted vacuum_cost_delay: 80% to 90% to 85
+Converted vacuum_cost_limit: 80% to 90% to 8500
+Converted vacuum_cost_page_dirty: 30% to 40% to 3500
+Converted vacuum_cost_page_hit: 50% to 60% to 5500
+Converted vacuum_cost_page_miss: 20% to 30% to 2500
+Converted wal_writer_delay: 40% to 50% to 4500
+Converted work_mem: 40% to 50% to 966367676
+Removed postgresql.auto.conf file (if it existed).
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5433 with database benchbase
+Set max_wal_senders = 17
+Set autovacuum_max_workers = 190
+Set max_connections = 787
+Set wal_buffers = 32767
+Set shared_buffers = 2726303
+Set autovacuum_analyze_scale_factor = 45.0
+Set autovacuum_analyze_threshold = 536870911
+Set autovacuum_naptime = 1395864
+Set autovacuum_vacuum_cost_delay = 14
+Set autovacuum_vacuum_cost_limit = 3499
+Set autovacuum_vacuum_scale_factor = 5.0
+Set autovacuum_vacuum_threshold = 1181116005
+Set backend_flush_after = 38
+Set bgwriter_delay = 2507
+Set bgwriter_flush_after = 12
+Set bgwriter_lru_maxpages = 950
+Set bgwriter_lru_multiplier = 2
+Set checkpoint_completion_target = 0.05
+Set checkpoint_flush_after = 64
+Set checkpoint_timeout = 1636
+Set commit_delay = 55000
+Set commit_siblings = 850
+Set cursor_tuple_fraction = 0.9500000000000001
+Set deadlock_timeout = 1825361100
+Set default_statistics_target = 7500
+Set effective_cache_size = 536870912
+Set effective_io_concurrency = 350
+Set from_collapse_limit = 751619277
+Set geqo_effort = 5
+Set geqo_generations = 2040109464
+Set geqo_pool_size = 107374182
+Set geqo_seed = 0.9500000000000001
+Set geqo_threshold = 966367642
+Set join_collapse_limit = 2040109464
+Set maintenance_work_mem = 966368204
+Set temp_buffers = 161061358
+Set temp_file_limit = -1
+Set vacuum_cost_delay = 85
+Set vacuum_cost_limit = 8500
+Set vacuum_cost_page_dirty = 3500
+Set vacuum_cost_page_hit = 5500
+Set vacuum_cost_page_miss = 2500
+Set wal_writer_delay = 4500
+Set work_mem = 966367676
+Applied knobs successfully!
+Stopping PostgreSQL 12...
+Starting PostgreSQL 12...
+PostgreSQL 12 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLAP workload
+Workload path: ./olap_workloads/tpch_2.wg
+Thread 0 log file start. Tot sql num : 3
+Thread 1 log file start. Tot sql num : 3
+Thread 2 log file start. Tot sql num : 3
+Thread 3 log file start. Tot sql num : 2
+Thread 0 0 sqls has been processed successfully.
+
+Thread 0 processed time: 0.003008127212524414 seconds.
+
+Thread 3 0 sqls has been processed successfully.
+
+Thread 3 processed time: 5.811391830444336 seconds.
+
+Thread 2 0 sqls has been processed successfully.
+
+/home/karimnazarovj/miniconda3/envs/e2e_env/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/karimnazarovj/miniconda3/envs/e2e_env/lib/python3.8/site-packages/paramiko/transport.py:258: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+Thread 2 processed time: 6.024709463119507 seconds.
+
+Thread 3 1 sqls has been processed successfully.
+
+Thread 3 processed time: 7.305363655090332 seconds.
+
+Thread 2 1 sqls has been processed successfully.
+
+Thread 2 processed time: 9.120153188705444 seconds.
+
+Thread 0 1 sqls has been processed successfully.
+
+Thread 0 processed time: 9.245442152023315 seconds.
+
+Thread 0 2 sqls has been processed successfully.
+
+Thread 0 processed time: 9.903723001480103 seconds.
+
+Thread 2 2 sqls has been processed successfully.
+
+Thread 2 processed time: 10.340333461761475 seconds.
+
+Thread 1 0 sqls has been processed successfully.
+
+Thread 1 processed time: 10.37857174873352 seconds.
+
+Thread 1 1 sqls has been processed successfully.
+
+Thread 1 processed time: 11.928678750991821 seconds.
+
+Thread 1 2 sqls has been processed successfully.
+
+Thread 1 processed time: 12.1025972366333 seconds.
+
+length of sql list:  3
+total time:  12.103341817855835
+Configuration: {'max_wal_senders': 17, 'autovacuum_max_workers': 190, 'max_connections': 787, 'wal_buffers': 32767, 'shared_buffers': 2726303, 'autovacuum_analyze_scale_factor': 45.0, 'autovacuum_analyze_threshold': 536870911, 'autovacuum_naptime': 1395864, 'autovacuum_vacuum_cost_delay': 14, 'autovacuum_vacuum_cost_limit': 3499, 'autovacuum_vacuum_scale_factor': 5.0, 'autovacuum_vacuum_threshold': 1181116005, 'backend_flush_after': 38, 'bgwriter_delay': 2507, 'bgwriter_flush_after': 12, 'bgwriter_lru_maxpages': 950, 'bgwriter_lru_multiplier': 2, 'checkpoint_completion_target': 0.05, 'checkpoint_flush_after': 64, 'checkpoint_timeout': 1636, 'commit_delay': 55000, 'commit_siblings': 850, 'cursor_tuple_fraction': 0.9500000000000001, 'deadlock_timeout': 1825361100, 'default_statistics_target': 7500, 'effective_cache_size': 536870912, 'effective_io_concurrency': 350, 'from_collapse_limit': 751619277, 'geqo_effort': 5, 'geqo_generations': 2040109464, 'geqo_pool_size': 107374182, 'geqo_seed': 0.9500000000000001, 'geqo_threshold': 966367642, 'join_collapse_limit': 2040109464, 'maintenance_work_mem': 966368204, 'temp_buffers': 161061358, 'temp_file_limit': -1.0, 'vacuum_cost_delay': 85, 'vacuum_cost_limit': 8500, 'vacuum_cost_page_dirty': 3500, 'vacuum_cost_page_hit': 5500, 'vacuum_cost_page_miss': 2500, 'wal_writer_delay': 4500, 'work_mem': 966367676}, QPS: -0.9914617120287079
+-----------------QPS: -0.9914617120287079--------------------

@@ -1,6 +1,12 @@
 from knob_config.parse_knob_config import get_knobs
 import os 
 import json
+import argparse
+from config import parse_config
+import os
+from Database import Database
+from workload_executor import workload_executor
+import utils
 
 label_mapper_s1 = {
     '00% to 10%': 0,
@@ -60,15 +66,62 @@ def convert_labels_to_numeric(knobs_detail, config_dict ):
         print(f"Converted {knob_name}: {label_value} to {numeric}")
     
     return out
-        
 
+def default_run(workload_file, db, executor):
+        """Run the default configuration"""
+
+        print(f"Running default configuration for workload")
+
+        # remove auto_conf from the database
+        db.remove_auto_conf() 
+
+        # reset inner metrics
+        print("Resetting inner metrics...")
+        db.reset_inner_metrics()
+
+        # run the workload with default configuration
+        qps = executor.run_config(config=None, workload_file=workload_file)
+        print(f"Default configuration run complete for workload")
+        
+        print(f"-----------------Default QPS: {qps}--------------------")
+        return qps
+
+def apply_configuration_and_get_metrics(config, db, executor):
+    # reset the configuration 
+    db.remove_auto_conf()
+
+    # run config 
+    qps = executor.run_config(config=config, workload_file='tpch_2.wg')
+
+    print(f"-----------------QPS: {qps}--------------------")
+    return qps
 
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--host', type=str, default='localhost', help='the database host')
+    parser.add_argument('--database', type=str, default='benchbase', help='workload file')
+    cmd = parser.parse_args()
+    # Load configuration file
+    args = parse_config.parse_args("config/config.ini")
+    # print(args)
+    # args['benchmark_config']['workload_path'] = 'SuperWG/res/gpt_workloads/' + cmd.workload
+    args['database_config']['database'] = cmd.database
+    args['tuning_config']['offline_sample'] += cmd.host
     knobs_detail = get_knobs('knob_config/knob_config.json')
 
+    db = Database(config=args, path=args['tuning_config']['knob_config'])
+    executor = workload_executor(args, utils.get_logger(args['tuning_config']['log_path']), "training_records.log", internal_metrics=None)
+
     inference_results_folder = 'inference_results/tpch1/'
+
+    qps_list = []
+
+    # run default configuration
+    qps = default_run('tpch_2.wg', db, executor)
+    qps_list.append(("default", qps))
+    print("Default configuration run complete.")
 
     # get each json file in the folder
     files = os.listdir(inference_results_folder)
@@ -82,6 +135,17 @@ def main():
             config_dict = json.load(f)
             print(f"Processing file: {file}")
             out = convert_labels_to_numeric(knobs_detail, config_dict)
+            # run configuration and get the metrics
+            metric = apply_configuration_and_get_metrics(out, db, executor)
+            qps_list.append((file, metric))
+    
+    # sort the qps_list by file name
+    qps_list = sorted(qps_list, key=lambda x: x[0])
+
+    # save the qps_list to a file
+    with open('model_output_qps.txt', 'w') as f:
+        for file, qps in qps_list:
+            f.write(f"{file}: {qps}\n")
     
 
 
