@@ -66,7 +66,7 @@ class LLMTuning:
                 inner_metrics_string += f'{name}: {(int(value/ 1000))}k; '
             elif value >= 1000000: inner_metrics_string += f'{name}: {(int(value/ 100000)) / 10} million; '
         return inner_metrics_string
-    
+     
     def get_query_plans(self):
         """Get query plans for the workload"""
 
