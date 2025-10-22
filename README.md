@@ -29,9 +29,11 @@
 ## Loading up the database
 
 1. Go to the `scripts` folder.
-2. Install BenchBase for Postgres:
+2. Install BenchBase for your database:
    ```bash
-   sh install_benchbase_postgres.sh
+   sh install_benchbase.sh <database>
+   # Example:
+   sh install_benchbase.sh postgres
    ```
 3. Edit the config file for your workload:
    - Open `benchbase/target/benchbase-postgres/config/postgres/<workload-config>.xml`
