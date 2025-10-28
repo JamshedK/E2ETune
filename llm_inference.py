@@ -20,12 +20,8 @@ class E2ETuneBot:
             "low_cpu_mem_usage": True
         }
         
-                # Add quantization for GPU - cleaner version
+        # Add device map for GPU
         if device == "cuda":
-            model_kwargs["quantization_config"] = {
-                "load_in_4bit": True,
-                "bnb_4bit_compute_dtype": torch.float16, 
-            }
             model_kwargs["device_map"] = "auto"
 
         self.pipeline = transformers.pipeline(

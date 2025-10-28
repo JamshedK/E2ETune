@@ -23,7 +23,8 @@
 
 #################################################
 
-## NOTE, make sure you change your directory!
+# Exit on any error
+set -e
 
 export MAMBA_ROOT_PREFIX="/scratch/cs529314/micromamba"
 MM="/scratch/cs529314/micromamba/bin/micromamba"
