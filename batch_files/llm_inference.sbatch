@@ -10,16 +10,16 @@
 ##SBATCH --cpus-per-task=64
 #SBATCH --cpus-per-task=20
 ##SBATCH --mem=32G
-#SBATCH --mem=16G
+#SBATCH --mem=32G
 ##SBATCH --time=12:00:00
 ##SBATCH --time=00:20:00
 #SBATCH --time=00:20:00
-#SBATCH --job-name=download_model
+#SBATCH --job-name=llm_inference
 #SBATCH --mail-user=jamshed.k@ou.edu
 #SBATCH --mail-type=ALL
 #SBATCH --chdir=/scratch/cs529314/E2ETune/
-#SBATCH --output=results/download_model_%j.out
-#SBATCH --error=results/download_model_%j.err
+#SBATCH --output=results/llm_inference_%j.out
+#SBATCH --error=results/llm_inference_%j.err
 
 #################################################
 
@@ -35,7 +35,7 @@ micromamba activate e2e_env
 echo "Python version:"
 python -V
 
-echo "Starting model download..."
-python download_model.py
+echo "Starting inference..."
+python llm_inference.py
 
 echo "Done."
