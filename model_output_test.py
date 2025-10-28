@@ -101,7 +101,7 @@ def apply_configuration_and_get_metrics(config, db, executor):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--host', type=str, default='localhost', help='the database host')
-    parser.add_argument('--database', type=str, default='benchbase', help='workload file')
+    parser.add_argument('--database', type=str, default='tpch_ten', help='workload file')
     cmd = parser.parse_args()
     # Load configuration file
     args = parse_config.parse_args("config/config.ini")
