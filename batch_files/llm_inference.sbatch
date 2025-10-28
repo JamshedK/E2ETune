@@ -25,8 +25,8 @@
 
 ## NOTE, make sure you change your directory!
 
-export MAMBA_ROOT_PREFIX="/home/cs529314/micromamba"
-MM="/home/cs529314/micromamba/bin/micromamba"
+export MAMBA_ROOT_PREFIX="/scratch/cs529314/micromamba"
+MM="/scratch/cs529314/micromamba/bin/micromamba"
 eval "$("$MM" shell hook -s bash)"
 
 echo "Activating environment..."
