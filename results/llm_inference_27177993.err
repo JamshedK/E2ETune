@@ -1,0 +1,2 @@
+critical libmamba Cannot activate, prefix does not exist at: '/home/cs529314/micromamba/envs/e2e_env'
+slurmstepd: error: *** JOB 27177993 ON c860 CANCELLED AT 2025-10-28T12:06:18 ***
