@@ -13,7 +13,7 @@
 #SBATCH --mem=32G
 ##SBATCH --time=12:00:00
 ##SBATCH --time=00:20:00
-#SBATCH --time=00:20:00
+#SBATCH --time=00:60:00
 #SBATCH --job-name=llm_inference
 #SBATCH --mail-user=jamshed.k@ou.edu
 #SBATCH --mail-type=ALL
@@ -31,12 +31,18 @@ MM="/scratch/cs529314/micromamba/bin/micromamba"
 eval "$("$MM" shell hook -s bash)"
 
 echo "Activating environment..."
-micromamba activate e2e_env
+micromamba activate e2e_env || { echo "Failed to activate environment"; exit 1; }
 
 echo "Python version:"
 python -V
 
+echo "Checking if model exists..."
+ls -la ./local_model/ || { echo "Model directory not found"; exit 1; }
+
+echo "Testing Python imports..."
+python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA available:', torch.cuda.is_available())"
+
 echo "Starting inference..."
-python llm_inference.py
+timeout 300 python llm_inference.py || { echo "Python script timed out or failed"; exit 1; }
 
 echo "Done."

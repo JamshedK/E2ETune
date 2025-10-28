@@ -4,6 +4,7 @@ from transformers import AutoTokenizer
 
 class E2ETuneBot:
     def __init__(self, model_path):
+        print(f"Initializing E2ETuneBot with model: {model_path}")
         self.model_id = model_path
         
         # Check if CUDA is available
@@ -14,6 +15,7 @@ class E2ETuneBot:
             print(f"GPU: {torch.cuda.get_device_name(0)}")
             print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.1f} GB")
         
+        print("Setting up model configuration...")
         # Configure model kwargs based on device
         model_kwargs = {
             "torch_dtype": torch.float16 if device == "cuda" else torch.float32,
@@ -24,14 +26,21 @@ class E2ETuneBot:
         if device == "cuda":
             model_kwargs["device_map"] = "auto"
 
-        self.pipeline = transformers.pipeline(
-            "text-generation",
-            model=self.model_id,
-            model_kwargs=model_kwargs,
-            trust_remote_code=True,
-            use_fast=False,  # Add this line to avoid tiktoken conversion
-        )
+        print("Loading transformers pipeline... (this may take several minutes)")
+        try:
+            self.pipeline = transformers.pipeline(
+                "text-generation",
+                model=self.model_id,
+                model_kwargs=model_kwargs,
+                trust_remote_code=True,
+                use_fast=False,  # Add this line to avoid tiktoken conversion
+            )
+            print("✓ Pipeline loaded successfully!")
+        except Exception as e:
+            print(f"✗ Pipeline loading failed: {e}")
+            raise
         
+        print("Setting up tokenizer...")
         # Set up tokenizer
         if self.pipeline.tokenizer.pad_token is None:
             self.pipeline.tokenizer.pad_token = self.pipeline.tokenizer.eos_token
