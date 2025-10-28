@@ -43,6 +43,6 @@ echo "Testing Python imports..."
 python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA available:', torch.cuda.is_available())"
 
 echo "Starting inference..."
-timeout 300 python llm_inference.py || { echo "Python script timed out or failed"; exit 1; }
+python llm_inference.py || { echo "Python script timed out or failed"; exit 1; }
 
 echo "Done."
