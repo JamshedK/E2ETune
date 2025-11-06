@@ -174,19 +174,14 @@ class Database:
     
     def fetch_inner_metrics(self):
         """
-        Fetch internal metrics from PostgreSQL
-         xact_commit, xact_rollback, blks_read, blks_hit,
-        tup_returned, tup_fetched, tup_inserted, con$icts, tup_updated,
-        tup_deleted, disk_read_count, disk_write_count, disk_read_bytes,
-        and disk_write_bytes 
+        Fetch internal metrics from PostgreSQL as a JSON dictionary
         """
-        state_list = []
+        metrics = {}
         conn = self.get_conn()
         cursor = conn.cursor()
 
         try:
-        
-            # 1-10: Standard database metrics
+            # Standard database metrics
             database_stats_sql = """
             SELECT 
                 COALESCE(SUM(xact_commit), 0),
@@ -205,8 +200,22 @@ class Database:
         
             cursor.execute(database_stats_sql, (self.database,))
             result = cursor.fetchone()
-            state_list.extend([float(x) for x in result])
-                # 11: Disk read count (accurate)
+            
+            # Map results to meaningful names
+            metrics.update({
+                "xact_commit": float(result[0]),
+                "xact_rollback": float(result[1]),
+                "blks_read": float(result[2]),
+                "blks_hit": float(result[3]),
+                "tup_returned": float(result[4]),
+                "tup_fetched": float(result[5]),
+                "tup_inserted": float(result[6]),
+                "conflicts": float(result[7]),
+                "tup_updated": float(result[8]),
+                "tup_deleted": float(result[9])
+            })
+            
+            # Disk read count (accurate)
             disk_read_sql = """
             SELECT 
                 COALESCE(SUM(
@@ -220,9 +229,9 @@ class Database:
             
             cursor.execute(disk_read_sql)
             result = cursor.fetchone()
-            state_list.append(float(result[0]))
+            metrics["disk_read_count"] = float(result[0])
             
-            # 12: Disk write count (from background writer)
+            # Disk write count (from background writer)
             bgwriter_sql = """
             SELECT 
                 buffers_checkpoint + buffers_clean + buffers_backend as disk_write_count
@@ -231,27 +240,30 @@ class Database:
             
             cursor.execute(bgwriter_sql)
             result = cursor.fetchone()
-            state_list.append(float(result[0]))
+            metrics["disk_write_count"] = float(result[0])
             
-            # 13: Disk read bytes
-            state_list.append(state_list[10] * 8192)  # disk_read_count * 8KB
+            # Calculate bytes from block counts
+            metrics["disk_read_bytes"] = metrics["disk_read_count"] * 8192  # 8KB per block
+            metrics["disk_write_bytes"] = metrics["disk_write_count"] * 8192  # 8KB per block
             
-            # 14: Disk write bytes (from background writer)
-            state_list.append(state_list[11] * 8192)  # disk_write_count * 8KB
-            
-            print(f"Fetched {len(state_list)} internal metrics")
-
-            print("Internal metrics:", state_list)
+            print(f"Fetched {len(metrics)} internal metrics")
+            print("Internal metrics:", metrics)
             
         except Exception as e:
             print(f"Error fetching internal metrics: {e}")
-            state_list = [0.0] * 14
+            # Return empty metrics with default values
+            metrics = {
+                "xact_commit": 0.0, "xact_rollback": 0.0, "blks_read": 0.0, "blks_hit": 0.0,
+                "tup_returned": 0.0, "tup_fetched": 0.0, "tup_inserted": 0.0, "conflicts": 0.0,
+                "tup_updated": 0.0, "tup_deleted": 0.0, "disk_read_count": 0.0, "disk_write_count": 0.0,
+                "disk_read_bytes": 0.0, "disk_write_bytes": 0.0
+            }
         
         finally:
             cursor.close()
             conn.close()
         
-        return state_list
+        return metrics
     
     def change_knob(self, knobs):
         """
