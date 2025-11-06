@@ -463,17 +463,17 @@ class Database:
     
     def restart_db(self):
         """
-        Simple restart of PostgreSQL 12 using pg_ctlcluster
+        Simple restart of PostgreSQL 14 using pg_ctlcluster
         """
         try:
-            print("Stopping PostgreSQL 12...")
-            subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'stop'], 
+            print("Stopping PostgreSQL 14...")
+            subprocess.run(['sudo', 'pg_ctlcluster', '14', 'main', 'stop'], 
                         check=True, timeout=30)
             
             time.sleep(2)  # Wait a moment
             
-            print("Starting PostgreSQL 12...")
-            result = subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'start'], 
+            print("Starting PostgreSQL 14...")
+            result = subprocess.run(['sudo', 'pg_ctlcluster', '14', 'main', 'start'], 
                                 capture_output=True, text=True, timeout=30)
             
             if result.returncode != 0:
@@ -485,10 +485,10 @@ class Database:
                 time.sleep(1)
 
                 # Try starting again
-                subprocess.run(['sudo', 'pg_ctlcluster', '12', 'main', 'start'], 
+                subprocess.run(['sudo', 'pg_ctlcluster', '14', 'main', 'start'], 
                             check=True, timeout=30)
             
-            print("PostgreSQL 12 restarted successfully!")
+            print("PostgreSQL 14 restarted successfully!")
             return True
             
         except Exception as e:
@@ -496,7 +496,7 @@ class Database:
             return False
         
     def remove_auto_conf(self):
-        auto_conf_path = "/var/lib/postgresql/12/main/postgresql.auto.conf"
+        auto_conf_path = "/var/lib/postgresql/14/main/postgresql.auto.conf"
         try:
             # Use -f flag to force removal (no error if file doesn't exist)
             subprocess.run(['sudo', 'rm', '-f', auto_conf_path], check=True)
