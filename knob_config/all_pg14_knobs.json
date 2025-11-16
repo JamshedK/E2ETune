@@ -1,0 +1,2084 @@
+{
+    "allow_in_place_tablespaces": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "allow_system_table_mods": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "application_name": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "archive_cleanup_command": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "archive_command": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "archive_mode": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "off"
+    },
+    "archive_timeout": {
+        "max": "1073741823",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "array_nulls": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "authentication_timeout": {
+        "max": "600",
+        "min": "1",
+        "type": "integer",
+        "default": "60"
+    },
+    "autovacuum": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "autovacuum_analyze_scale_factor": {
+        "max": "100",
+        "min": "0",
+        "type": "real",
+        "default": "0.1"
+    },
+    "autovacuum_analyze_threshold": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "50"
+    },
+    "autovacuum_freeze_max_age": {
+        "max": "2000000000",
+        "min": "100000",
+        "type": "integer",
+        "default": "200000000"
+    },
+    "autovacuum_max_workers": {
+        "max": "262143",
+        "min": "1",
+        "type": "integer",
+        "default": "3"
+    },
+    "autovacuum_multixact_freeze_max_age": {
+        "max": "2000000000",
+        "min": "10000",
+        "type": "integer",
+        "default": "400000000"
+    },
+    "autovacuum_naptime": {
+        "max": "2147483",
+        "min": "1",
+        "type": "integer",
+        "default": "60"
+    },
+    "autovacuum_vacuum_cost_delay": {
+        "max": "100",
+        "min": "-1",
+        "type": "real",
+        "default": "2"
+    },
+    "autovacuum_vacuum_cost_limit": {
+        "max": "10000",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "autovacuum_vacuum_insert_scale_factor": {
+        "max": "100",
+        "min": "0",
+        "type": "real",
+        "default": "0.2"
+    },
+    "autovacuum_vacuum_insert_threshold": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "1000"
+    },
+    "autovacuum_vacuum_scale_factor": {
+        "max": "100",
+        "min": "0",
+        "type": "real",
+        "default": "0.2"
+    },
+    "autovacuum_vacuum_threshold": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "50"
+    },
+    "autovacuum_work_mem": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "backend_flush_after": {
+        "max": "256",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "backslash_quote": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "safe_encoding"
+    },
+    "backtrace_functions": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "bgwriter_delay": {
+        "max": "10000",
+        "min": "10",
+        "type": "integer",
+        "default": "200"
+    },
+    "bgwriter_flush_after": {
+        "max": "256",
+        "min": "0",
+        "type": "integer",
+        "default": "64"
+    },
+    "bgwriter_lru_maxpages": {
+        "max": "1073741823",
+        "min": "0",
+        "type": "integer",
+        "default": "100"
+    },
+    "bgwriter_lru_multiplier": {
+        "max": "10",
+        "min": "0",
+        "type": "real",
+        "default": "2"
+    },
+    "block_size": {
+        "max": "8192",
+        "min": "8192",
+        "type": "integer",
+        "default": "8192"
+    },
+    "bonjour": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "bonjour_name": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "bytea_output": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "hex"
+    },
+    "check_function_bodies": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "checkpoint_completion_target": {
+        "max": "1",
+        "min": "0",
+        "type": "real",
+        "default": "0.9"
+    },
+    "checkpoint_flush_after": {
+        "max": "256",
+        "min": "0",
+        "type": "integer",
+        "default": "32"
+    },
+    "checkpoint_timeout": {
+        "max": "86400",
+        "min": "30",
+        "type": "integer",
+        "default": "300"
+    },
+    "checkpoint_warning": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "30"
+    },
+    "client_connection_check_interval": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "client_encoding": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "SQL_ASCII"
+    },
+    "client_min_messages": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "notice"
+    },
+    "cluster_name": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "commit_delay": {
+        "max": "100000",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "commit_siblings": {
+        "max": "1000",
+        "min": "0",
+        "type": "integer",
+        "default": "5"
+    },
+    "compute_query_id": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "auto"
+    },
+    "config_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "constraint_exclusion": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "partition"
+    },
+    "cpu_index_tuple_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "0.005"
+    },
+    "cpu_operator_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "0.0025"
+    },
+    "cpu_tuple_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "0.01"
+    },
+    "cursor_tuple_fraction": {
+        "max": "1",
+        "min": "0",
+        "type": "real",
+        "default": "0.1"
+    },
+    "data_checksums": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "data_directory": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "data_directory_mode": {
+        "max": "511",
+        "min": "0",
+        "type": "integer",
+        "default": "448"
+    },
+    "data_sync_retry": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "DateStyle": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "ISO, MDY"
+    },
+    "db_user_namespace": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "deadlock_timeout": {
+        "max": "2147483647",
+        "min": "1",
+        "type": "integer",
+        "default": "1000"
+    },
+    "debug_assertions": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "debug_discard_caches": {
+        "max": "0",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "debug_pretty_print": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "debug_print_parse": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "debug_print_plan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "debug_print_rewritten": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "default_statistics_target": {
+        "max": "10000",
+        "min": "1",
+        "type": "integer",
+        "default": "100"
+    },
+    "default_table_access_method": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "heap"
+    },
+    "default_tablespace": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "default_text_search_config": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "pg_catalog.simple"
+    },
+    "default_toast_compression": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "pglz"
+    },
+    "default_transaction_deferrable": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "default_transaction_isolation": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "read committed"
+    },
+    "default_transaction_read_only": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "dynamic_library_path": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "$libdir"
+    },
+    "dynamic_shared_memory_type": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "posix"
+    },
+    "effective_cache_size": {
+        "max": "2147483647",
+        "min": "1",
+        "type": "integer",
+        "default": "524288"
+    },
+    "effective_io_concurrency": {
+        "max": "1000",
+        "min": "0",
+        "type": "integer",
+        "default": "1"
+    },
+    "enable_async_append": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_bitmapscan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_gathermerge": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_hashagg": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_hashjoin": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_incremental_sort": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_indexonlyscan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_indexscan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_material": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_memoize": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_mergejoin": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_nestloop": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_parallel_append": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_parallel_hash": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_partition_pruning": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_partitionwise_aggregate": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "enable_partitionwise_join": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "enable_seqscan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_sort": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "enable_tidscan": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "escape_string_warning": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "event_source": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "PostgreSQL"
+    },
+    "exit_on_error": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "extension_destdir": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "external_pid_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "extra_float_digits": {
+        "max": "3",
+        "min": "-15",
+        "type": "integer",
+        "default": "1"
+    },
+    "force_parallel_mode": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "off"
+    },
+    "from_collapse_limit": {
+        "max": "2147483647",
+        "min": "1",
+        "type": "integer",
+        "default": "8"
+    },
+    "fsync": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "full_page_writes": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "geqo": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "geqo_effort": {
+        "max": "10",
+        "min": "1",
+        "type": "integer",
+        "default": "5"
+    },
+    "geqo_generations": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "geqo_pool_size": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "geqo_seed": {
+        "max": "1",
+        "min": "0",
+        "type": "real",
+        "default": "0"
+    },
+    "geqo_selection_bias": {
+        "max": "2",
+        "min": "1.5",
+        "type": "real",
+        "default": "2"
+    },
+    "geqo_threshold": {
+        "max": "2147483647",
+        "min": "2",
+        "type": "integer",
+        "default": "12"
+    },
+    "gin_fuzzy_search_limit": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "gin_pending_list_limit": {
+        "max": "2147483647",
+        "min": "64",
+        "type": "integer",
+        "default": "4096"
+    },
+    "hash_mem_multiplier": {
+        "max": "1000",
+        "min": "1",
+        "type": "real",
+        "default": "1"
+    },
+    "hba_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "hot_standby": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "hot_standby_feedback": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "huge_page_size": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "huge_pages": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "try"
+    },
+    "ident_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "idle_in_transaction_session_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "idle_session_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "ignore_checksum_failure": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "ignore_invalid_pages": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "ignore_system_indexes": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "in_hot_standby": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "integer_datetimes": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "IntervalStyle": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "postgres"
+    },
+    "jit": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "jit_above_cost": {
+        "max": "1.79769e+308",
+        "min": "-1",
+        "type": "real",
+        "default": "100000"
+    },
+    "jit_debugging_support": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "jit_dump_bitcode": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "jit_expressions": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "jit_inline_above_cost": {
+        "max": "1.79769e+308",
+        "min": "-1",
+        "type": "real",
+        "default": "500000"
+    },
+    "jit_optimize_above_cost": {
+        "max": "1.79769e+308",
+        "min": "-1",
+        "type": "real",
+        "default": "500000"
+    },
+    "jit_profiling_support": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "jit_provider": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "llvmjit"
+    },
+    "jit_tuple_deforming": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "join_collapse_limit": {
+        "max": "2147483647",
+        "min": "1",
+        "type": "integer",
+        "default": "8"
+    },
+    "krb_caseins_users": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "krb_server_keyfile": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "FILE:/etc/postgresql-common/krb5.keytab"
+    },
+    "lc_collate": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "C"
+    },
+    "lc_ctype": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "C"
+    },
+    "lc_messages": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "lc_monetary": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "C"
+    },
+    "lc_numeric": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "C"
+    },
+    "lc_time": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "C"
+    },
+    "listen_addresses": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "localhost"
+    },
+    "lo_compat_privileges": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "local_preload_libraries": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "lock_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "log_autovacuum_min_duration": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "log_checkpoints": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_connections": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_destination": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "stderr"
+    },
+    "log_directory": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "log"
+    },
+    "log_disconnections": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_duration": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_error_verbosity": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "default"
+    },
+    "log_executor_stats": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_file_mode": {
+        "max": "511",
+        "min": "0",
+        "type": "integer",
+        "default": "384"
+    },
+    "log_filename": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "postgresql-%Y-%m-%d_%H%M%S.log"
+    },
+    "log_hostname": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_line_prefix": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "%m [%p] "
+    },
+    "log_lock_waits": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_min_duration_sample": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "log_min_duration_statement": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "log_min_error_statement": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "error"
+    },
+    "log_min_messages": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "warning"
+    },
+    "log_parameter_max_length": {
+        "max": "1073741823",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "log_parameter_max_length_on_error": {
+        "max": "1073741823",
+        "min": "-1",
+        "type": "integer",
+        "default": "0"
+    },
+    "log_parser_stats": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_planner_stats": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_recovery_conflict_waits": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_replication_commands": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_rotation_age": {
+        "max": "35791394",
+        "min": "0",
+        "type": "integer",
+        "default": "1440"
+    },
+    "log_rotation_size": {
+        "max": "2097151",
+        "min": "0",
+        "type": "integer",
+        "default": "10240"
+    },
+    "log_statement": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "none"
+    },
+    "log_statement_sample_rate": {
+        "max": "1",
+        "min": "0",
+        "type": "real",
+        "default": "1"
+    },
+    "log_statement_stats": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "log_temp_files": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "log_timezone": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "GMT"
+    },
+    "log_transaction_sample_rate": {
+        "max": "1",
+        "min": "0",
+        "type": "real",
+        "default": "0"
+    },
+    "log_truncate_on_rotation": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "logging_collector": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "logical_decoding_work_mem": {
+        "max": "2147483647",
+        "min": "64",
+        "type": "integer",
+        "default": "65536"
+    },
+    "maintenance_io_concurrency": {
+        "max": "1000",
+        "min": "0",
+        "type": "integer",
+        "default": "10"
+    },
+    "maintenance_work_mem": {
+        "max": "2147483647",
+        "min": "1024",
+        "type": "integer",
+        "default": "65536"
+    },
+    "max_connections": {
+        "max": "262143",
+        "min": "1",
+        "type": "integer",
+        "default": "100"
+    },
+    "max_files_per_process": {
+        "max": "2147483647",
+        "min": "64",
+        "type": "integer",
+        "default": "1000"
+    },
+    "max_function_args": {
+        "max": "100",
+        "min": "100",
+        "type": "integer",
+        "default": "100"
+    },
+    "max_identifier_length": {
+        "max": "63",
+        "min": "63",
+        "type": "integer",
+        "default": "63"
+    },
+    "max_index_keys": {
+        "max": "32",
+        "min": "32",
+        "type": "integer",
+        "default": "32"
+    },
+    "max_locks_per_transaction": {
+        "max": "2147483647",
+        "min": "10",
+        "type": "integer",
+        "default": "64"
+    },
+    "max_logical_replication_workers": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "4"
+    },
+    "max_parallel_maintenance_workers": {
+        "max": "1024",
+        "min": "0",
+        "type": "integer",
+        "default": "2"
+    },
+    "max_parallel_workers": {
+        "max": "1024",
+        "min": "0",
+        "type": "integer",
+        "default": "8"
+    },
+    "max_parallel_workers_per_gather": {
+        "max": "1024",
+        "min": "0",
+        "type": "integer",
+        "default": "2"
+    },
+    "max_pred_locks_per_page": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "2"
+    },
+    "max_pred_locks_per_relation": {
+        "max": "2147483647",
+        "min": "-2147483648",
+        "type": "integer",
+        "default": "-2"
+    },
+    "max_pred_locks_per_transaction": {
+        "max": "2147483647",
+        "min": "10",
+        "type": "integer",
+        "default": "64"
+    },
+    "max_prepared_transactions": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "max_replication_slots": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "10"
+    },
+    "max_slot_wal_keep_size": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "max_stack_depth": {
+        "max": "2147483647",
+        "min": "100",
+        "type": "integer",
+        "default": "100"
+    },
+    "max_standby_archive_delay": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "30000"
+    },
+    "max_standby_streaming_delay": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "30000"
+    },
+    "max_sync_workers_per_subscription": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "2"
+    },
+    "max_wal_senders": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "10"
+    },
+    "max_wal_size": {
+        "max": "2147483647",
+        "min": "2",
+        "type": "integer",
+        "default": "1024"
+    },
+    "max_worker_processes": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "8"
+    },
+    "min_dynamic_shared_memory": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "min_parallel_index_scan_size": {
+        "max": "715827882",
+        "min": "0",
+        "type": "integer",
+        "default": "64"
+    },
+    "min_parallel_table_scan_size": {
+        "max": "715827882",
+        "min": "0",
+        "type": "integer",
+        "default": "1024"
+    },
+    "min_wal_size": {
+        "max": "2147483647",
+        "min": "2",
+        "type": "integer",
+        "default": "80"
+    },
+    "old_snapshot_threshold": {
+        "max": "86400",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "parallel_leader_participation": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "parallel_setup_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "1000"
+    },
+    "parallel_tuple_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "0.1"
+    },
+    "password_encryption": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "scram-sha-256"
+    },
+    "plan_cache_mode": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "auto"
+    },
+    "port": {
+        "max": "65535",
+        "min": "1",
+        "type": "integer",
+        "default": "5432"
+    },
+    "post_auth_delay": {
+        "max": "2147",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "pre_auth_delay": {
+        "max": "60",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "primary_conninfo": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "primary_slot_name": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "promote_trigger_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "quote_all_identifiers": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "random_page_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "4"
+    },
+    "recovery_end_command": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "recovery_init_sync_method": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "fsync"
+    },
+    "recovery_min_apply_delay": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "recovery_target": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "recovery_target_action": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "pause"
+    },
+    "recovery_target_inclusive": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "recovery_target_lsn": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "recovery_target_name": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "recovery_target_time": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "recovery_target_timeline": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "latest"
+    },
+    "recovery_target_xid": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "remove_temp_files_after_crash": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "restart_after_crash": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "restore_command": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "restrict_nonsystem_relation_kind": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "row_security": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "search_path": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "\"$user\", public"
+    },
+    "segment_size": {
+        "max": "131072",
+        "min": "131072",
+        "type": "integer",
+        "default": "131072"
+    },
+    "seq_page_cost": {
+        "max": "1.79769e+308",
+        "min": "0",
+        "type": "real",
+        "default": "1"
+    },
+    "server_encoding": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "SQL_ASCII"
+    },
+    "server_version": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "14.19 (Ubuntu 14.19-0ubuntu0.22.04.1)"
+    },
+    "server_version_num": {
+        "max": "140019",
+        "min": "140019",
+        "type": "integer",
+        "default": "140019"
+    },
+    "session_preload_libraries": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "session_replication_role": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "origin"
+    },
+    "shared_buffers": {
+        "max": "1073741823",
+        "min": "16",
+        "type": "integer",
+        "default": "1024"
+    },
+    "shared_memory_type": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "mmap"
+    },
+    "shared_preload_libraries": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "ssl_ca_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl_cert_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "server.crt"
+    },
+    "ssl_ciphers": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "HIGH:MEDIUM:+3DES:!aNULL"
+    },
+    "ssl_crl_dir": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl_crl_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl_dh_params_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl_ecdh_curve": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "prime256v1"
+    },
+    "ssl_key_file": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "server.key"
+    },
+    "ssl_library": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "OpenSSL"
+    },
+    "ssl_max_protocol_version": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": ""
+    },
+    "ssl_min_protocol_version": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "TLSv1.2"
+    },
+    "ssl_passphrase_command": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "ssl_passphrase_command_supports_reload": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "ssl_prefer_server_ciphers": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "standard_conforming_strings": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "statement_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "stats_temp_directory": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "pg_stat_tmp"
+    },
+    "superuser_reserved_connections": {
+        "max": "262143",
+        "min": "0",
+        "type": "integer",
+        "default": "3"
+    },
+    "synchronize_seqscans": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "synchronous_commit": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "on"
+    },
+    "synchronous_standby_names": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "syslog_facility": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "local0"
+    },
+    "syslog_ident": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "postgres"
+    },
+    "syslog_sequence_numbers": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "syslog_split_messages": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "tcp_keepalives_count": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "tcp_keepalives_idle": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "tcp_keepalives_interval": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "tcp_user_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "temp_buffers": {
+        "max": "1073741823",
+        "min": "100",
+        "type": "integer",
+        "default": "1024"
+    },
+    "temp_file_limit": {
+        "max": "2147483647",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "temp_tablespaces": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "TimeZone": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "GMT"
+    },
+    "timezone_abbreviations": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": null
+    },
+    "trace_notify": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "trace_recovery_messages": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "log"
+    },
+    "trace_sort": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "track_activities": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "track_activity_query_size": {
+        "max": "1048576",
+        "min": "100",
+        "type": "integer",
+        "default": "1024"
+    },
+    "track_commit_timestamp": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "track_counts": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "track_functions": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "none"
+    },
+    "track_io_timing": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "track_wal_io_timing": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "transaction_deferrable": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "transaction_isolation": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "read committed"
+    },
+    "transaction_read_only": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "transform_null_equals": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "unix_socket_directories": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": "/var/run/postgresql"
+    },
+    "unix_socket_group": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "unix_socket_permissions": {
+        "max": "511",
+        "min": "0",
+        "type": "integer",
+        "default": "511"
+    },
+    "update_process_title": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "vacuum_cost_delay": {
+        "max": "100",
+        "min": "0",
+        "type": "real",
+        "default": "0"
+    },
+    "vacuum_cost_limit": {
+        "max": "10000",
+        "min": "1",
+        "type": "integer",
+        "default": "200"
+    },
+    "vacuum_cost_page_dirty": {
+        "max": "10000",
+        "min": "0",
+        "type": "integer",
+        "default": "20"
+    },
+    "vacuum_cost_page_hit": {
+        "max": "10000",
+        "min": "0",
+        "type": "integer",
+        "default": "1"
+    },
+    "vacuum_cost_page_miss": {
+        "max": "10000",
+        "min": "0",
+        "type": "integer",
+        "default": "2"
+    },
+    "vacuum_defer_cleanup_age": {
+        "max": "1000000",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "vacuum_failsafe_age": {
+        "max": "2100000000",
+        "min": "0",
+        "type": "integer",
+        "default": "1600000000"
+    },
+    "vacuum_freeze_min_age": {
+        "max": "1000000000",
+        "min": "0",
+        "type": "integer",
+        "default": "50000000"
+    },
+    "vacuum_freeze_table_age": {
+        "max": "2000000000",
+        "min": "0",
+        "type": "integer",
+        "default": "150000000"
+    },
+    "vacuum_multixact_failsafe_age": {
+        "max": "2100000000",
+        "min": "0",
+        "type": "integer",
+        "default": "1600000000"
+    },
+    "vacuum_multixact_freeze_min_age": {
+        "max": "1000000000",
+        "min": "0",
+        "type": "integer",
+        "default": "5000000"
+    },
+    "vacuum_multixact_freeze_table_age": {
+        "max": "2000000000",
+        "min": "0",
+        "type": "integer",
+        "default": "150000000"
+    },
+    "wal_block_size": {
+        "max": "8192",
+        "min": "8192",
+        "type": "integer",
+        "default": "8192"
+    },
+    "wal_buffers": {
+        "max": "262143",
+        "min": "-1",
+        "type": "integer",
+        "default": "-1"
+    },
+    "wal_compression": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "wal_consistency_checking": {
+        "max": null,
+        "min": null,
+        "type": "string",
+        "default": ""
+    },
+    "wal_init_zero": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "wal_keep_size": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "0"
+    },
+    "wal_level": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "replica"
+    },
+    "wal_log_hints": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "wal_receiver_create_temp_slot": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    },
+    "wal_receiver_status_interval": {
+        "max": "2147483",
+        "min": "0",
+        "type": "integer",
+        "default": "10"
+    },
+    "wal_receiver_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "60000"
+    },
+    "wal_recycle": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "on"
+    },
+    "wal_retrieve_retry_interval": {
+        "max": "2147483647",
+        "min": "1",
+        "type": "integer",
+        "default": "5000"
+    },
+    "wal_segment_size": {
+        "max": "1073741824",
+        "min": "1048576",
+        "type": "integer",
+        "default": "16777216"
+    },
+    "wal_sender_timeout": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "60000"
+    },
+    "wal_skip_threshold": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "2048"
+    },
+    "wal_sync_method": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "fdatasync"
+    },
+    "wal_writer_delay": {
+        "max": "10000",
+        "min": "1",
+        "type": "integer",
+        "default": "200"
+    },
+    "wal_writer_flush_after": {
+        "max": "2147483647",
+        "min": "0",
+        "type": "integer",
+        "default": "128"
+    },
+    "work_mem": {
+        "max": "2147483647",
+        "min": "64",
+        "type": "integer",
+        "default": "4096"
+    },
+    "xmlbinary": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "base64"
+    },
+    "xmloption": {
+        "max": null,
+        "min": null,
+        "type": "enum",
+        "default": "content"
+    },
+    "zero_damaged_pages": {
+        "max": null,
+        "min": null,
+        "type": "bool",
+        "default": "off"
+    }
+}
