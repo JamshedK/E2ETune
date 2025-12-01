@@ -1,3 +1,4 @@
+import os
 import time
 import json
 import json
@@ -53,9 +54,24 @@ def default_run(workload_file, args):
     # get the internal metrics
     internal_metrics = db.fetch_inner_metrics()
     print(f"Internal metrics collected: {internal_metrics}")
+    
+    # Get benchmark name from config
+    benchmark_name = args['benchmark_config']['benchmark']
+    
     # save the internal metrics to a file
-    with open(f"internal_metrics/{workload_file.split('.wg')[0]}_internal_metrics.json", "w") as f:
+    if benchmark_name in ['tpcc', 'ycsb', 'smallbank', 'wikipedia', 'twitter']:
+        # For TPCC: use benchmark subdirectory and full XML filename
+        workload_name = os.path.splitext(os.path.basename(workload_file))[0]  # e.g., "sample_tpcc_config0"
+        metrics_dir = f"internal_metrics/{benchmark_name}"
+        os.makedirs(metrics_dir, exist_ok=True)
+        metrics_file = f"{metrics_dir}/{workload_name}_internal_metrics.json"
+    elif benchmark_name == 'tpch':
+        # For other benchmarks: use old structure
+        metrics_file = f"internal_metrics/{workload_file.split('.wg')[0]}_internal_metrics.json"
+    
+    with open(metrics_file, "w") as f:
         json.dump(internal_metrics, f, indent=4)
+    print(f"Internal metrics saved to: {metrics_file}")
     
     return internal_metrics
 
@@ -63,7 +79,6 @@ class tuner:
     def __init__(self, args, workload_file, internal_metrics):
         self.args = args  # Store args for later use
         self.workload_file = workload_file
-        self.inner_metric_sample = args['tuning_config']['inner_metric_sample']
         self.knobs_detail = parse_knob_config.get_knobs(args['tuning_config']['knob_config'])
         self.logger = utils.get_logger(args['tuning_config']['log_path'])
         self.internal_metrics = internal_metrics
@@ -105,20 +120,34 @@ class tuner:
         runhistory = RunHistory()
         
         print(f"Workload file: {self.workload_file}")
-        # save_workload = self.workload_file.split('olap_workloads/')[1]
-        save_workload = self.workload_file.split('.wg')[0]
+        
+        # Handle both TPCC (.xml) and OLAP (.wg) files
+        if '.xml' in self.workload_file:
+            # TPCC: use just the filename without extension
+            save_workload = os.path.splitext(os.path.basename(self.workload_file))[0]  # sample_tpcc_config0
+        else:
+            # OLAP: use existing logic
+            save_workload = self.workload_file.split('.wg')[0]
 
         print(f"Save workload identifier: {save_workload}")
 
         print("Starting SMAC scenario setup.")
         
+        # Get benchmark name for organized directories
+        benchmark_name = self.args['benchmark_config']['benchmark']
+        
+        # Create directories if they don't exist
+        os.makedirs(f"./{benchmark_name}", exist_ok=True)
+        os.makedirs(f"./models/{benchmark_name}", exist_ok=True)
+        os.makedirs("smac_his", exist_ok=True)
+        
         scenario = Scenario({"run_obj": "quality",   # {runtime,quality}
                         "runcount-limit": 100,   # max. number of function evaluations; for this example set to a low number
                         "cs": cs,               # configuration space
                         "deterministic": "true",
-                        "output_dir": f"./{save_workload}_smac_output",  
+                        "output_dir": f"./{benchmark_name}/{save_workload}_smac_output",  
                         "save_model": "true",
-                        "local_results_path": f"./models/{save_workload}"
+                        "local_results_path": f"./models/{benchmark_name}/{save_workload}"
                         })
         
         smac = SMAC4HPO(scenario=scenario, rng=np.random.RandomState(42),tae_runner=objective_function, runhistory=runhistory)

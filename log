@@ -1,0 +1,189 @@
+
+[2025-11-07 21:16:11,851:smbo.py#L172:INFO]: Running initial design
+[2025-11-07 21:16:11,851:smbo.py#L172:INFO]: Running initial design
+[2025-11-07 21:16:11,880:intensification.py#L267:INFO]: First run, no incumbent provided; challenger is assumed to be the incumbent
+[2025-11-07 21:16:11,880:intensification.py#L267:INFO]: First run, no incumbent provided; challenger is assumed to be the incumbent
+[2025-11-07 21:16:20,125:benchbase_runner.py#L161:INFO]: Copied config to BenchBase config directory: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml
+[2025-11-07 21:16:20,125:benchbase_runner.py#L161:INFO]: Copied config to BenchBase config directory: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml
+[2025-11-07 21:16:20,125:benchbase_runner.py#L139:INFO]: Updated config file: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml (preserving comments)
+[2025-11-07 21:16:20,125:benchbase_runner.py#L139:INFO]: Updated config file: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml (preserving comments)
+[2025-11-07 21:16:20,125:benchbase_runner.py#L40:INFO]: Running BenchBase with benchmark: tpcc
+[2025-11-07 21:16:20,125:benchbase_runner.py#L40:INFO]: Running BenchBase with benchmark: tpcc
+[2025-11-07 21:16:20,125:benchbase_runner.py#L41:INFO]: Command: bash /home/farshedvardtgem22/E2ETune/run_benchmark.sh tpcc 1762550180 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:16:20,125:benchbase_runner.py#L41:INFO]: Command: bash /home/farshedvardtgem22/E2ETune/run_benchmark.sh tpcc 1762550180 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:16:20,125:benchbase_runner.py#L42:INFO]: Results will be saved to: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:16:20,125:benchbase_runner.py#L42:INFO]: Results will be saved to: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:17:21,955:benchbase_runner.py#L50:INFO]: BenchBase running success
+[2025-11-07 21:17:21,955:benchbase_runner.py#L50:INFO]: BenchBase running success
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.metrics.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.metrics.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L79:INFO]: Saved summary file as: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L79:INFO]: Saved summary file as: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.NewOrder.csv
+[2025-11-07 21:17:21,956:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.NewOrder.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.raw.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.raw.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.params.json
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.params.json
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.Payment.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.Payment.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.StockLevel.csv
+[2025-11-07 21:17:21,957:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.StockLevel.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.config.xml
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.config.xml
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.Delivery.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.Delivery.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_1762550180.log
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_1762550180.log
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.samples.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.samples.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.OrderStatus.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.OrderStatus.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-17-21.results.csv
+[2025-11-07 21:17:21,958:benchbase_runner.py#L97:INFO]: Parsed throughput from summary.json: 1957.0136583452713
+[2025-11-07 21:17:21,958:benchbase_runner.py#L97:INFO]: Parsed throughput from summary.json: 1957.0136583452713
+[2025-11-07 21:17:21,958:benchbase_runner.py#L63:INFO]: BenchBase tpcc throughput: 1957.0136583452713
+[2025-11-07 21:17:21,958:benchbase_runner.py#L63:INFO]: BenchBase tpcc throughput: 1957.0136583452713
+[2025-11-07 21:17:21,960:intensification.py#L520:INFO]: First run, no incumbent provided; challenger is assumed to be the incumbent
+[2025-11-07 21:17:21,960:intensification.py#L520:INFO]: First run, no incumbent provided; challenger is assumed to be the incumbent
+[2025-11-07 21:17:21,960:intensification.py#L704:INFO]: Updated estimated cost of incumbent on 1 runs: -1957.0137
+[2025-11-07 21:17:21,960:intensification.py#L704:INFO]: Updated estimated cost of incumbent on 1 runs: -1957.0137
+[2025-11-07 21:17:36,794:benchbase_runner.py#L161:INFO]: Copied config to BenchBase config directory: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml
+[2025-11-07 21:17:36,794:benchbase_runner.py#L161:INFO]: Copied config to BenchBase config directory: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml
+[2025-11-07 21:17:36,794:benchbase_runner.py#L139:INFO]: Updated config file: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml (preserving comments)
+[2025-11-07 21:17:36,794:benchbase_runner.py#L139:INFO]: Updated config file: /home/farshedvardtgem22/E2ETune/benchbase/target/target/benchbase-postgres/config/postgres/sample_tpcc_config0.xml (preserving comments)
+[2025-11-07 21:17:36,794:benchbase_runner.py#L40:INFO]: Running BenchBase with benchmark: tpcc
+[2025-11-07 21:17:36,794:benchbase_runner.py#L40:INFO]: Running BenchBase with benchmark: tpcc
+[2025-11-07 21:17:36,794:benchbase_runner.py#L41:INFO]: Command: bash /home/farshedvardtgem22/E2ETune/run_benchmark.sh tpcc 1762550256 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:17:36,794:benchbase_runner.py#L41:INFO]: Command: bash /home/farshedvardtgem22/E2ETune/run_benchmark.sh tpcc 1762550256 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0 /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:17:36,794:benchbase_runner.py#L42:INFO]: Results will be saved to: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:17:36,794:benchbase_runner.py#L42:INFO]: Results will be saved to: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0
+[2025-11-07 21:18:38,705:benchbase_runner.py#L50:INFO]: BenchBase running success
+[2025-11-07 21:18:38,705:benchbase_runner.py#L50:INFO]: BenchBase running success
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.Delivery.csv
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.Delivery.csv
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.metrics.json
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.metrics.json
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.config.xml
+[2025-11-07 21:18:38,705:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.config.xml
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.params.json
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.params.json
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.Payment.csv
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.Payment.csv
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.csv
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.csv
+[2025-11-07 21:18:38,706:benchbase_runner.py#L79:INFO]: Saved summary file as: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:18:38,706:benchbase_runner.py#L79:INFO]: Saved summary file as: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/summary.json
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.samples.csv
+[2025-11-07 21:18:38,706:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.samples.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.raw.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.raw.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.NewOrder.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.NewOrder.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.StockLevel.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.StockLevel.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.OrderStatus.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_2025-11-07_21-18-37.results.OrderStatus.csv
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_1762550256.log
+[2025-11-07 21:18:38,707:benchbase_runner.py#L84:INFO]: Removed file: /home/farshedvardtgem22/E2ETune/stress_test_results/tpcc_results/sample_tpcc_config0/tpcc_1762550256.log
+[2025-11-07 21:18:38,708:benchbase_runner.py#L97:INFO]: Parsed throughput from summary.json: 2182.16260922625
+[2025-11-07 21:18:38,708:benchbase_runner.py#L97:INFO]: Parsed throughput from summary.json: 2182.16260922625
+[2025-11-07 21:18:38,708:benchbase_runner.py#L63:INFO]: BenchBase tpcc throughput: 2182.16260922625
+[2025-11-07 21:18:38,708:benchbase_runner.py#L63:INFO]: BenchBase tpcc throughput: 2182.16260922625
+[2025-11-07 21:18:38,709:abstract_racer.py#L393:INFO]: Challenger (-2182.1626) is better than incumbent (-1957.0137) on 1 runs.
+[2025-11-07 21:18:38,709:abstract_racer.py#L393:INFO]: Challenger (-2182.1626) is better than incumbent (-1957.0137) on 1 runs.
+[2025-11-07 21:18:38,709:abstract_racer.py#L413:INFO]: Changes in incumbent:
+[2025-11-07 21:18:38,709:abstract_racer.py#L413:INFO]: Changes in incumbent:
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_analyze_scale_factor : 9.022416733205318 -> 59.09048430621624
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_analyze_scale_factor : 9.022416733205318 -> 59.09048430621624
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_analyze_threshold : 1098782943 -> 269378350
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_analyze_threshold : 1098782943 -> 269378350
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_max_workers : 67 -> 121
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_max_workers : 67 -> 121
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_naptime : 1298967 -> 364983
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_naptime : 1298967 -> 364983
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_cost_delay : 83 -> 46
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_cost_delay : 83 -> 46
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_cost_limit : 8117 -> 162
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_cost_limit : 8117 -> 162
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_scale_factor : 84.30853514000773 -> 47.69385075196624
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_scale_factor : 84.30853514000773 -> 47.69385075196624
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_threshold : 1939469733 -> 722834952
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   autovacuum_vacuum_threshold : 1939469733 -> 722834952
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   backend_flush_after : 25 -> 238
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   backend_flush_after : 25 -> 238
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_delay : 2921 -> 9452
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_delay : 2921 -> 9452
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_flush_after : 174 -> 93
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_flush_after : 174 -> 93
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_lru_maxpages : 582 -> 187
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_lru_maxpages : 582 -> 187
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_lru_multiplier : 7 -> 3
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   bgwriter_lru_multiplier : 7 -> 3
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   checkpoint_completion_target : 0.3461359143257141 -> 0.9411872830241919
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   checkpoint_completion_target : 0.3461359143257141 -> 0.9411872830241919
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   checkpoint_flush_after : 250 -> 108
+[2025-11-07 21:18:38,709:abstract_racer.py#L416:INFO]:   checkpoint_flush_after : 250 -> 108
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   checkpoint_timeout : 2284 -> 1042
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   checkpoint_timeout : 2284 -> 1042
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   commit_delay : 36231 -> 83081
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   commit_delay : 36231 -> 83081
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   commit_siblings : 954 -> 447
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   commit_siblings : 954 -> 447
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   cursor_tuple_fraction : 0.1377423545345664 -> 0.5100215626880527
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   cursor_tuple_fraction : 0.1377423545345664 -> 0.5100215626880527
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   deadlock_timeout : 1408939122 -> 727367336
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   deadlock_timeout : 1408939122 -> 727367336
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   default_statistics_target : 4358 -> 5797
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   default_statistics_target : 4358 -> 5797
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   effective_cache_size : 1394533168 -> 612946166
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   effective_cache_size : 1394533168 -> 612946166
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   effective_io_concurrency : 454 -> 862
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   effective_io_concurrency : 454 -> 862
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   from_collapse_limit : 1798991148 -> 181234394
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   from_collapse_limit : 1798991148 -> 181234394
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_effort : 3 -> 8
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_effort : 3 -> 8
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_generations : 159642294 -> 2082024641
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_generations : 159642294 -> 2082024641
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_pool_size : 1264875639 -> 344736214
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_pool_size : 1264875639 -> 344736214
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_seed : 0.41606879886239767 -> 0.5773294121026993
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_seed : 0.41606879886239767 -> 0.5773294121026993
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_threshold : 173074473 -> 1410184352
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   geqo_threshold : 173074473 -> 1410184352
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   join_collapse_limit : 74037612 -> 2014285460
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   join_collapse_limit : 74037612 -> 2014285460
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   maintenance_work_mem : 957667097 -> 1770346271
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   maintenance_work_mem : 957667097 -> 1770346271
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   max_connections : 1419 -> 2691
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   max_connections : 1419 -> 2691
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   max_wal_senders : 22 -> 29
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   max_wal_senders : 22 -> 29
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   shared_buffers : 217296 -> 3215730
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   shared_buffers : 217296 -> 3215730
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   temp_buffers : 70276608 -> 978368191
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   temp_buffers : 70276608 -> 978368191
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   temp_file_limit : 118208495 -> 1375887961
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   temp_file_limit : 118208495 -> 1375887961
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_delay : 63 -> 9
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_delay : 63 -> 9
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_limit : 3691 -> 6208
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_limit : 3691 -> 6208
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_dirty : 4598 -> 7472
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_dirty : 4598 -> 7472
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_hit : 7434 -> 1318
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_hit : 7434 -> 1318
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_miss : 312 -> 7972
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   vacuum_cost_page_miss : 312 -> 7972
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   wal_buffers : 9358 -> 118787
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   wal_buffers : 9358 -> 118787
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   wal_writer_delay : 9009 -> 213
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   wal_writer_delay : 9009 -> 213
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   work_mem : 1668439634 -> 409864143
+[2025-11-07 21:18:38,710:abstract_racer.py#L416:INFO]:   work_mem : 1668439634 -> 409864143

@@ -1,0 +1,26 @@
+nohup: ignoring input
+/home/farshedvardtgem22/miniconda3/envs/e2etune/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/farshedvardtgem22/miniconda3/envs/e2etune/lib/python3.8/site-packages/paramiko/transport.py:258: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+{'database_config': {'host': 'localhost', 'port': '5432', 'user': 'postgres', 'password': '123456', 'database': 'tpcc_50', 'data_path': '/var/lib/postgresql/14/main'}, 'tuning_config': {'knob_config': 'knob_config/knob_config_pg14.json', 'log_path': 'tpcc_log_file'}, 'benchmark_config': {'benchmark': 'tpcc', 'tool': 'benchbase', 'type': 'oltp', 'config_path': '0', 'benchbase_jar': '/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres/benchbase.jar', 'workload_path': 'oltp_workloads/tpcc', 'stress_test_results_path': './stress_test_results', 'log_path': 'logs/olap.log', 'thread': '4'}, 'surrogate_config': {'model_name': 'random_forest', 'model_path': 'surrogate/random_forest_model4.pkl', 'feature_path': 'SuperWG/feature.json'}}
+Start time (unix seconds): 1762728256
+Begin tuning for workload: 0
+tune for workload: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+Start time for workload (unix seconds): 1762728256
+📦 Removing corrupted postgresql.auto.conf...
+⏳ Waiting briefly...
+🔁 Restarting PostgreSQL using pg_ctlcluster...
+✅ PostgreSQL restarted successfully.
+Recreating tpcc_50 database from template...
+Terminating connections to tpcc_50...
+ pg_terminate_backend 
+----------------------
+(0 rows)
+
+Dropping database tpcc_50...
+DROP DATABASE
+Creating database tpcc_50 from template...
+CREATE DATABASE
+Database tpcc_50 recreated from tpcc_50_template successfully!
+You can now run the optimization script.

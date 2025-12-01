@@ -361,4 +361,58 @@ class Database:
             print(f"Error removing postgresql.auto.conf: {e}")
             raise e
 
+    def get_all_pg_knobs(self):
+        """Get all knob details from PostgreSQL"""
+        conn = self.get_conn()
+        cursor = conn.cursor()
+        
+        cursor.execute("""
+            SELECT name, vartype, min_val, max_val, boot_val
+            FROM pg_settings
+        """)
+        
+        knob_details = {}
+        for name, vartype, min_val, max_val, boot_val in cursor.fetchall():
+            knob_details[name] = {
+                "max": max_val,
+                "min": min_val,
+                "type": vartype,
+                "default": boot_val
+            }
+        
+        cursor.close()
+        conn.close()
+        
+        # Save to knob_config directory
+        filepath = "knob_config/all_pg14_knobs_part2.json"
+        with open(filepath, 'w') as f:
+            json.dump(knob_details, f, indent=4)
+        
+        print(f"All PostgreSQL knobs saved to {filepath}")
+        return knob_details
+
+    def recreate_from_template(self):
+        """Recreate database from template using the copy_db script"""
+        try:
+            print(f"Recreating database {self.database} from template...")
+            result = subprocess.run(['bash', 'scripts/copy_db_from_template.sh', self.database], text=True, timeout=60)
+            
+            # Print the shell script output to capture it in nohup log
+            if result.stdout:
+                print(result.stdout, end='')  # end='' to avoid extra newlines
+            if result.stderr:
+                print(result.stderr, end='')
+            
+            if result.returncode == 0:
+                print(f"Database {self.database} recreated successfully from template")
+                time.sleep(2)  # Give PostgreSQL time to settle
+                return True
+            else:
+                print(f"Failed to recreate database: {result.stderr}")
+                return False
+                
+        except Exception as e:
+            print(f"Error recreating database from template: {e}")
+            return False
+
 

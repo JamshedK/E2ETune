@@ -3,6 +3,7 @@ import logging
 import time
 import json
 import shutil
+import re
 
 class BenchBaseRunner:
     def __init__(self, args, logger=None):
@@ -34,12 +35,13 @@ class BenchBaseRunner:
         script_path = os.path.abspath('run_benchmark.sh')
         timestamp = int(time.time())
         
-        # The script expects: BENCHNAME TIMESTAMP OUTPUTDIR OUTPUTLOG
-        command = f'bash {script_path} {benchmark_name.lower()} {timestamp} {workload_results_dir} {workload_results_dir}'
+        # The script expects: BENCHNAME TIMESTAMP OUTPUTDIR OUTPUTLOG CONFIGFILE
+        config_filename = os.path.basename(workload_path)
+        command = f'bash {script_path} {benchmark_name.lower()} {timestamp} {workload_results_dir} {workload_results_dir} {config_filename}'
         
-        self.logger.info(f'Running BenchBase with benchmark: {benchmark_name}')
-        self.logger.info(f'Command: {command}')
-        self.logger.info(f'Results will be saved to: {workload_results_dir}')
+        print(f'Running BenchBase with benchmark: {benchmark_name}')
+        print(f'Config file: {config_filename} ')
+        print(f'Results will be saved to: {workload_results_dir}')
         
         state = os.system(command)
         
@@ -47,39 +49,53 @@ class BenchBaseRunner:
         # self.cleanup_config(benchbase_config)
         
         if state == 0:
-            self.logger.info('BenchBase running success')
+            print('BenchBase running success')
         else:
-            self.logger.error(f'BenchBase running error - exit code: {state}')
+            print(f'BenchBase running error - exit code: {state}')
             return 0.0
+
+        # sleep for a while to ensure files are written
+        time.sleep(2)
         
         # Clean up results and find summary.json
         summary_path = self.clean_and_find_summary(workload_results_dir)
         if not summary_path:
-            self.logger.error('No summary.json found in results')
+            print('No summary.json found in results')
             return 0.0
         
         # Parse throughput from summary.json
         throughput = self.parse_summary_json(summary_path)
-        self.logger.info(f'BenchBase {benchmark_name} throughput: {throughput}')
+        print(f'BenchBase {benchmark_name} throughput: {throughput}')
         
         return throughput
     
     def clean_and_find_summary(self, results_dir):
-        """Clean up results directory and find .summary.json file."""
+        """Find summary.json file, archive it in summary/ subdirectory, and delete everything else."""
         summary_path = None
+        
+        # Create summary subdirectory
+        summary_archive_dir = os.path.join(results_dir, 'summary')
+        os.makedirs(summary_archive_dir, exist_ok=True)
         
         # Find .summary.json file and remove others
         for file in os.listdir(results_dir):
             file_path = os.path.join(results_dir, file)
             if file.endswith('.summary.json'):
-                summary_path = file_path
+                # Archive the original summary file with its timestamp name
+                archived_path = os.path.join(summary_archive_dir, file)
+                shutil.copy2(file_path, archived_path)
+                print(f'Archived summary file: {archived_path}')
+                
+                # Also save as 'summary.json' in main directory
+                final_summary_path = os.path.join(results_dir, 'summary.json')
+                shutil.move(file_path, final_summary_path)
+                summary_path = final_summary_path
+                print(f'Saved summary file as: {final_summary_path}')
             else:
-                # Remove non-.summary.json files
-                try:
-                    if os.path.isfile(file_path):
-                        os.remove(file_path)
-                except Exception as e:
-                    self.logger.warning(f'Could not remove file {file_path}: {e}')
+                # Delete everything else (except our summary subdirectory)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+                    print(f'Removed file: {file_path}')
         
         return summary_path
     
@@ -92,11 +108,11 @@ class BenchBaseRunner:
             # Get throughput from metrics section
             throughput = data["Throughput (requests/second)"]
             
-            self.logger.info(f'Parsed throughput from summary.json: {throughput}')
+            print(f'Parsed throughput from summary.json: {throughput}')
             return throughput
             
         except Exception as e:
-            self.logger.error(f'Error parsing summary.json: {e}')
+            print(f'Error parsing summary.json: {e}')
             return 0.0
     
     def update_config_file(self, config_file, benchmark_name):
@@ -115,9 +131,6 @@ class BenchBaseRunner:
             
             new_url = f"jdbc:postgresql://{host}:{port}/{database}?sslmode=disable&amp;ApplicationName={benchmark_name}&amp;reWriteBatchedInserts=true"
             
-            # Use regex to replace values while preserving XML structure and comments
-            import re
-            
             # Update URL
             content = re.sub(r'<url>.*?</url>', f'<url>{new_url}</url>', content)
             
@@ -127,39 +140,55 @@ class BenchBaseRunner:
             # Update password
             content = re.sub(r'<password>.*?</password>', f'<password>{password}</password>', content)
             
+            if database == 'ycsb':
+                # update the scaling factor to 3600 for more challenging workload
+                content = re.sub(r'<scalefactor>.*?</scalefactor>', '<scalefactor>3600</scalefactor>', content)
+                # update rate to 15000
+                content = re.sub(r'<rate>.*?</rate>', '<rate>70000</rate>', content)
+            if database == 'wikipedia':
+                content = re.sub(r'<rate>.*?</rate>', '<rate>unlimited</rate>', content)
+                # set scale factor to 22
+                content = re.sub(r'<scalefactor>.*?</scalefactor>', '<scalefactor>22</scalefactor>', content)
+            if database == 'twitter':
+                content = re.sub(r'<scalefactor>.*?</scalefactor>', '<scalefactor>80</scalefactor>', content)
+                content = re.sub(r'<rate>.*?</rate>', '<rate>unlimited</rate>', content)
+            if database == 'smallbank':
+                content = re.sub(r'<scalefactor>.*?</scalefactor>', '<scalefactor>45</scalefactor>', content)
+                content = re.sub(r'<rate>.*?</rate>', '<rate>unlimited</rate>', content)
+
+            content = re.sub(r'<time>.*?</time>', '<time>60</time>', content)
             # Update terminals
-            content = re.sub(r'<terminals>.*?</terminals>', '<terminals>8</terminals>', content)
+            content = re.sub(r'<terminals>.*?</terminals>', '<terminals>16</terminals>', content)
             
             # Write back to file
             with open(config_file, 'w', encoding='utf-8') as f:
                 f.write(content)
             
-            self.logger.info(f'Updated config file: {config_file} (preserving comments)')
+            print(f'Updated config file: {config_file} (preserving comments)')
             
         except Exception as e:
-            self.logger.error(f'Error updating config file {config_file}: {e}')
+            print(f'Error updating config file {config_file}: {e}')
     
     def copy_config_to_benchbase(self, workload_path, benchmark_name):
-        # Copy config file to BenchBase config directory and update it
+        # Update original config file first, then copy to BenchBase config directory
     
+        # Update the original config file with database settings
+        self.update_config_file(workload_path, benchmark_name)
+        
         # Get BenchBase directory and config path
         benchbase_jar = self.benchmark_config.get('benchbase_jar', './benchbase/target/benchbase-postgres/benchbase.jar')
         benchbase_dir = os.path.dirname(os.path.dirname(benchbase_jar))  # Go up two levels from jar to benchbase root
         
         # Create the config directory path: target/benchbase-postgres/config/postgres
-        config_dir = os.path.join(benchbase_dir, 'target', 'benchbase-postgres', 'config', 'postgres')
+        config_dir = os.path.join(benchbase_dir, 'benchbase-postgres', 'config', 'postgres')
         os.makedirs(config_dir, exist_ok=True)
         
-        # Copy config file to the correct config directory
-        original_config = os.path.abspath(workload_path)
+        # Copy with the actual filename
         config_filename = os.path.basename(workload_path)
         benchbase_config = os.path.join(config_dir, config_filename)
         
-        shutil.copy2(original_config, benchbase_config)
-        self.logger.info(f"Copied config to BenchBase config directory: {benchbase_config}")
-        
-        # Update the copied config file with database settings
-        self.update_config_file(benchbase_config, benchmark_name)
+        shutil.copy2(workload_path, benchbase_config)
+        print(f"Copied updated config to BenchBase config directory: {benchbase_config}")
         
         return benchbase_config, benchbase_dir
     
@@ -167,7 +196,7 @@ class BenchBaseRunner:
         # Remove the temporary config file
         try:
             os.remove(config_file)
-            self.logger.info(f"Cleaned up config file: {config_file}")
+            print(f"Cleaned up config file: {config_file}")
         except Exception as e:
             self.logger.warning(f"Could not cleanup config file {config_file}: {e}")
     

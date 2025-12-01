@@ -1,6 +1,6 @@
 benchbase/
 __pycache__/
 *.pyc
-**_smac_output/
 local_model/
 stress_test_results/
+tmp/

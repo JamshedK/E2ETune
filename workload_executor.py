@@ -22,6 +22,14 @@ class workload_executor:
         Returns: performance score (QPS)
         """
         print("Workload executor is called")
+        
+        # Step 0: For OLTP workloads, recreate database from template first
+        tool = self.benchmark_config.get('tool', 'dwg').lower()
+        # if tool == 'benchbase':
+        #     print("Step 0: Recreating database from template for clean OLTP benchmark...")
+        #     if not self.db.recreate_from_template():
+        #         print("Warning: Failed to recreate database from template, continuing anyway...")
+        
         print(f"Step 1: Change the database knobs")
         temp_config = copy.deepcopy(config)
         # Step 1: Apply configuration
@@ -30,7 +38,6 @@ class workload_executor:
             self.db.change_knob(temp_config)
         
         # Step 2: Run workload based on tool configuration
-        tool = self.benchmark_config.get('tool', 'dwg').lower()
         log_file = self.benchmark_config['log_path']
         
         if tool == 'benchbase':

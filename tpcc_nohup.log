@@ -1,0 +1,288 @@
+nohup: ignoring input
+/home/farshedvardtgem22/miniconda3/envs/e2etune/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/farshedvardtgem22/miniconda3/envs/e2etune/lib/python3.8/site-packages/paramiko/transport.py:258: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+{'database_config': {'host': 'localhost', 'port': '5432', 'user': 'postgres', 'password': '123456', 'database': 'tpcc_50', 'data_path': '/var/lib/postgresql/14/main'}, 'tuning_config': {'knob_config': 'knob_config/knob_config_pg14.json', 'log_path': 'tpcc_log_file'}, 'benchmark_config': {'benchmark': 'tpcc', 'tool': 'benchbase', 'type': 'oltp', 'config_path': '0', 'benchbase_jar': '/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres/benchbase.jar', 'workload_path': 'oltp_workloads/tpcc', 'stress_test_results_path': './stress_test_results', 'log_path': 'logs/olap.log', 'thread': '4'}, 'surrogate_config': {'model_name': 'random_forest', 'model_path': 'surrogate/random_forest_model4.pkl', 'feature_path': 'SuperWG/feature.json'}}
+Start time (unix seconds): 1762716010
+Begin tuning for workload: 0
+tune for workload: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+Start time for workload (unix seconds): 1762716010
+📦 Removing corrupted postgresql.auto.conf...
+⏳ Waiting briefly...
+🔁 Restarting PostgreSQL using pg_ctlcluster...
+✅ PostgreSQL restarted successfully.
+Recreating tpcc_50 database from template...
+Terminating connections to tpcc_50...
+ pg_terminate_backend 
+----------------------
+(0 rows)
+
+Dropping database tpcc_50...
+DROP DATABASE
+Creating database tpcc_50 from template...
+CREATE DATABASE
+Database tpcc_50 recreated from tpcc_50_template successfully!
+You can now run the optimization script.
+Running default configuration for workload
+Removed postgresql.auto.conf file (if it existed).
+Resetting inner metrics...
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Internal metrics reset successfully.
+Workload executor is called
+Step 1: Change the database knobs
+Step 2: Run OLTP workload using BenchBase
+Workload path: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres
+Configuration: None, QPS: -2181.565375725356
+Default configuration run complete for workload
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Fetched 14 internal metrics
+Internal metrics: {'xact_commit': 56458.0, 'xact_rollback': 246647.0, 'blks_read': 881162.0, 'blks_hit': 30516994.0, 'tup_returned': 23076751.0, 'tup_fetched': 5855419.0, 'tup_inserted': 470939.0, 'conflicts': 0.0, 'tup_updated': 1304214.0, 'tup_deleted': 67134.0, 'disk_read_count': 910970.0, 'disk_write_count': 450880.0, 'disk_read_bytes': 7462666240.0, 'disk_write_bytes': 3693608960.0}
+Internal metrics collected: {'xact_commit': 56458.0, 'xact_rollback': 246647.0, 'blks_read': 881162.0, 'blks_hit': 30516994.0, 'tup_returned': 23076751.0, 'tup_fetched': 5855419.0, 'tup_inserted': 470939.0, 'conflicts': 0.0, 'tup_updated': 1304214.0, 'tup_deleted': 67134.0, 'disk_read_count': 910970.0, 'disk_write_count': 450880.0, 'disk_read_bytes': 7462666240.0, 'disk_write_bytes': 3693608960.0}
+Internal metrics saved to: internal_metrics/tpcc/sample_tpcc_config50_internal_metrics.json
+Starting tuning for workload: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+Beginning SMAC optimization
+Length of knobs: 44
+Initialized configuration space with knobs.
+Workload file: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+Save workload identifier: sample_tpcc_config50
+Starting SMAC scenario setup.
+Evaluating configuration: {'autovacuum_analyze_scale_factor': 9.022416733205318, 'autovacuum_analyze_threshold': 1098782943, 'autovacuum_max_workers': 67, 'autovacuum_naptime': 1298967, 'autovacuum_vacuum_cost_delay': 83, 'autovacuum_vacuum_cost_limit': 8117, 'autovacuum_vacuum_scale_factor': 84.30853514000773, 'autovacuum_vacuum_threshold': 1939469733, 'backend_flush_after': 25, 'bgwriter_delay': 2921, 'bgwriter_flush_after': 174, 'bgwriter_lru_maxpages': 582, 'bgwriter_lru_multiplier': 7, 'checkpoint_completion_target': 0.3461359143257141, 'checkpoint_flush_after': 250, 'checkpoint_timeout': 2284, 'commit_delay': 36231, 'commit_siblings': 954, 'cursor_tuple_fraction': 0.1377423545345664, 'deadlock_timeout': 1408939122, 'default_statistics_target': 4358, 'effective_cache_size': 1394533168, 'effective_io_concurrency': 454, 'from_collapse_limit': 1798991148, 'geqo_effort': 3, 'geqo_generations': 159642294, 'geqo_pool_size': 1264875639, 'geqo_seed': 0.41606879886239767, 'geqo_threshold': 173074473, 'join_collapse_limit': 74037612, 'maintenance_work_mem': 957667097, 'max_connections': 1419, 'max_wal_senders': 22, 'shared_buffers': 217296, 'temp_buffers': 70276608, 'temp_file_limit': 118208495, 'vacuum_cost_delay': 63, 'vacuum_cost_limit': 3691, 'vacuum_cost_page_dirty': 4598, 'vacuum_cost_page_hit': 7434, 'vacuum_cost_page_miss': 312, 'wal_buffers': 9358, 'wal_writer_delay': 9009, 'work_mem': 1668439634}
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Set autovacuum_analyze_scale_factor = 9.022416733205318
+Set autovacuum_analyze_threshold = 1098782943
+Set autovacuum_max_workers = 67
+Set autovacuum_naptime = 1298967
+Set autovacuum_vacuum_cost_delay = 83
+Set autovacuum_vacuum_cost_limit = 8117
+Set autovacuum_vacuum_scale_factor = 84.30853514000773
+Set autovacuum_vacuum_threshold = 1939469733
+Set backend_flush_after = 25
+Set bgwriter_delay = 2921
+Set bgwriter_flush_after = 174
+Set bgwriter_lru_maxpages = 582
+Set bgwriter_lru_multiplier = 7
+Set checkpoint_completion_target = 0.3461359143257141
+Set checkpoint_flush_after = 250
+Set checkpoint_timeout = 2284
+Set commit_delay = 36231
+Set commit_siblings = 954
+Set cursor_tuple_fraction = 0.1377423545345664
+Set deadlock_timeout = 1408939122
+Set default_statistics_target = 4358
+Set effective_cache_size = 1394533168
+Set effective_io_concurrency = 454
+Set from_collapse_limit = 1798991148
+Set geqo_effort = 3
+Set geqo_generations = 159642294
+Set geqo_pool_size = 1264875639
+Set geqo_seed = 0.41606879886239767
+Set geqo_threshold = 173074473
+Set join_collapse_limit = 74037612
+Set maintenance_work_mem = 957667097
+Set max_connections = 1419
+Set max_wal_senders = 22
+Set shared_buffers = 217296
+Set temp_buffers = 70276608
+Set temp_file_limit = 118208495
+Set vacuum_cost_delay = 63
+Set vacuum_cost_limit = 3691
+Set vacuum_cost_page_dirty = 4598
+Set vacuum_cost_page_hit = 7434
+Set vacuum_cost_page_miss = 312
+Set wal_buffers = 9358
+Set wal_writer_delay = 9009
+Set work_mem = 1668439634
+Applied knobs successfully!
+Stopping PostgreSQL 14...
+Starting PostgreSQL 14...
+PostgreSQL 14 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLTP workload using BenchBase
+Workload path: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres
+Configuration: {'autovacuum_analyze_scale_factor': 9.022416733205318, 'autovacuum_analyze_threshold': 1098782943, 'autovacuum_max_workers': 67, 'autovacuum_naptime': 1298967, 'autovacuum_vacuum_cost_delay': 83, 'autovacuum_vacuum_cost_limit': 8117, 'autovacuum_vacuum_scale_factor': 84.30853514000773, 'autovacuum_vacuum_threshold': 1939469733, 'backend_flush_after': 25, 'bgwriter_delay': 2921, 'bgwriter_flush_after': 174, 'bgwriter_lru_maxpages': 582, 'bgwriter_lru_multiplier': 7, 'checkpoint_completion_target': 0.3461359143257141, 'checkpoint_flush_after': 250, 'checkpoint_timeout': 2284, 'commit_delay': 36231, 'commit_siblings': 954, 'cursor_tuple_fraction': 0.1377423545345664, 'deadlock_timeout': 1408939122, 'default_statistics_target': 4358, 'effective_cache_size': 1394533168, 'effective_io_concurrency': 454, 'from_collapse_limit': 1798991148, 'geqo_effort': 3, 'geqo_generations': 159642294, 'geqo_pool_size': 1264875639, 'geqo_seed': 0.41606879886239767, 'geqo_threshold': 173074473, 'join_collapse_limit': 74037612, 'maintenance_work_mem': 957667097, 'max_connections': 1419, 'max_wal_senders': 22, 'shared_buffers': 217296, 'temp_buffers': 70276608, 'temp_file_limit': 118208495, 'vacuum_cost_delay': 63, 'vacuum_cost_limit': 3691, 'vacuum_cost_page_dirty': 4598, 'vacuum_cost_page_hit': 7434, 'vacuum_cost_page_miss': 312, 'wal_buffers': 9358, 'wal_writer_delay': 9009, 'work_mem': 1668439634}, QPS: -1983.3326261430302
+Performance (QPS): -1983.3326261430302
+Evaluating configuration: {'autovacuum_analyze_scale_factor': 59.09048430621624, 'autovacuum_analyze_threshold': 269378350, 'autovacuum_max_workers': 121, 'autovacuum_naptime': 364983, 'autovacuum_vacuum_cost_delay': 46, 'autovacuum_vacuum_cost_limit': 162, 'autovacuum_vacuum_scale_factor': 47.69385075196624, 'autovacuum_vacuum_threshold': 722834952, 'backend_flush_after': 238, 'bgwriter_delay': 9452, 'bgwriter_flush_after': 93, 'bgwriter_lru_maxpages': 187, 'bgwriter_lru_multiplier': 3, 'checkpoint_completion_target': 0.9411872830241919, 'checkpoint_flush_after': 108, 'checkpoint_timeout': 1042, 'commit_delay': 83081, 'commit_siblings': 447, 'cursor_tuple_fraction': 0.5100215626880527, 'deadlock_timeout': 727367336, 'default_statistics_target': 5797, 'effective_cache_size': 612946166, 'effective_io_concurrency': 862, 'from_collapse_limit': 181234394, 'geqo_effort': 8, 'geqo_generations': 2082024641, 'geqo_pool_size': 344736214, 'geqo_seed': 0.5773294121026993, 'geqo_threshold': 1410184352, 'join_collapse_limit': 2014285460, 'maintenance_work_mem': 1770346271, 'max_connections': 2691, 'max_wal_senders': 29, 'shared_buffers': 3215730, 'temp_buffers': 978368191, 'temp_file_limit': 1375887961, 'vacuum_cost_delay': 9, 'vacuum_cost_limit': 6208, 'vacuum_cost_page_dirty': 7472, 'vacuum_cost_page_hit': 1318, 'vacuum_cost_page_miss': 7972, 'wal_buffers': 118787, 'wal_writer_delay': 213, 'work_mem': 409864143}
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Set autovacuum_analyze_scale_factor = 59.09048430621624
+Set autovacuum_analyze_threshold = 269378350
+Set autovacuum_max_workers = 121
+Set autovacuum_naptime = 364983
+Set autovacuum_vacuum_cost_delay = 46
+Set autovacuum_vacuum_cost_limit = 162
+Set autovacuum_vacuum_scale_factor = 47.69385075196624
+Set autovacuum_vacuum_threshold = 722834952
+Set backend_flush_after = 238
+Set bgwriter_delay = 9452
+Set bgwriter_flush_after = 93
+Set bgwriter_lru_maxpages = 187
+Set bgwriter_lru_multiplier = 3
+Set checkpoint_completion_target = 0.9411872830241919
+Set checkpoint_flush_after = 108
+Set checkpoint_timeout = 1042
+Set commit_delay = 83081
+Set commit_siblings = 447
+Set cursor_tuple_fraction = 0.5100215626880527
+Set deadlock_timeout = 727367336
+Set default_statistics_target = 5797
+Set effective_cache_size = 612946166
+Set effective_io_concurrency = 862
+Set from_collapse_limit = 181234394
+Set geqo_effort = 8
+Set geqo_generations = 2082024641
+Set geqo_pool_size = 344736214
+Set geqo_seed = 0.5773294121026993
+Set geqo_threshold = 1410184352
+Set join_collapse_limit = 2014285460
+Set maintenance_work_mem = 1770346271
+Set max_connections = 2691
+Set max_wal_senders = 29
+Set shared_buffers = 3215730
+Set temp_buffers = 978368191
+Set temp_file_limit = 1375887961
+Set vacuum_cost_delay = 9
+Set vacuum_cost_limit = 6208
+Set vacuum_cost_page_dirty = 7472
+Set vacuum_cost_page_hit = 1318
+Set vacuum_cost_page_miss = 7972
+Set wal_buffers = 118787
+Set wal_writer_delay = 213
+Set work_mem = 409864143
+Applied knobs successfully!
+Stopping PostgreSQL 14...
+Starting PostgreSQL 14...
+PostgreSQL 14 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLTP workload using BenchBase
+Workload path: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres
+Configuration: {'autovacuum_analyze_scale_factor': 59.09048430621624, 'autovacuum_analyze_threshold': 269378350, 'autovacuum_max_workers': 121, 'autovacuum_naptime': 364983, 'autovacuum_vacuum_cost_delay': 46, 'autovacuum_vacuum_cost_limit': 162, 'autovacuum_vacuum_scale_factor': 47.69385075196624, 'autovacuum_vacuum_threshold': 722834952, 'backend_flush_after': 238, 'bgwriter_delay': 9452, 'bgwriter_flush_after': 93, 'bgwriter_lru_maxpages': 187, 'bgwriter_lru_multiplier': 3, 'checkpoint_completion_target': 0.9411872830241919, 'checkpoint_flush_after': 108, 'checkpoint_timeout': 1042, 'commit_delay': 83081, 'commit_siblings': 447, 'cursor_tuple_fraction': 0.5100215626880527, 'deadlock_timeout': 727367336, 'default_statistics_target': 5797, 'effective_cache_size': 612946166, 'effective_io_concurrency': 862, 'from_collapse_limit': 181234394, 'geqo_effort': 8, 'geqo_generations': 2082024641, 'geqo_pool_size': 344736214, 'geqo_seed': 0.5773294121026993, 'geqo_threshold': 1410184352, 'join_collapse_limit': 2014285460, 'maintenance_work_mem': 1770346271, 'max_connections': 2691, 'max_wal_senders': 29, 'shared_buffers': 3215730, 'temp_buffers': 978368191, 'temp_file_limit': 1375887961, 'vacuum_cost_delay': 9, 'vacuum_cost_limit': 6208, 'vacuum_cost_page_dirty': 7472, 'vacuum_cost_page_hit': 1318, 'vacuum_cost_page_miss': 7972, 'wal_buffers': 118787, 'wal_writer_delay': 213, 'work_mem': 409864143}, QPS: -1965.0134956916386
+Performance (QPS): -1965.0134956916386
+Evaluating configuration: {'autovacuum_analyze_scale_factor': 76.40128070488572, 'autovacuum_analyze_threshold': 2054345871, 'autovacuum_max_workers': 48, 'autovacuum_naptime': 1742961, 'autovacuum_vacuum_cost_delay': 2, 'autovacuum_vacuum_cost_limit': 2889, 'autovacuum_vacuum_scale_factor': 68.17056005820632, 'autovacuum_vacuum_threshold': 292674466, 'backend_flush_after': 185, 'bgwriter_delay': 6898, 'bgwriter_flush_after': 57, 'bgwriter_lru_maxpages': 369, 'bgwriter_lru_multiplier': 10, 'checkpoint_completion_target': 0.11681524477899075, 'checkpoint_flush_after': 25, 'checkpoint_timeout': 3292, 'commit_delay': 59820, 'commit_siblings': 705, 'cursor_tuple_fraction': 0.8368948232382536, 'deadlock_timeout': 1828021056, 'default_statistics_target': 979, 'effective_cache_size': 298898560, 'effective_io_concurrency': 229, 'from_collapse_limit': 1168982740, 'geqo_effort': 5, 'geqo_generations': 1431332651, 'geqo_pool_size': 1791561467, 'geqo_seed': 0.9844945101067424, 'geqo_threshold': 1014366143, 'join_collapse_limit': 1215862036, 'maintenance_work_mem': 353354037, 'max_connections': 110, 'max_wal_senders': 11, 'shared_buffers': 2180834, 'temp_buffers': 577406274, 'temp_file_limit': 1860665339, 'vacuum_cost_delay': 81, 'vacuum_cost_limit': 699, 'vacuum_cost_page_dirty': 2223, 'vacuum_cost_page_hit': 9814, 'vacuum_cost_page_miss': 4302, 'wal_buffers': 98184, 'wal_writer_delay': 7372, 'work_mem': 1272186404}
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Set autovacuum_analyze_scale_factor = 76.40128070488572
+Set autovacuum_analyze_threshold = 2054345871
+Set autovacuum_max_workers = 48
+Set autovacuum_naptime = 1742961
+Set autovacuum_vacuum_cost_delay = 2
+Set autovacuum_vacuum_cost_limit = 2889
+Set autovacuum_vacuum_scale_factor = 68.17056005820632
+Set autovacuum_vacuum_threshold = 292674466
+Set backend_flush_after = 185
+Set bgwriter_delay = 6898
+Set bgwriter_flush_after = 57
+Set bgwriter_lru_maxpages = 369
+Set bgwriter_lru_multiplier = 10
+Set checkpoint_completion_target = 0.11681524477899075
+Set checkpoint_flush_after = 25
+Set checkpoint_timeout = 3292
+Set commit_delay = 59820
+Set commit_siblings = 705
+Set cursor_tuple_fraction = 0.8368948232382536
+Set deadlock_timeout = 1828021056
+Set default_statistics_target = 979
+Set effective_cache_size = 298898560
+Set effective_io_concurrency = 229
+Set from_collapse_limit = 1168982740
+Set geqo_effort = 5
+Set geqo_generations = 1431332651
+Set geqo_pool_size = 1791561467
+Set geqo_seed = 0.9844945101067424
+Set geqo_threshold = 1014366143
+Set join_collapse_limit = 1215862036
+Set maintenance_work_mem = 353354037
+Set max_connections = 110
+Set max_wal_senders = 11
+Set shared_buffers = 2180834
+Set temp_buffers = 577406274
+Set temp_file_limit = 1860665339
+Set vacuum_cost_delay = 81
+Set vacuum_cost_limit = 699
+Set vacuum_cost_page_dirty = 2223
+Set vacuum_cost_page_hit = 9814
+Set vacuum_cost_page_miss = 4302
+Set wal_buffers = 98184
+Set wal_writer_delay = 7372
+Set work_mem = 1272186404
+Applied knobs successfully!
+Stopping PostgreSQL 14...
+Starting PostgreSQL 14...
+PostgreSQL 14 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLTP workload using BenchBase
+Workload path: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres
+Configuration: {'autovacuum_analyze_scale_factor': 76.40128070488572, 'autovacuum_analyze_threshold': 2054345871, 'autovacuum_max_workers': 48, 'autovacuum_naptime': 1742961, 'autovacuum_vacuum_cost_delay': 2, 'autovacuum_vacuum_cost_limit': 2889, 'autovacuum_vacuum_scale_factor': 68.17056005820632, 'autovacuum_vacuum_threshold': 292674466, 'backend_flush_after': 185, 'bgwriter_delay': 6898, 'bgwriter_flush_after': 57, 'bgwriter_lru_maxpages': 369, 'bgwriter_lru_multiplier': 10, 'checkpoint_completion_target': 0.11681524477899075, 'checkpoint_flush_after': 25, 'checkpoint_timeout': 3292, 'commit_delay': 59820, 'commit_siblings': 705, 'cursor_tuple_fraction': 0.8368948232382536, 'deadlock_timeout': 1828021056, 'default_statistics_target': 979, 'effective_cache_size': 298898560, 'effective_io_concurrency': 229, 'from_collapse_limit': 1168982740, 'geqo_effort': 5, 'geqo_generations': 1431332651, 'geqo_pool_size': 1791561467, 'geqo_seed': 0.9844945101067424, 'geqo_threshold': 1014366143, 'join_collapse_limit': 1215862036, 'maintenance_work_mem': 353354037, 'max_connections': 110, 'max_wal_senders': 11, 'shared_buffers': 2180834, 'temp_buffers': 577406274, 'temp_file_limit': 1860665339, 'vacuum_cost_delay': 81, 'vacuum_cost_limit': 699, 'vacuum_cost_page_dirty': 2223, 'vacuum_cost_page_hit': 9814, 'vacuum_cost_page_miss': 4302, 'wal_buffers': 98184, 'wal_writer_delay': 7372, 'work_mem': 1272186404}, QPS: -1803.8314266233876
+Performance (QPS): -1803.8314266233876
+Evaluating configuration: {'autovacuum_analyze_scale_factor': 26.481935661286116, 'autovacuum_analyze_threshold': 721596254, 'autovacuum_max_workers': 190, 'autovacuum_naptime': 1062135, 'autovacuum_vacuum_cost_delay': 67, 'autovacuum_vacuum_cost_limit': 5079, 'autovacuum_vacuum_scale_factor': 1.2826400808990002, 'autovacuum_vacuum_threshold': 1241364491, 'backend_flush_after': 76, 'bgwriter_delay': 477, 'bgwriter_flush_after': 204, 'bgwriter_lru_maxpages': 980, 'bgwriter_lru_multiplier': 0, 'checkpoint_completion_target': 0.7091427892446518, 'checkpoint_flush_after': 141, 'checkpoint_timeout': 41, 'commit_delay': 6757, 'commit_siblings': 195, 'cursor_tuple_fraction': 0.46846663393080235, 'deadlock_timeout': 341141914, 'default_statistics_target': 8863, 'effective_cache_size': 1715922758, 'effective_io_concurrency': 572, 'from_collapse_limit': 609895714, 'geqo_effort': 6, 'geqo_generations': 550156632, 'geqo_pool_size': 891369298, 'geqo_seed': 0.020743686705827713, 'geqo_threshold': 1646830390, 'join_collapse_limit': 874423020, 'maintenance_work_mem': 1167999267, 'max_connections': 1786, 'max_wal_senders': 39, 'shared_buffers': 1247105, 'temp_buffers': 470443576, 'temp_file_limit': 1005496917, 'vacuum_cost_delay': 28, 'vacuum_cost_limit': 8183, 'vacuum_cost_page_dirty': 9458, 'vacuum_cost_page_hit': 3934, 'vacuum_cost_page_miss': 6476, 'wal_buffers': 35589, 'wal_writer_delay': 3725, 'work_mem': 818438137}
+Workload executor is called
+Step 1: Change the database knobs
+Appling configuration
+Change knob function called...
+Connecting to PostgreSQL at localhost:5432 with database tpcc_50
+Set autovacuum_analyze_scale_factor = 26.481935661286116
+Set autovacuum_analyze_threshold = 721596254
+Set autovacuum_max_workers = 190
+Set autovacuum_naptime = 1062135
+Set autovacuum_vacuum_cost_delay = 67
+Set autovacuum_vacuum_cost_limit = 5079
+Set autovacuum_vacuum_scale_factor = 1.2826400808990002
+Set autovacuum_vacuum_threshold = 1241364491
+Set backend_flush_after = 76
+Set bgwriter_delay = 477
+Set bgwriter_flush_after = 204
+Set bgwriter_lru_maxpages = 980
+Set bgwriter_lru_multiplier = 0
+Set checkpoint_completion_target = 0.7091427892446518
+Set checkpoint_flush_after = 141
+Set checkpoint_timeout = 41
+Set commit_delay = 6757
+Set commit_siblings = 195
+Set cursor_tuple_fraction = 0.46846663393080235
+Set deadlock_timeout = 341141914
+Set default_statistics_target = 8863
+Set effective_cache_size = 1715922758
+Set effective_io_concurrency = 572
+Set from_collapse_limit = 609895714
+Set geqo_effort = 6
+Set geqo_generations = 550156632
+Set geqo_pool_size = 891369298
+Set geqo_seed = 0.020743686705827713
+Set geqo_threshold = 1646830390
+Set join_collapse_limit = 874423020
+Set maintenance_work_mem = 1167999267
+Set max_connections = 1786
+Set max_wal_senders = 39
+Set shared_buffers = 1247105
+Set temp_buffers = 470443576
+Set temp_file_limit = 1005496917
+Set vacuum_cost_delay = 28
+Set vacuum_cost_limit = 8183
+Set vacuum_cost_page_dirty = 9458
+Set vacuum_cost_page_hit = 3934
+Set vacuum_cost_page_miss = 6476
+Set wal_buffers = 35589
+Set wal_writer_delay = 3725
+Set work_mem = 818438137
+Applied knobs successfully!
+Stopping PostgreSQL 14...
+Starting PostgreSQL 14...
+PostgreSQL 14 restarted successfully!
+Database restarted successfully after applying knobs.
+Step 2: Run OLTP workload using BenchBase
+Workload path: ./oltp_workloads/tpcc/sample_tpcc_config50.xml
+/home/farshedvardtgem22/E2ETune/benchbase/target/benchbase-postgres
