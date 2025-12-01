@@ -70,7 +70,9 @@ def process_workloads(data_dir, metrics_dir, knob_config):
     for workload_dir in workload_dirs:
         if not workload_dir.endswith('_smac_output'):
             continue
-            
+
+        # TODO: THIS MAY NEED ADJUSTMENT BASED ON ACTUAL RUN DIRECTORY STRUCTURE
+        #       NOT SURE HOW IT WILL LOOK WITH MORE DATA             
         # Construct paths
         runhistory_path = os.path.join(data_dir, workload_dir, 'run_1608637542', 'runhistory.json') # Note: run_ID might vary?
         # Check if run directory exists, it might not be hardcoded
@@ -126,6 +128,7 @@ def process_workloads(data_dir, metrics_dir, knob_config):
     return training_data
 
 def main():
+    # TODO: THIS ONLY WORKS FOR MARK'S SETUP
     base_dir = '/home/mark/projects/E2ETune'
     knob_config_path = os.path.join(base_dir, 'knob_config', 'knob_config_pg14.json')
     output_file = os.path.join(base_dir, 'training_data.json')
