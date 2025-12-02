@@ -140,40 +140,51 @@ This process will:
 
 ## Fine-tuning the LLM
 
-### Data Preparation
-1. Prepare the training data using the collected configurations and results from the previous steps.
-2. The original repository contains code for data preparation - edit accordingly to format your data for fine-tuning.
+We use LLaMA-Factory to fine-tune a Qwen2.5-1.5B-Instruct model using LoRA.
 
-### Fine-tuning Setup
-1. Install LLaMA-Factory following the instructions at: https://github.com/hiyouga/LLaMA-Factory
+### 1. Setup Environment & Data
+First, ensure you have the `DBfinetuning` environment or equivalent with `torch`, `transformers`, and `llamafactory` installed.
 
-2. Fine-tune the language model using the following command:
-   ```bash
-   deepspeed --include localhost:0,1,2,3,4,5,6,7 --master_port=12333 src/train.py \
-       --deepspeed ds_config.json \
-       --stage sft \
-       --model_name_or_path /nvme/shared_ckpt/mistral-7b-instruct-v0.2 \
-       --do_train \
-       --dataset PO \
-       --template mistral \
-       --finetuning_type full \
-       --output_dir /nvme/yzh/LLaMA-Factory/random \
-       --overwrite_cache \
-       --per_device_train_batch_size 1 \
-       --gradient_accumulation_steps 4 \
-       --lr_scheduler_type cosine \
-       --report_to wandb \
-       --logging_steps 1 \
-       --save_strategy 'epoch' \
-       --learning_rate 2e-5 \
-       --num_train_epochs 10.0 \
-       --plot_loss \
-       --max_length 8192 \
-       --cutoff_len 8192 \
-       --bf16
-   ```
+Run the setup script to:
+- Split `training_data.json` into train/test sets.
+- Configure LLaMA-Factory dataset info.
+- Generate the training script (`run_finetune.sh`).
 
-   **Note:** Adjust the paths (`model_name_or_path`, `output_dir`) and GPU configuration (`--include localhost:0,1,2,3,4,5,6,7`) according to your setup.
+```bash
+python setup_finetuning.py
+```
+
+### 2. Run Fine-tuning
+Execute the generated shell script to start training. This script is optimized for a single GPU with ~12GB VRAM (Batch size 1, Gradient Accumulation 16).
+
+```bash
+cd LLaMA-Factory
+../run_finetune.sh
+```
+The fine-tuned adapter will be saved in `LLaMA-Factory/saves/Qwen2.5-1.5B/lora/sft`.
+
+### 3. Export Model (Optional)
+To merge the LoRA adapter with the base model:
+```bash
+cd LLaMA-Factory
+llamafactory-cli export \
+    --model_name_or_path Qwen/Qwen2.5-1.5B-Instruct \
+    --adapter_name_or_path saves/Qwen2.5-1.5B/lora/sft \
+    --template qwen \
+    --finetuning_type lora \
+    --export_dir ../finetuned_model \
+    --export_size 2 \
+    --export_device cpu \
+    --export_legacy_format False
+```
+
+### 4. Evaluation
+To evaluate the model on the test set without running a database:
+```bash
+python evaluate_on_test_set.py
+```
+This script compares the JSON output of the baseline model vs. the fine-tuned model against the ground truth in `LLaMA-Factory/data/db_tuning_test.json`.
+
 
 
 
