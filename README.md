@@ -14,6 +14,24 @@
 3. Download and install Postgres 12.2:
    - Follow instructions at https://www.postgresql.org/download/linux/
    - Start the Postgres server after installation.
+
+   Or 
+   ```bash
+   sudo apt install -y postgresql-common
+   sudo /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh
+   sudo apt install postgresql-12
+   sudo systemctl enable postgresql
+   sudo systemctl start postgresql
+   ```
+   - to check that the server started
+   ```bash
+   sudo systemctl status postgresql
+   ```
+   - to stop when finsihed
+   ```bash
+   sudo systemctl stop postgresql
+   ```
+
 4. Install Java JDK 21:
    - On Ubuntu: `sudo apt install openjdk-21-jdk`
 
@@ -24,6 +42,15 @@
    psql -U <your_user>
    CREATE DATABASE <benchmark_db>;
    ```
+
+   OR
+
+   ```bash
+   sudo -u postgres createuser myuser
+   sudo -u postgres createdb mydb -O myuser
+   psql -U myuser -d mydb
+   ```
+
 2. Load benchmark data as needed.
 
 ## Loading up the database

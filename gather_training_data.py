@@ -23,15 +23,13 @@ def normalize_config(config, knob_limits):
             
             if min_val is not None and max_val is not None:
                 norm_val = normalize_value(value, min_val, max_val)
-                # Convert to percentage string as requested "0-10%"
-                # Or maybe just keep as float 0-1? 
-                # The prompt says "convert configurations numbers into 0-10% etc"
-                # Let's store as percentage value (0-100) for now, or maybe 0.0-1.0
-                # If I look at "0-10%", it implies a range or bucket.
-                # Let's stick to 0-1 float for ML, or formatted string if for NLP text.
-                # Since it's for Llama factory, text is good.
-                # "autovacuum_analyze_scale_factor: 10%"
-                normalized[knob] = f"{norm_val * 100:.2f}%"
+                # Convert to percentage bucket
+                percent = norm_val * 100
+                lower = int(percent // 10) * 10
+                if lower >= 100:
+                    lower = 90
+                upper = lower + 10
+                normalized[knob] = f"{lower}-{upper}%"
             else:
                 normalized[knob] = value
         else:
@@ -71,11 +69,7 @@ def process_workloads(data_dir, metrics_dir, knob_config):
         if not workload_dir.endswith('_smac_output'):
             continue
 
-        # TODO: THIS MAY NEED ADJUSTMENT BASED ON ACTUAL RUN DIRECTORY STRUCTURE
-        #       NOT SURE HOW IT WILL LOOK WITH MORE DATA             
         # Construct paths
-        runhistory_path = os.path.join(data_dir, workload_dir, 'run_1608637542', 'runhistory.json') # Note: run_ID might vary?
-        # Check if run directory exists, it might not be hardcoded
         # Find the run directory inside workload_dir
         runs = glob.glob(os.path.join(data_dir, workload_dir, 'run_*'))
         if not runs:
@@ -128,8 +122,8 @@ def process_workloads(data_dir, metrics_dir, knob_config):
     return training_data
 
 def main():
-    # TODO: THIS ONLY WORKS FOR MARK'S SETUP
-    base_dir = '/home/mark/projects/E2ETune'
+    # Use the directory of the script as the base directory
+    base_dir = os.path.dirname(os.path.abspath(__file__))
     knob_config_path = os.path.join(base_dir, 'knob_config', 'knob_config_pg14.json')
     output_file = os.path.join(base_dir, 'training_data.json')
     
