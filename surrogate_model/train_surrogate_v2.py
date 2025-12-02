@@ -1,4 +1,4 @@
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor, VotingRegressor
 from sklearn.model_selection import KFold
 from sklearn.metrics import r2_score
 import json
@@ -44,7 +44,9 @@ def train_surrogate():
     y_norm = y  # No normalization
     
     # Model
-    model = RandomForestRegressor(n_estimators=100, random_state=42, n_jobs=-1)
+    rf = RandomForestRegressor(n_estimators=500, random_state=42, n_jobs=-1)
+    gb = GradientBoostingRegressor(random_state=42)
+    model = VotingRegressor(estimators=[('rf', rf), ('gb', gb)])
     
     # Standard 10-fold CV
     kf = KFold(n_splits=10, shuffle=True, random_state=42)
