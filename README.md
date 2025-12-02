@@ -140,31 +140,60 @@ This process will:
 
 ## Fine-tuning the LLM
 
-We use LLaMA-Factory to fine-tune a Qwen2.5-1.5B-Instruct model using LoRA.
+We use LLaMA-Factory to fine-tune a Qwen2.5-1.5B-Instruct model using LoRA. All fine-tuning related files are located in the `llm_finetuning/` directory.
 
-### 1. Setup Environment & Data
-First, ensure you have the `DBfinetuning` environment or equivalent with `torch`, `transformers`, and `llamafactory` installed.
+### 1. Setup Environment
+Create a new environment for fine-tuning (separate from the main E2ETune environment):
 
-Run the setup script to:
-- Split `training_data.json` into train/test sets.
-- Configure LLaMA-Factory dataset info.
-- Generate the training script (`run_finetune.sh`).
+```bash
+conda create -n DBfinetuning python=3.10
+conda activate DBfinetuning
+pip install torch transformers peft datasets
+```
+
+Install LLaMA-Factory:
+```bash
+cd llm_finetuning
+git clone https://github.com/hiyouga/LLaMA-Factory.git
+cd LLaMA-Factory
+pip install -e .
+cd ..
+```
+
+### 2. Prepare Data
+Process the collected surrogate model data and existing training data into the format required for fine-tuning. This script normalizes knob values into percentage buckets and creates train/test splits.
+
+```bash
+python process_data.py
+```
+This generates `db_tuning_train.json` and `db_tuning_test.json`.
+
+### 3. Configure Training
+Run the setup script to copy the data to LLaMA-Factory and generate the training script.
 
 ```bash
 python setup_finetuning.py
 ```
 
-### 2. Run Fine-tuning
+### 4. Run Fine-tuning
 Execute the generated shell script to start training. This script is optimized for a single GPU with ~12GB VRAM (Batch size 1, Gradient Accumulation 16).
 
 ```bash
-cd LLaMA-Factory
-../run_finetune.sh
+./run_finetune.sh
 ```
-The fine-tuned adapter will be saved in `LLaMA-Factory/saves/Qwen2.5-1.5B/lora/sft`.
+The fine-tuned adapter will be saved in `llm_finetuning/LLaMA-Factory/saves/Qwen2.5-1.5B/lora/sft`.
 
-### 3. Export Model (Optional)
-To merge the LoRA adapter with the base model:
+### 5. Evaluation
+To evaluate the model on the test set without running a database:
+
+```bash
+python evaluate_on_test_set.py
+```
+This script compares the JSON output of the baseline model vs. the fine-tuned model against the ground truth in `db_tuning_test.json`.
+
+### 6. Export Model (Optional)
+To merge the LoRA adapter with the base model for easier inference:
+
 ```bash
 cd LLaMA-Factory
 llamafactory-cli export \
@@ -177,13 +206,6 @@ llamafactory-cli export \
     --export_device cpu \
     --export_legacy_format False
 ```
-
-### 4. Evaluation
-To evaluate the model on the test set without running a database:
-```bash
-python evaluate_on_test_set.py
-```
-This script compares the JSON output of the baseline model vs. the fine-tuned model against the ground truth in `LLaMA-Factory/data/db_tuning_test.json`.
 
 
 

@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # Example: Fine-tune Qwen2.5-1.5B-Instruct (Open alternative to Llama-3.2)
-# Make sure you are inside the LLaMA-Factory directory
+# This script automatically navigates to the LLaMA-Factory directory
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR/LLaMA-Factory" || exit
 
 if ! command -v llamafactory-cli &> /dev/null
 then
