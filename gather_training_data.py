@@ -59,7 +59,7 @@ def get_best_config(runhistory_path):
         return configs[best_config_id]
     return None
 
-def process_workloads(data_dir, metrics_dir, knob_config):
+def process_workloads(data_dir, metrics_dir, knob_config, workload_name):
     training_data = []
     
     # List all workload directories
@@ -116,7 +116,11 @@ def process_workloads(data_dir, metrics_dir, knob_config):
         training_data.append({
             "instruction": "Predict the best database configuration based on the internal metrics.",
             "input": input_text,
-            "output": output_text
+            "output": output_text,
+            "meta": {
+                "workload_name": base_name,
+                "database": workload_name
+            }
         })
         
     return training_data
@@ -143,7 +147,7 @@ def main():
         
         if os.path.exists(data_dir) and os.path.exists(metrics_dir):
             print(f"Processing {workload['data_dir']}...")
-            data = process_workloads(data_dir, metrics_dir, knob_config)
+            data = process_workloads(data_dir, metrics_dir, knob_config, workload['metrics_subdir'])
             all_training_data.extend(data)
         else:
             print(f"Skipping {workload['data_dir']} - directory not found")
