@@ -187,9 +187,21 @@ The fine-tuned adapter will be saved in `llm_finetuning/LLaMA-Factory/saves/Qwen
 To evaluate the model on the test set without running a database:
 
 ```bash
+# Run with default settings (uses merged model if available)
 python evaluate_on_test_set.py
+
+# Run with specific model path (e.g., LoRA adapter)
+python evaluate_on_test_set.py --model_path LLaMA-Factory/saves/Qwen2.5-1.5B/lora/sft
+
+# Adjust batch size (default 8) for faster inference if VRAM allows
+python evaluate_on_test_set.py --batch_size 32
 ```
-This script compares the JSON output of the baseline model vs. the fine-tuned model against the ground truth in `db_tuning_test.json`.
+
+This script:
+- Loads the test set from `db_tuning_test.json`.
+- Generates responses using the fine-tuned model.
+- Parses the JSON output and compares predicted knob buckets against ground truth.
+- Displays a progress bar, classification report, confusion matrix, and accuracy score.
 
 ### 6. Export Model (Optional)
 To merge the LoRA adapter with the base model for easier inference:
