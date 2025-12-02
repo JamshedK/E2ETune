@@ -156,6 +156,12 @@ def evaluate_model(model_path, test_data_path, batch_size=8):
                         if true_label in label_mapper and pred_label in label_mapper:
                             y_true.append(label_mapper[true_label])
                             y_pred.append(label_mapper[pred_label])
+                        else:
+                            if valid_samples <= 5:
+                                print(f"DEBUG: Label mismatch for {knob}. True: '{true_label}', Pred: '{pred_label}'")
+                    else:
+                        if valid_samples <= 5:
+                            print(f"DEBUG: Missing knob {knob} in prediction")
             else:
                 parse_errors += 1
                 if (i + j) < 5: # Print first few errors

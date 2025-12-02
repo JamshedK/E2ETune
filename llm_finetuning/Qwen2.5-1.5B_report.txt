@@ -34,3 +34,8 @@ weighted avg       0.21      0.21      0.21     24112
  [259 219 125 222 214 196 233 202 291 768]]
 
 Overall Accuracy: 0.2102
+
+
+
+This isn't great, but without finetuning, it can't even make a valid prediction 
+    - It won't include every knob that is needed
