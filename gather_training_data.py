@@ -138,7 +138,10 @@ def main():
     # Define workloads to process
     workloads = [
         {'data_dir': 'ycsb_data', 'metrics_subdir': 'ycsb'},
-        {'data_dir': 'tpcc_data', 'metrics_subdir': 'tpcc'}
+        {'data_dir': 'tpcc_data', 'metrics_subdir': 'tpcc'},
+        {'data_dir': 'smallbank', 'metrics_subdir': 'smallbank'},
+        {'data_dir': 'twitter', 'metrics_subdir': 'twitter'},
+        {'data_dir': 'wikipedia', 'metrics_subdir': 'wikipedia'}
     ]
     
     for workload in workloads:
