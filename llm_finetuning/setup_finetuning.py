@@ -82,13 +82,14 @@ def setup_llama_factory():
         
     print("Updated dataset_info.json with 'db_tuning_train' and 'db_tuning_test' datasets.")
     
-    # 4. Create a training script for 1B models
-    create_training_script(workspace_root)
+    # 4. Create training scripts
+    create_training_scripts(workspace_root)
 
-def create_training_script(root_dir):
-    script_content = """#!/bin/bash
+def create_training_scripts(root_dir):
+    # Script for Qwen2.5-1.5B
+    qwen_script_content = """#!/bin/bash
 
-# Example: Fine-tune Qwen2.5-1.5B-Instruct (Open alternative to Llama-3.2)
+# Example: Fine-tune Qwen2.5-1.5B-Instruct
 # This script automatically navigates to the LLaMA-Factory directory
 
 # Get the directory where this script is located
@@ -129,12 +130,63 @@ llamafactory-cli train \\
     --plot_loss \\
     --fp16
 """
-    script_path = os.path.join(root_dir, "run_finetune.sh")
-    with open(script_path, 'w') as f:
-        f.write(script_content)
-    os.chmod(script_path, 0o755)
-    print(f"Created training script at {script_path}")
-    print("\\nIMPORTANT: You must install LLaMA-Factory before running the script:")
+    qwen_path = os.path.join(root_dir, "run_finetune_qwen.sh")
+    with open(qwen_path, 'w') as f:
+        f.write(qwen_script_content)
+    os.chmod(qwen_path, 0o755)
+    print(f"Created Qwen training script at {qwen_path}")
+
+    # Script for Llama-3.2-1B
+    llama_script_content = """#!/bin/bash
+
+# Example: Fine-tune Llama-3.2-1B-Instruct
+# This script automatically navigates to the LLaMA-Factory directory
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR/LLaMA-Factory" || exit
+
+if ! command -v llamafactory-cli &> /dev/null
+then
+    echo "Error: llamafactory-cli not found."
+    echo "Please install LLaMA-Factory in editable mode first:"
+    echo "  cd LLaMA-Factory"
+    echo "  pip install -e ."
+    exit 1
+fi
+
+MODEL_NAME="meta-llama/Llama-3.2-1B-Instruct"
+
+llamafactory-cli train \\
+    --stage sft \\
+    --do_train \\
+    --model_name_or_path $MODEL_NAME \\
+    --dataset db_tuning_train \\
+    --eval_dataset db_tuning_test \\
+    --template llama3 \\
+    --finetuning_type lora \\
+    --lora_target all \\
+    --output_dir saves/Llama-3.2-1B/lora/sft \\
+    --overwrite_output_dir \\
+    --per_device_train_batch_size 1 \\
+    --per_device_eval_batch_size 1 \\
+    --gradient_accumulation_steps 16 \\
+    --learning_rate 1e-4 \\
+    --num_train_epochs 3.0 \\
+    --logging_steps 10 \\
+    --save_steps 100 \\
+    --eval_strategy steps \\
+    --eval_steps 50 \\
+    --plot_loss \\
+    --fp16
+"""
+    llama_path = os.path.join(root_dir, "run_finetune_llama.sh")
+    with open(llama_path, 'w') as f:
+        f.write(llama_script_content)
+    os.chmod(llama_path, 0o755)
+    print(f"Created Llama training script at {llama_path}")
+
+    print("\\nIMPORTANT: You must install LLaMA-Factory before running the scripts:")
     print("  cd LLaMA-Factory")
     print("  pip install -e .")
 
