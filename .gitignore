@@ -4,4 +4,4 @@ __pycache__/
 local_model/
 stress_test_results/
 tmp/
-finetuned_model/
+llm_finetuning/finetuned_model_test/
