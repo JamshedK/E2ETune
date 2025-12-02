@@ -62,7 +62,8 @@ def setup_llama_factory():
         "columns": {
             "prompt": "instruction",
             "query": "input",
-            "response": "output"
+            "response": "output",
+            "system": "system"
         }
     }
     
@@ -71,7 +72,8 @@ def setup_llama_factory():
         "columns": {
             "prompt": "instruction",
             "query": "input",
-            "response": "output"
+            "response": "output",
+            "system": "system"
         }
     }
     

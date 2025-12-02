@@ -9,6 +9,10 @@ EXISTING_TRAINING_DATA_PATH = 'training_data.json'
 OUTPUT_TRAIN_PATH = 'db_tuning_train.json'
 OUTPUT_TEST_PATH = 'db_tuning_test.json'
 
+SYSTEM_PROMPT = "You are an expert database tuning assistant. Your task is to analyze internal database metrics and select the optimal configuration buckets (percentage ranges) for various knobs to maximize performance."
+
+INSTRUCTION_TEXT = "Based on the provided internal metrics, predict the best configuration knobs. You MUST output the result as a valid JSON object. The keys should be the database configuration knobs, and the values should be the recommended percentage ranges (e.g., '10-20%'). Do not provide any explanations or additional text."
+
 INNER_NAMES = [
     "xact_commit", "xact_rollback", "blks_read", "blks_hit", "tup_returned", 
     "tup_fetched", "tup_inserted", "conflicts", "tup_updated", "tup_deleted", 
@@ -81,7 +85,8 @@ def process_collected_samples(samples, knob_config):
                 meta["workload_name"] = parts[-1].replace('.xml', '')
         
         processed_sample = {
-            "instruction": "Predict the best database configuration based on the internal metrics.",
+            "system": SYSTEM_PROMPT,
+            "instruction": INSTRUCTION_TEXT,
             "input": json.dumps(input_dict, indent=2),
             "output": json.dumps(output_dict, indent=2),
             "meta": meta
@@ -106,6 +111,10 @@ def main():
     if os.path.exists(EXISTING_TRAINING_DATA_PATH):
         existing_data = load_json(EXISTING_TRAINING_DATA_PATH)
         print(f"Loaded {len(existing_data)} existing samples.")
+        # Update instruction for existing data
+        for item in existing_data:
+            item["system"] = SYSTEM_PROMPT
+            item["instruction"] = INSTRUCTION_TEXT
     else:
         existing_data = []
         print("No existing training data found.")
