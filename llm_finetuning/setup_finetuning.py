@@ -186,6 +186,106 @@ llamafactory-cli train \\
     os.chmod(llama_path, 0o755)
     print(f"Created Llama training script at {llama_path}")
 
+    # Script for Qwen2.5-0.5B-Instruct (Non-gated, very fast)
+    qwen05_script_content = """#!/bin/bash
+
+# Example: Fine-tune Qwen2.5-0.5B-Instruct
+# This script automatically navigates to the LLaMA-Factory directory
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR/LLaMA-Factory" || exit
+
+if ! command -v llamafactory-cli &> /dev/null
+then
+    echo "Error: llamafactory-cli not found."
+    echo "Please install LLaMA-Factory in editable mode first:"
+    echo "  cd LLaMA-Factory"
+    echo "  pip install -e ."
+    exit 1
+fi
+
+MODEL_NAME="Qwen/Qwen2.5-0.5B-Instruct"
+
+llamafactory-cli train \\
+    --stage sft \\
+    --do_train \\
+    --model_name_or_path $MODEL_NAME \\
+    --dataset db_tuning_train \\
+    --eval_dataset db_tuning_test \\
+    --template qwen \\
+    --finetuning_type lora \\
+    --lora_target all \\
+    --output_dir saves/Qwen2.5-0.5B/lora/sft \\
+    --overwrite_output_dir \\
+    --per_device_train_batch_size 2 \\
+    --per_device_eval_batch_size 2 \\
+    --gradient_accumulation_steps 8 \\
+    --learning_rate 1e-4 \\
+    --num_train_epochs 3.0 \\
+    --logging_steps 10 \\
+    --save_steps 100 \\
+    --eval_strategy steps \\
+    --eval_steps 50 \\
+    --plot_loss \\
+    --fp16
+"""
+    qwen05_path = os.path.join(root_dir, "run_finetune_qwen0.5b.sh")
+    with open(qwen05_path, 'w') as f:
+        f.write(qwen05_script_content)
+    os.chmod(qwen05_path, 0o755)
+    print(f"Created Qwen 0.5B training script at {qwen05_path}")
+
+    # Script for TinyLlama-1.1B-Chat (Non-gated, standard)
+    tinyllama_script_content = """#!/bin/bash
+
+# Example: Fine-tune TinyLlama-1.1B-Chat
+# This script automatically navigates to the LLaMA-Factory directory
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+cd "$SCRIPT_DIR/LLaMA-Factory" || exit
+
+if ! command -v llamafactory-cli &> /dev/null
+then
+    echo "Error: llamafactory-cli not found."
+    echo "Please install LLaMA-Factory in editable mode first:"
+    echo "  cd LLaMA-Factory"
+    echo "  pip install -e ."
+    exit 1
+fi
+
+MODEL_NAME="TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+
+llamafactory-cli train \\
+    --stage sft \\
+    --do_train \\
+    --model_name_or_path $MODEL_NAME \\
+    --dataset db_tuning_train \\
+    --eval_dataset db_tuning_test \\
+    --template llama2 \\
+    --finetuning_type lora \\
+    --lora_target all \\
+    --output_dir saves/TinyLlama-1.1B/lora/sft \\
+    --overwrite_output_dir \\
+    --per_device_train_batch_size 1 \\
+    --per_device_eval_batch_size 1 \\
+    --gradient_accumulation_steps 16 \\
+    --learning_rate 1e-4 \\
+    --num_train_epochs 3.0 \\
+    --logging_steps 10 \\
+    --save_steps 100 \\
+    --eval_strategy steps \\
+    --eval_steps 50 \\
+    --plot_loss \\
+    --fp16
+"""
+    tinyllama_path = os.path.join(root_dir, "run_finetune_tinyllama.sh")
+    with open(tinyllama_path, 'w') as f:
+        f.write(tinyllama_script_content)
+    os.chmod(tinyllama_path, 0o755)
+    print(f"Created TinyLlama training script at {tinyllama_path}")
+
     print("\\nIMPORTANT: You must install LLaMA-Factory before running the scripts:")
     print("  cd LLaMA-Factory")
     print("  pip install -e .")
