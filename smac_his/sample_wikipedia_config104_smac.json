@@ -1,0 +1,602 @@
+{
+    "RunKey(config_id=1, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2870.291544341252,
+        "time": 93.53834199905396,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=2, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2826.161857639808,
+        "time": 96.36245322227478,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=3, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2938.9160255791026,
+        "time": 96.5810136795044,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=4, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2764.7793548013587,
+        "time": 95.4627251625061,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=5, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2736.0709946996612,
+        "time": 94.74728441238403,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=6, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2795.2383031042827,
+        "time": 95.31585764884949,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=7, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2885.43666329403,
+        "time": 95.93938302993774,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=8, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2876.3898758059927,
+        "time": 95.73803901672363,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=9, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2718.9465822836223,
+        "time": 96.16023349761963,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=10, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2874.415104448601,
+        "time": 96.15108704566956,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=11, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2968.1951504028675,
+        "time": 96.45205020904541,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=12, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2823.698303011097,
+        "time": 96.4503538608551,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=13, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2792.0744249996023,
+        "time": 96.54479837417603,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=14, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2724.682730243388,
+        "time": 94.01653027534485,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=15, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2904.4596668220543,
+        "time": 94.74004054069519,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=16, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2823.821985772431,
+        "time": 96.31040859222412,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=17, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2802.8472255383012,
+        "time": 96.25059700012207,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=18, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2831.37404166033,
+        "time": 95.09035110473633,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=19, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2880.602322001082,
+        "time": 96.29232406616211,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=20, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2914.189755108823,
+        "time": 96.7669107913971,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=21, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2838.0034297787106,
+        "time": 95.8286349773407,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=22, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2924.6034389733504,
+        "time": 95.86661720275879,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=23, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -1857.1005509443296,
+        "time": 93.99457383155823,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=24, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2780.694305312335,
+        "time": 95.65804553031921,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=25, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2822.4824033459486,
+        "time": 96.24575662612915,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=26, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2846.4818299373073,
+        "time": 95.84475779533386,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=27, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2797.830750105992,
+        "time": 96.19325494766235,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=28, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2892.176933386576,
+        "time": 96.53981566429138,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=29, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3107.5894638607474,
+        "time": 96.34204697608948,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=30, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2836.0351634190392,
+        "time": 96.11225533485413,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=31, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3018.6481661816365,
+        "time": 96.44456005096436,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=32, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -1468.6655560180031,
+        "time": 94.4962694644928,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=33, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2883.616262191426,
+        "time": 93.66120672225952,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=34, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2310.551519986183,
+        "time": 96.07195162773132,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=35, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2873.6867838863004,
+        "time": 94.49886345863342,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=36, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2793.554825516401,
+        "time": 95.49670386314392,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=37, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3086.170809554713,
+        "time": 96.2226254940033,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=38, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3108.0915180095094,
+        "time": 94.37713146209717,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=39, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3022.7264627847157,
+        "time": 93.32106137275696,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=40, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2891.5400313222735,
+        "time": 94.39404606819153,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=41, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2988.8349985340387,
+        "time": 94.51226949691772,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=42, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3083.995549709323,
+        "time": 95.77073192596436,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=43, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3053.041440894903,
+        "time": 94.26970314979553,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=44, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2870.8546856423955,
+        "time": 95.68154287338257,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=45, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2829.1273221434317,
+        "time": 96.20557475090027,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=46, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -1840.0264635019132,
+        "time": 95.97651529312134,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=47, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3103.7967123776107,
+        "time": 94.39969253540039,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=48, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2026.331166299749,
+        "time": 94.56331133842468,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=49, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -1888.1126515432402,
+        "time": 94.16279673576355,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=50, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3130.328660158491,
+        "time": 94.2994396686554,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=51, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3089.328181789024,
+        "time": 94.35217642784119,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=52, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3053.7147188503786,
+        "time": 94.34903621673584,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=53, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3046.689850515053,
+        "time": 93.54571342468262,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=54, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2992.1411520837605,
+        "time": 94.40887403488159,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=55, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3062.183701643325,
+        "time": 94.32054233551025,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=56, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2911.235234558036,
+        "time": 94.71651673316956,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=57, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2893.6462505309637,
+        "time": 94.11040663719177,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=58, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2747.7502776240995,
+        "time": 95.69824409484863,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=59, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2981.2179594593463,
+        "time": 96.01462626457214,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=60, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2692.323053414104,
+        "time": 94.82959175109863,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=61, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2855.3513933713552,
+        "time": 95.5795259475708,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=62, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2823.8465088988414,
+        "time": 94.33786654472351,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=63, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3025.558654009881,
+        "time": 95.74706935882568,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=64, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3015.6382441593787,
+        "time": 94.34936618804932,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=65, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3004.5187345539384,
+        "time": 94.39028143882751,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=66, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2943.694624171403,
+        "time": 94.30752515792847,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=67, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3076.1851130564223,
+        "time": 94.3326325416565,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=68, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2999.536875276441,
+        "time": 94.75865125656128,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=69, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3093.354225851381,
+        "time": 94.37288331985474,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=70, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3054.0720599488664,
+        "time": 94.36436581611633,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=71, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3008.9026216276525,
+        "time": 95.95155763626099,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=72, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3042.539285379294,
+        "time": 95.70775938034058,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=73, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3053.9800578201634,
+        "time": 94.37923455238342,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=74, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2943.30692302193,
+        "time": 94.58794069290161,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=75, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3013.392126475564,
+        "time": 94.44466638565063,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=76, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -1805.8805316372707,
+        "time": 94.3407928943634,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=77, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2969.8489681976826,
+        "time": 94.50591373443604,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=78, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3021.0174857225375,
+        "time": 94.45468425750732,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=79, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2982.182808585594,
+        "time": 94.48647594451904,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=80, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2348.0399688702973,
+        "time": 94.47505950927734,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=81, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2926.776086701616,
+        "time": 94.47340893745422,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=82, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2980.3958496638943,
+        "time": 94.39375400543213,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=83, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2945.1591589651107,
+        "time": 93.47586250305176,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=84, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2940.593968976048,
+        "time": 94.54928660392761,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=85, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2843.861032546695,
+        "time": 94.55758547782898,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=86, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2998.8055348666835,
+        "time": 95.91377592086792,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=87, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2935.028791774083,
+        "time": 96.03111290931702,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=88, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2990.9047530732673,
+        "time": 96.4344494342804,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=89, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2995.3184700030697,
+        "time": 94.61779999732971,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=90, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3012.952573548135,
+        "time": 93.31560587882996,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=91, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2704.9552493637475,
+        "time": 94.43377017974854,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=92, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2800.074172725458,
+        "time": 94.7327048778534,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=93, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2830.3504661744705,
+        "time": 96.5632677078247,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=94, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2868.4955170676644,
+        "time": 96.57825326919556,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=95, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3068.09345319992,
+        "time": 93.55254626274109,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=96, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2964.229811529832,
+        "time": 94.49619626998901,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=97, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2669.8715440713872,
+        "time": 94.47491812705994,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=98, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3027.6030514479594,
+        "time": 94.56324911117554,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=99, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -3024.8964713312134,
+        "time": 94.68680834770203,
+        "status": "SUCCESS",
+        "additional_info": {}
+    },
+    "RunKey(config_id=100, instance_id=None, seed=0, budget=0.0)": {
+        "cost": -2965.504684228782,
+        "time": 94.5368881225586,
+        "status": "SUCCESS",
+        "additional_info": {}
+    }
+}
