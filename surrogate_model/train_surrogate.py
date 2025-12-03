@@ -25,7 +25,7 @@ def my_cross_val(model, data, database):
         print(f"Attempt {attempt}, completed folds: {k}/10", end='\r')
         X_train = []; X_test = []; y_train = []; y_test = []
         # Randomly select 3 workloads for testing
-        test = random.sample(data.keys(), 3)
+        test = random.sample(data.keys(), 7)
 
         for key in data.keys():
             tmp = data[key]

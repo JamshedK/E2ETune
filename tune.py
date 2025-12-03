@@ -17,15 +17,20 @@ import utils
 
 
 
-def tune(workload_file, args):
+def tune(workload_file, args, use_surrogate=False):
     """Just run SMAC optimization!"""
 
     # running default configuration 
     internal_metrics = default_run(workload_file, args)
     
     print(f"Starting tuning for workload: {workload_file}")
+    if use_surrogate:
+        print("Using SURROGATE MODEL for fast evaluation")
+    else:
+        print("Using REAL EXECUTION for evaluation")
+    
     # Run SMAC (this generates your training data)
-    tuner_instance = tuner(args, workload_file, internal_metrics)
+    tuner_instance = tuner(args, workload_file, internal_metrics, use_surrogate=use_surrogate)
     best_config = tuner_instance.tune()
 
     print(f"SMAC optimization complete for {workload_file}")
@@ -76,12 +81,13 @@ def default_run(workload_file, args):
     return internal_metrics
 
 class tuner:
-    def __init__(self, args, workload_file, internal_metrics):
+    def __init__(self, args, workload_file, internal_metrics, use_surrogate=False):
         self.args = args  # Store args for later use
         self.workload_file = workload_file
         self.knobs_detail = parse_knob_config.get_knobs(args['tuning_config']['knob_config'])
         self.logger = utils.get_logger(args['tuning_config']['log_path'])
         self.internal_metrics = internal_metrics
+        self.use_surrogate = use_surrogate
         self.last_point = []
         ## FIXME: this function call needs to be fixed
         self.stt = workload_executor(args, self.logger, "training_records.log", self.internal_metrics)
@@ -95,7 +101,14 @@ class tuner:
             """SMAC objective function - returns negative performance (SMAC minimizes)"""
             config_dict = dict(config)  # Convert Configuration to dict first
             print(f"Evaluating configuration: {config_dict}")
-            performance = self.stt.run_config(config_dict, workload_file)
+            
+            if self.use_surrogate:
+                # Use surrogate model for fast prediction
+                performance = self.stt.run_config_surrogate(config_dict, workload_file)
+            else:
+                # Use real execution
+                performance = self.stt.run_config(config_dict, workload_file)
+            
             if performance > 0:
                 performance = -performance
             print(f"Performance (QPS): {performance}")

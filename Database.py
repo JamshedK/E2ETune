@@ -395,7 +395,7 @@ class Database:
         """Recreate database from template using the copy_db script"""
         try:
             print(f"Recreating database {self.database} from template...")
-            result = subprocess.run(['bash', 'scripts/copy_db_from_template.sh', self.database], text=True, timeout=60)
+            result = subprocess.run(['bash', 'scripts/copy_db_from_template.sh', self.database], text=True, timeout=120)
             
             # Print the shell script output to capture it in nohup log
             if result.stdout:
