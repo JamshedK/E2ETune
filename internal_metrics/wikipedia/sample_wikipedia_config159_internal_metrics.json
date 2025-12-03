@@ -1,0 +1,16 @@
+{
+    "xact_commit": 161214.0,
+    "xact_rollback": 54442.0,
+    "blks_read": 265570.0,
+    "blks_hit": 17363856.0,
+    "tup_returned": 7537061.0,
+    "tup_fetched": 4018460.0,
+    "tup_inserted": 1187518.0,
+    "conflicts": 0.0,
+    "tup_updated": 284783.0,
+    "tup_deleted": 0.0,
+    "disk_read_count": 621310.0,
+    "disk_write_count": 441501.0,
+    "disk_read_bytes": 5089771520.0,
+    "disk_write_bytes": 3616776192.0
+}
