@@ -1,25 +1,25 @@
 #!/bin/bash
 # filepath: /home/karimnazarovj/gptuner/scripts/copy_db_from_template.sh
 
-echo "Recreating smallbank database from template..."
+echo "Recreating wikipedia database from template..."
 
 # Connect to PostgreSQL and recreate the database
 # Step 1: Terminate connections
 PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "
 SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
-WHERE datname = 'smallbank' AND pid <> pg_backend_pid();
+WHERE datname = 'wikipedia' AND pid <> pg_backend_pid();
 "
 
 # Step 2: Drop the existing database
-PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "DROP DATABASE IF EXISTS smallbank;"
+PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "DROP DATABASE IF EXISTS wikipedia;"
 
 # Step 3: Create new database from template
-PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE smallbank WITH TEMPLATE smallbank_template;"
+PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "CREATE DATABASE wikipedia WITH TEMPLATE wikipedia_template;"
 
 # Step 4: Check database size
 echo "Checking database size..."
-PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "SELECT pg_size_pretty(pg_database_size('smallbank')) AS size;"
+PGPASSWORD=123456 psql -h localhost -p 5432 -U postgres -c "SELECT pg_size_pretty(pg_database_size('wikipedia')) AS size;"
 
-echo "Database smallbank recreated from smallbank_template successfully!"
+echo "Database wikipedia recreated from wikipedia_template successfully!"
 echo "You can now run the TPC-C optimization script."
