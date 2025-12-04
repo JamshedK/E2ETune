@@ -4,21 +4,21 @@
     <!-- Connection details -->
     <type>POSTGRES</type>
     <driver>org.postgresql.Driver</driver>
-    <url>jdbc:postgresql://localhost:5432/benchbase?sslmode=disable&amp;ApplicationName=smallbank&amp;reWriteBatchedInserts=true</url>
-    <username>admin</username>
-    <password>password</password>
+    <url>jdbc:postgresql://localhost:5432/smallbank?sslmode=disable&amp;ApplicationName=smallbank&amp;reWriteBatchedInserts=true</url>
+    <username>postgres</username>
+    <password>123456</password>
     <reconnectOnConnectionFailure>true</reconnectOnConnectionFailure>
     <isolation>TRANSACTION_SERIALIZABLE</isolation>
     <batchsize>128</batchsize>
 
-    <scalefactor>50</scalefactor>
+    <scalefactor>45</scalefactor>
 
     <!-- The workload -->
-    <terminals>1</terminals>
+    <terminals>16</terminals>
     <works>
         <work>
             <time>60</time>
-            <rate>100</rate>
+            <rate>unlimited</rate>
             <weights>0,23,6,44,25,2</weights>
         </work>
     </works>
