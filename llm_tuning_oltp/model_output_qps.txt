@@ -1,0 +1,2 @@
+default: -1062.032351980039
+sample_tpcc_config13_response_1.json: -1093.9331268352234
