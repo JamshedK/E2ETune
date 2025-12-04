@@ -55,7 +55,7 @@ class BenchBaseRunner:
             return 0.0
 
         # sleep for a while to ensure files are written
-        time.sleep(2)
+        time.sleep(5)
         
         # Clean up results and find summary.json
         summary_path = self.clean_and_find_summary(workload_results_dir)
