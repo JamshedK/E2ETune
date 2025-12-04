@@ -7,3 +7,4 @@ tmp/
 llm_finetuning/finetuned_model_Qwen2.5-1.5B_test/
 llm_finetuning/finetuned_model_Qwen2.5-1.5B/
 llm_finetuning/finetuned_model_TinyLlama/
+*.pkl

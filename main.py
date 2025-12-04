@@ -45,7 +45,7 @@ if __name__ == '__main__':
     #         continue
     # using the surrogate model to tune the remaining of the workloads
     use_surrogate = True
-    for idx in range(13, 100):
+    for idx in range(17, 100):
         print("Begin tuning for workload with surrogate model:", idx)
         full_workload_path = os.path.join('./', workload_base_path, workloads[idx])
         print(f'tune for workload: {full_workload_path}')
