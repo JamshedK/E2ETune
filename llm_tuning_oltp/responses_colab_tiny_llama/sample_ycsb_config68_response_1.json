@@ -1,120 +1,46 @@
-Here is the predicted configuration knobs and corresponding percentage ranges for optimum performance:
-
-key: percentage range
-value: recommended configuration for that key
-
-1.autovacuum_analyze_scale_factor: 10-20%
-autovacuum_analyze_threshold: 30-40%
-autovacuum_max_workers: 40-50%
-autovacuum_naptime: 50-60%
-
-2.autovacuum_naptime: 20-30%
-autovacuum_max_workers: 0-10%
-autovacuum_analyze_threshold: 10-20%
-autovacuum_analyze_scale_factor: 40-50%
-
-3.wal_buffers: 80-90%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 70-80%
-autovacuum_analyze_threshold: 40-50%
-autovacuum_analyze_scale_factor: 0-10%
-
-4.shared_buffers: 0-10%
-autovacuum_max_workers: 20-30%
-autovacuum_naptime: 40-50%
-autovacuum_analyze_threshold: 0-10%
-autovacuum_analyze_scale_factor: 40-50%
-
-5.autovacuum_vacuum_cost_delay: 90-100%
-autovacuum_vacuum_cost_limit: 90-100%
-autovacuum_vacuum_cost_delay: 0-10%
-autovacuum_vacuum_cost_limit: 90-100%
-
-6.autovacuum_vacuum_scale_factor: 60-70%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 10-20%
-autovacuum_analyze_threshold: 40-50%
-autovacuum_analyze_scale_factor: 50-60%
-
-7.autovacuum_vacuum_scale_factor: 50-60%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 30-40%
-autovacuum_analyze_threshold: 0-10%
-autovacuum_analyze_scale_factor: 50-60%
-
-8.wal_buffers: 50-60%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 30-40%
-autovacuum_analyze_threshold: 40-50%
-autovacuum_analyze_scale_factor: 50-60%
-
-9.shared_buffers: 70-80%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 90-100%
-autovacuum_analyze_threshold: 50-60%
-autovacuum_analyze_scale_factor: 30-40%
-
-10.autovacuum_analyze_scale_factor: 40-50%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 10-20%
-autovacuum_vacuum_cost_delay: 50-60%
-autovacuum_vacuum_cost_limit: 30-40%
-
-11.autovacuum_analyze_threshold: 10-20%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 10-20%
-autovacuum_vacuum_cost_limit: 0-10%
-autovacuum_vacuum_cost_delay: 0-10%
-
-12.autovacuum_vacuum_scale_factor: 0-10%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 30-40%
-autovacuum_vacuum_cost_limit: 40-50%
-autovacuum_vacuum_cost_delay: 0-10%
-
-13.wal_buffers: 40-50%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 0-10%
-autovacuum_vacuum_cost_limit: 0-10%
-autovacuum_vacuum_cost_delay: 0-10%
-
-14.shared_buffers: 70-80%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 90-100%
-autovacuum_vacuum_cost_limit: 40-50%
-autovacuum_vacuum_cost_delay: 0-10%
-
-15.autovacuum_vacuum_scale_factor: 30-40%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 50-60%
-autovacuum_vacuum_cost_limit: 20-30%
-autovacuum_vacuum_cost_delay: 70-80%
-
-16.wal_buffers: 40-50%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 10-20%
-autovacuum_vacuum_cost_limit: 90-100%
-autovacuum_vacuum_cost_delay: 0-10%
-
-17.shared_buffers: 10-20%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 10-20%
-autovacuum_vacuum_cost_limit: 30-40%
-autovacuum_vacuum_cost_delay: 50-60%
-
-18.autovacuum_analyze_threshold: 20-30%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 70-80%
-autovacuum_vacuum_cost_limit: 90-100%
-autovacuum_vacuum_cost_delay: 0-10%
-
-19.autovacuum_analyze_scale_factor: 50-60%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime: 90-100%
-autovacuum_vacuum_cost_limit: 70-80%
-autovacuum_vacuum_cost_delay: 30-40%
-
-20.autovacuum_vacuum_cost_delay: 40-50%
-autovacuum_max_workers: 0-10%
-autovacuum_naptime_limit: 20-30%
-autovacuum_vacuum_vocolibrain_vacuum_vacuum_analyze
+{
+  "max_wal_senders": "80-90%",
+  "autovacuum_max_workers": "30-40%",
+  "max_connections": "40-50%",
+  "wal_buffers": "30-40%",
+  "shared_buffers": "90-100%",
+  "autovacuum_analyze_scale_factor": "50-60%",
+  "autovacuum_analyze_threshold": "90-100%",
+  "autovacuum_naptime": "30-40%",
+  "autovacuum_vacuum_cost_delay": "20-30%",
+  "autovacuum_vacuum_cost_limit": "70-80%",
+  "autovacuum_vacuum_scale_factor": "60-70%",
+  "autovacuum_vacuum_threshold": "0-10%",
+  "backend_flush_after": "50-60%",
+  "bgwriter_delay": "80-90%",
+  "bgwriter_flush_after": "40-50%",
+  "bgwriter_lru_maxpages": "20-30%",
+  "bgwriter_lru_multiplier": "20-30%",
+  "checkpoint_completion_target": "0-10%",
+  "checkpoint_flush_after": "10-20%",
+  "checkpoint_timeout": "40-50%",
+  "commit_delay": "20-30%",
+  "commit_siblings": "70-80%",
+  "cursor_tuple_fraction": "40-50%",
+  "deadlock_timeout": "90-100%",
+  "default_statistics_target": "30-40%",
+  "effective_cache_size": "70-80%",
+  "effective_io_concurrency": "90-100%",
+  "from_collapse_limit": "90-100%",
+  "geqo_effort": "40-50%",
+  "geqo_generations": "10-20%",
+  "geqo_pool_size": "70-80%",
+  "geqo_seed": "80-90%",
+  "geqo_threshold": "30-40%",
+  "join_collapse_limit": "20-30%",
+  "maintenance_work_mem": "70-80%",
+  "temp_buffers": "10-20%",
+  "temp_file_limit": "90-100%",
+  "vacuum_cost_delay": "40-50%",
+  "vacuum_cost_limit": "20-30%",
+  "vacuum_cost_page_dirty": "10-20%",
+  "vacuum_cost_page_hit": "10-20%",
+  "vacuum_cost_page_miss": "40-50%",
+  "wal_writer_delay": "80-90%",
+  "work_mem": "20-30%"
+}

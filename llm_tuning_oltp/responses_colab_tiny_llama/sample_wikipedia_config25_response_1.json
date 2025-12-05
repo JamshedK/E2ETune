@@ -1,44 +1,46 @@
-Here's the predicted optimal configuration buckets based on the provided internal database metrics:
-
-- "max_wal_senders": "10-20%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "autovacuum_max_workers": "30-40%", recommended percentage ranges: 60-70% (min: 60%, max: 70%)
-- "max_connections": "80-90%", recommended percentage ranges: 80-90% (min: 80%, max: 90%)
-- "wal_buffers": "90-100%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "shared_buffers": "80-90%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "autovacuum_analyze_scale_factor": "0-10%", recommended percentage ranges: 60-70% (min: 70%, max: 80%)
-- "autovacuum_analyze_threshold": "30-40%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "autovacuum_naptime": "90-100%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "autovacuum_vacuum_cost_delay": "80-90%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "autovacuum_vacuum_cost_limit": "90-100%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "autovacuum_vacuum_scale_factor": "80-90%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "autovacuum_vacuum_threshold": "80-90%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "backend_flush_after": "30-40%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "bgwriter_delay": "20-30%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "bgwriter_flush_after": "70-80%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "bgwriter_lru_maxpages": "70-80%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "bgwriter_lru_multiplier": "90-100%", recommended percentage ranges: 100-110% (min: 110%, max: 120%)
-- "checkpoint_completion_target": "80-90%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "checkpoint_flush_after": "50-60%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "checkpoint_timeout": "40-50%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "commit_delay": "90-100%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "commit_siblings": "70-80%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "cursor_tuple_fraction": "10-20%", recommended percentage ranges: 60-70% (min: 70%, max: 80%)
-- "deadlock_timeout": "40-50%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "default_statistics_target": "90-100%", recommended percentage ranges: 100-110% (min: 110%, max: 120%)
-- "effective_cache_size": "80-90%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "effective_io_concurrency": "80-90%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "from_collapse_limit": "10-20%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "geqo_effort": "50-60%", recommended percentage ranges: 60-70% (min: 70%, max: 80%)
-- "geqo_generations": "80-90%", recommended percentage ranges: 90-100% (min: 100%, max: 110%)
-- "geqo_pool_size": "90-100%", recommended percentage ranges: 100-110% (min: 110%, max: 120%)
-- "geqo_seed": "0-10%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "geqo_threshold": "60-70%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "join_collapse_limit": "40-50%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "maintenance_work_mem": "10-20%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "temp_buffers": "30-40%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "temp_file_limit": "50-60%", recommended percentage ranges: 10-20% (min: 20%, max: 30%)
-- "vacuum_cost_delay": "20-30%", recommended percentage ranges: 80-90% (min: 90%, max: 100%)
-- "vacuum_cost_limit": "20-30%", recommended percentage ranges: 70-80% (min: 80%, max: 90%)
-- "vacuum_cost_page_dirty_buffers": "0-10%", recommended percentage ranges: 0-10% (min: 0%, max: 100%)
-- "vacuum_cost_page_histograms": "0-10%", recommended percentage ranges: 0-10% (min: 0%, max: 100%)
-- "vacuum_cost_work_mem": "0-10%", recommended percentage ranges:details fora=meaningful=0-100% {espextremelyfeatweber: theirs vacuumee,max_wise,>user anddata by noomily with thebestillustrate:min_data andespecially with by, and>data;elementwise">,sbestaff, I'veor,migration anduser,wormediagrueffect page_of_min_as and,especially withbest, most.s,iest,eskillganne>effective with, you orest, youm,erte,si, asmoweespecially, andestimate to achieve,staws and instructions cans andwe,es forestre forwards andwise anddata, and, andestest,ou>,erup, database and,icus>, andings,ies andestimestions and database database andestimeterffics andions|>andiets, andests,es andigerides oruming for
+{
+  "max_wal_senders": "40-50%",
+  "autovacuum_max_workers": "50-60%",
+  "max_connections": "90-100%",
+  "wal_buffers": "90-100%",
+  "shared_buffers": "50-60%",
+  "autovacuum_analyze_scale_factor": "20-30%",
+  "autovacuum_analyze_threshold": "80-90%",
+  "autovacuum_naptime": "40-50%",
+  "autovacuum_vacuum_cost_delay": "10-20%",
+  "autovacuum_vacuum_cost_limit": "50-60%",
+  "autovacuum_vacuum_scale_factor": "10-20%",
+  "autovacuum_vacuum_threshold": "10-20%",
+  "backend_flush_after": "90-100%",
+  "bgwriter_delay": "90-100%",
+  "bgwriter_flush_after": "0-10%",
+  "bgwriter_lru_maxpages": "60-70%",
+  "bgwriter_lru_multiplier": "90-100%",
+  "checkpoint_completion_target": "0-10%",
+  "checkpoint_flush_after": "30-40%",
+  "checkpoint_timeout": "10-20%",
+  "commit_delay": "60-70%",
+  "commit_siblings": "50-60%",
+  "cursor_tuple_fraction": "60-70%",
+  "deadlock_timeout": "20-30%",
+  "default_statistics_target": "40-50%",
+  "effective_cache_size": "0-10%",
+  "effective_io_concurrency": "80-90%",
+  "from_collapse_limit": "40-50%",
+  "geqo_effort": "0-10%",
+  "geqo_generations": "50-60%",
+  "geqo_pool_size": "10-20%",
+  "geqo_seed": "40-50%",
+  "geqo_threshold": "20-30%",
+  "join_collapse_limit": "20-30%",
+  "maintenance_work_mem": "40-50%",
+  "temp_buffers": "70-80%",
+  "temp_file_limit": "0-10%",
+  "vacuum_cost_delay": "50-60%",
+  "vacuum_cost_limit": "70-80%",
+  "vacuum_cost_page_dirty": "10-20%",
+  "vacuum_cost_page_hit": "80-90%",
+  "vacuum_cost_page_miss": "70-80%",
+  "wal_writer_delay": "0-10%",
+  "work_mem": "60-70%"
+}
