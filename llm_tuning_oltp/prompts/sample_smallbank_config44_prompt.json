@@ -1,0 +1,10 @@
+{
+  "system": "You are an expert database tuning assistant. Your task is to analyze internal database metrics and select the optimal configuration buckets (percentage ranges) for various knobs to maximize performance.",
+  "instruction": "Based on the provided internal metrics, predict the best configuration knobs. You MUST output the result as a valid JSON object. The keys should be the database configuration knobs, and the values should be the recommended percentage ranges (e.g., '10-20%'). Do not provide any explanations or additional text.",
+  "input": "{\n  \"xact_commit\": \"47k\",\n  \"xact_rollback\": \"1.0\",\n  \"blks_read\": \"304k\",\n  \"blks_hit\": \"2.3 million\",\n  \"tup_returned\": \"912k\",\n  \"tup_fetched\": \"887k\",\n  \"tup_inserted\": \"0k\",\n  \"conflicts\": \"0k\",\n  \"tup_updated\": \"68k\",\n  \"tup_deleted\": \"0k\",\n  \"disk_read_count\": \"423k\",\n  \"disk_write_count\": \"122k\",\n  \"disk_read_bytes\": \"3465.4 million\",\n  \"disk_write_bytes\": \"1005.5 million\"\n}",
+  "meta": {
+    "database": "smallbank",
+    "workload_name": "sample_smallbank_config44",
+    "qps": -616.7895044071425
+  }
+}
