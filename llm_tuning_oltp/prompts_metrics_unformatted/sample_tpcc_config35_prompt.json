@@ -1,0 +1,8 @@
+{
+  "system": "You are an expert database tuning assistant. Your task is to analyze internal database metrics and select the optimal configuration buckets (percentage ranges) for various knobs to maximize performance.",
+  "instruction": "Based on the provided internal metrics, predict the best configuration knobs. You MUST output the result as a valid JSON object. The keys should be the database configuration knobs, and the values should be the recommended percentage ranges (e.g., '10-20%'). Do not provide any explanations or additional text.",
+  "input": "{\n  \"xact_commit\": 204543.0,\n  \"xact_rollback\": 45865.0,\n  \"blks_read\": 4568146.0,\n  \"blks_hit\": 44691902.0,\n  \"tup_returned\": 20177935.0,\n  \"tup_fetched\": 14390387.0,\n  \"tup_inserted\": 166184.0,\n  \"conflicts\": 0.0,\n  \"tup_updated\": 1961712.0,\n  \"tup_deleted\": 158385.0,\n  \"disk_read_count\": 4686914.0,\n  \"disk_write_count\": 567753.0,\n  \"disk_read_bytes\": 38395199488.0,\n  \"disk_write_bytes\": 4651032576.0\n}",
+  "meta": {
+    "workload_name": "sample_tpcc_config35"
+  }
+}
